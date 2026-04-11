@@ -1,0 +1,30 @@
+---
+namespace: microsoft
+name: scvmm
+version: 0.1.0
+readme: README.md
+authors:
+  - Steve Fulmer <sfulmer@redhat.com>
+description: >-
+  Ansible modules for managing Microsoft System Center Virtual Machine Manager
+  (SCVMM). Provides VM lifecycle management, template operations, cloud and
+  host group administration, logical network configuration, storage management,
+  and library resource control via PowerShell over WinRM.
+license_file: LICENSE
+tags:
+  - cloud
+  - windows
+  - infrastructure
+  - networking
+  - monitoring
+dependencies:
+  ansible.windows: ">=2.0.0"
+repository: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm
+documentation: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm
+homepage: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm
+issues: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm/issues
+build_ignore:
+  - .git
+  - .github
+  - tests/output
+  - noxfile.py
