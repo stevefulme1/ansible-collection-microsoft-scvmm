@@ -1,0 +1,69 @@
+---
+name: CI
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ansible-core:
+          - '2.16'
+          - '2.20'
+        include:
+          - ansible-core: '2.16'
+            ansible-lint: '24.12.2'
+          - ansible-core: '2.20'
+            ansible-lint: '25.1.0'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install ansible-core~=${{ matrix.ansible-core }}.0
+          pip install ansible-lint==${{ matrix.ansible-lint }}
+
+      - name: Run ansible-lint
+        run: ansible-lint --profile=production --skip-list sanity
+
+  sanity:
+    name: "Sanity (ansible-core ${{ matrix.ansible-core }}, Python ${{ matrix.python }})"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ansible-core: stable-2.16
+            python: '3.12'
+          - ansible-core: stable-2.20
+            python: '3.12'
+          - ansible-core: stable-2.20
+            python: '3.13'
+    steps:
+      - name: Perform sanity testing
+        uses: ansible-community/ansible-test-gh-action@v1
+        with:
+          ansible-core-version: ${{ matrix.ansible-core }}
+          testing-type: sanity
+          target-python-version: ${{ matrix.python }}
+          pull-request-change-detection: false
