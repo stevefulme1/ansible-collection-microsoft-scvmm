@@ -2,10 +2,32 @@
 
 **Topics**
 
+- <a href="#v0-2-0">v0\.2\.0</a>
+    - <a href="#v020-release-summary">Release Summary</a>
+    - <a href="#v020-minor-changes">Minor Changes</a>
 - <a href="#v0-1-0">v0\.1\.0</a>
-    - <a href="#release-summary">Release Summary</a>
-    - <a href="#major-changes">Major Changes</a>
-    - <a href="#minor-changes">Minor Changes</a>
+    - <a href="#v010-release-summary">Release Summary</a>
+    - <a href="#v010-major-changes">Major Changes</a>
+    - <a href="#v010-minor-changes">Minor Changes</a>
+
+<a id="v0-2-0"></a>
+## v0\.2\.0
+
+<a id="v020-release-summary"></a>
+### Release Summary
+
+Added community and governance files\, requirements files\,
+CODEOWNERS\, and codecov configuration\.
+
+<a id="v020-minor-changes"></a>
+### Minor Changes
+
+* Added CODE\_OF\_CONDUCT\.md\, CONTRIBUTING\.md\, SECURITY\.md\, MAINTAINERS\, and REVIEW\_CHECKLIST\.md\.
+* Added CHANGELOG\.rst and CHANGELOG\.md rendered release notes\.
+* Added requirements\.txt\, test\-requirements\.txt\, and bindep\.txt\.
+* Added CODEOWNERS file\.
+* Added codecov\.yml for coverage path mapping\.
+* Fixed CI workflow \— pinned ansible\-test\-gh\-action to SHA \(v1\.17\.0\) and bumped ansible\-lint to 25\.2\.0 for ansible\-core 2\.20 compatibility\.
 
 <a id="v0-1-0"></a>
 ## v0\.1\.0
