@@ -10,8 +10,6 @@ description: >-
   (SCVMM). Provides VM lifecycle management, template operations, cloud and
   host group administration, logical network configuration, storage management,
   and library resource control via PowerShell over WinRM.
-license:
-  - GPL-3.0-or-later
 license_file: COPYING
 tags:
   - cloud
