@@ -4,6 +4,25 @@ Microsoft SCVMM Collection Release Notes
 
 .. contents:: Topics
 
+v0.2.0
+======
+
+Release Summary
+----------------
+
+Added community and governance files, requirements files,
+CODEOWNERS, and codecov configuration.
+
+Minor Changes
+-------------
+
+- Added CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md, MAINTAINERS, and REVIEW_CHECKLIST.md.
+- Added CHANGELOG.rst and CHANGELOG.md rendered release notes.
+- Added requirements.txt, test-requirements.txt, and bindep.txt.
+- Added CODEOWNERS file.
+- Added codecov.yml for coverage path mapping.
+- Fixed CI workflow — pinned ansible-test-gh-action to SHA (v1.17.0) and bumped ansible-lint to 25.2.0 for ansible-core 2.20 compatibility.
+
 v0.1.0
 ======
 
