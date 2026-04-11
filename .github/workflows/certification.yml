@@ -16,5 +16,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  call:
+  certification-2-16:
     uses: ansible-collections/partner-certification-checker/.github/workflows/certification-reusable.yml@2f6d9300ebe9190da3120a740c3a4d5ca2f0f02e # v1.0.0
+    with:
+      ansible-core-version: '2.16.0'
+      python-versions: '["3.12"]'
+
+  certification-2-20:
+    uses: ansible-collections/partner-certification-checker/.github/workflows/certification-reusable.yml@2f6d9300ebe9190da3120a740c3a4d5ca2f0f02e # v1.0.0
+    with:
+      ansible-core-version: '2.20.0'
+      python-versions: '["3.12", "3.13"]'
