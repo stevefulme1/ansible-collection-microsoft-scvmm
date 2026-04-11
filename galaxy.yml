@@ -10,15 +10,16 @@ description: >-
   (SCVMM). Provides VM lifecycle management, template operations, cloud and
   host group administration, logical network configuration, storage management,
   and library resource control via PowerShell over WinRM.
-license_file: LICENSE
+license:
+  - GPL-3.0-or-later
+license_file: COPYING
 tags:
   - cloud
   - windows
   - infrastructure
   - networking
   - monitoring
-dependencies:
-  ansible.windows: ">=2.0.0"
+dependencies: {}
 repository: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm
 documentation: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm
 homepage: https://github.com/stevefulme1/ansible-collection-microsoft-scvmm
