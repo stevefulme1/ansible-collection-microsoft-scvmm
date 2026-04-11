@@ -1,0 +1,2 @@
+pywinrm>=0.4.1
+pypsrp>=0.8.0

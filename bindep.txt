@@ -1,0 +1,5 @@
+# This file lists non-Python dependencies required by this collection.
+# See https://docs.opendev.org/opendev/bindep for syntax.
+
+gcc [platform:centos-8 platform:rhel-8 compile]
+python3-devel [platform:centos-8 platform:rhel-8 compile]
