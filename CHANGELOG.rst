@@ -4,6 +4,94 @@ Microsoft SCVMM Collection Release Notes
 
 .. contents:: Topics
 
+v0.3.0
+======
+
+Release Summary
+----------------
+
+Major module expansion — added 71 new modules bringing the collection
+to 97 total. Covers profiles, services, update & compliance,
+bare metal provisioning, infrastructure configuration, and
+extended networking, storage, library, and RBAC management.
+
+Minor Changes
+-------------
+
+- scvmm_vm_migrate — VM live/storage migration.
+- scvmm_vm_clone — Clone existing VMs.
+- scvmm_vm_dvd_drive — Manage virtual DVD drives.
+- scvmm_vm_scsi_adapter — Manage SCSI controllers.
+- scvmm_hardware_profile — Manage hardware profiles.
+- scvmm_hardware_profile_info — Gather hardware profile info.
+- scvmm_guest_os_profile — Manage guest OS profiles.
+- scvmm_guest_os_profile_info — Gather guest OS profile info.
+- scvmm_application_profile — Manage application profiles.
+- scvmm_application_profile_info — Gather application profile info.
+- scvmm_capability_profile — Manage capability profiles.
+- scvmm_capability_profile_info — Gather capability profile info.
+- scvmm_host — Add/configure/remove Hyper-V hosts.
+- scvmm_host_cluster — Manage host clusters.
+- scvmm_host_cluster_info — Gather host cluster info.
+- scvmm_host_network_adapter — Configure host physical NICs.
+- scvmm_host_network_adapter_info — Gather host NIC info.
+- scvmm_host_rating_info — Get placement ratings.
+- scvmm_cloud_capacity — Set cloud capacity limits.
+- scvmm_cloud_capacity_info — Gather cloud capacity info.
+- scvmm_logical_network_definition — Manage network sites.
+- scvmm_logical_network_definition_info — Gather network site info.
+- scvmm_vm_subnet — Manage VM subnets.
+- scvmm_vm_subnet_info — Gather VM subnet info.
+- scvmm_logical_switch — Manage logical switches.
+- scvmm_logical_switch_info — Gather logical switch info.
+- scvmm_uplink_port_profile — Manage uplink port profiles.
+- scvmm_uplink_port_profile_info — Gather uplink port profile info.
+- scvmm_port_classification_info — Gather port classification info.
+- scvmm_mac_address_pool — Manage MAC address pools.
+- scvmm_mac_address_pool_info — Gather MAC address pool info.
+- scvmm_ip_pool_info — Gather IP pool info.
+- scvmm_network_adapter_info — Gather VM NIC details.
+- scvmm_load_balancer — Register/manage load balancers.
+- scvmm_storage_classification_info — Gather storage classification info.
+- scvmm_storage_pool — Manage storage pools.
+- scvmm_storage_pool_info — Gather storage pool info.
+- scvmm_storage_provider — Register storage providers.
+- scvmm_storage_provider_info — Gather storage provider info.
+- scvmm_storage_file_share_info — Gather file share info.
+- scvmm_library_share — Add/remove library shares.
+- scvmm_library_share_info — Gather library share info.
+- scvmm_iso_info — Gather ISO image info from library.
+- scvmm_script_info — Gather script resources from library.
+- scvmm_custom_resource_info — Gather custom resources from library.
+- scvmm_library_resource — Import resources into library.
+- scvmm_run_as_account — Manage RunAs accounts.
+- scvmm_run_as_account_info — Gather RunAs account info.
+- scvmm_user_role_quota — Set user role quotas.
+- scvmm_user_role_quota_info — Gather quota info.
+- scvmm_service_template — Manage service templates.
+- scvmm_service_template_info — Gather service template info.
+- scvmm_service — Deploy/manage service instances.
+- scvmm_service_info — Gather service instance info.
+- scvmm_sql_profile — Manage SQL profiles.
+- scvmm_sql_profile_info — Gather SQL profile info.
+- scvmm_update_server — Register/remove WSUS servers.
+- scvmm_update_server_info — Gather update server info.
+- scvmm_baseline — Manage update baselines.
+- scvmm_baseline_info — Gather baseline info.
+- scvmm_compliance_scan — Trigger compliance scans.
+- scvmm_compliance_info — Gather compliance status.
+- scvmm_pxe_server — Register PXE servers.
+- scvmm_pxe_server_info — Gather PXE server info.
+- scvmm_physical_computer_profile — Manage bare metal profiles.
+- scvmm_physical_computer_profile_info — Gather bare metal profile info.
+- scvmm_custom_property — Manage custom properties.
+- scvmm_custom_property_info — Gather custom property definitions.
+- scvmm_servicing_window — Manage servicing windows.
+- scvmm_servicing_window_info — Gather servicing window info.
+- scvmm_job_info — Gather VMM job history.
+- Updated extensions/audit/event_query.yml with all 97 module entries.
+- Updated README.md with categorized module catalog.
+
 v0.2.0
 ======
 
