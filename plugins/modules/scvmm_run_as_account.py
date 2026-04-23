@@ -44,7 +44,6 @@ options:
     description:
       - Password for the RunAs account credential.
     type: str
-    no_log: true
   description:
     description:
       - Description of the RunAs account.
