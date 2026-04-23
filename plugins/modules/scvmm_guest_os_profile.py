@@ -44,7 +44,6 @@ options:
     description:
       - Local administrator password for the guest OS.
     type: str
-    no_log: true
   domain:
     description:
       - Active Directory domain to join during deployment.
