@@ -103,9 +103,8 @@ try {
         }
 
         if ($vmHost) {
-            $module.Result.host = ConvertTo-SCVMMDict -InputObject $vmHost -Properties @(
-                'Name', 'ComputerName', 'OperatingSystem', 'VMHostGroup', 'OverallState', 'CommunicationState', 'ID'
-            )
+            $props = @('Name', 'ComputerName', 'OperatingSystem', 'VMHostGroup', 'OverallState', 'CommunicationState', 'ID')
+            $module.Result.host = ConvertTo-SCVMMDict -InputObject $vmHost -Properties $props
         }
     }
     else {

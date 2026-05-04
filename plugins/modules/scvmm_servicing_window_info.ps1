@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($window in $windows) {
-        $result += ConvertTo-SCVMMDict -InputObject $window -Properties @(
-            'Name', 'Description', 'StartDate', 'EndDate', 'TimeZone', 'Category', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $window -Properties @('Name', 'Description', 'StartDate', 'EndDate', 'TimeZone', 'Category', 'ID')
     }
 
     $module.Result.servicing_windows = $result

@@ -87,9 +87,8 @@ try {
         }
 
         if ($logicalNetwork) {
-            $module.Result.logical_network = ConvertTo-SCVMMDict -InputObject $logicalNetwork -Properties @(
-                'Name', 'Description', 'IsNetworkVirtualizationEnabled', 'ID'
-            )
+            $props = @('Name', 'Description', 'IsNetworkVirtualizationEnabled', 'ID')
+            $module.Result.logical_network = ConvertTo-SCVMMDict -InputObject $logicalNetwork -Properties $props
         }
     }
     else {

@@ -102,9 +102,8 @@ try {
         }
 
         if ($cluster) {
-            $module.Result.host_cluster = ConvertTo-SCVMMDict -InputObject $cluster -Properties @(
-                'Name', 'Description', 'HostGroup', 'ClusterNodeCount', 'AvailableStorageNodes', 'ID'
-            )
+            $props = @('Name', 'Description', 'HostGroup', 'ClusterNodeCount', 'AvailableStorageNodes', 'ID')
+            $module.Result.host_cluster = ConvertTo-SCVMMDict -InputObject $cluster -Properties $props
         }
     }
     else {

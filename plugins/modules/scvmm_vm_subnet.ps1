@@ -98,9 +98,7 @@ try {
         }
 
         if ($vmSubnet) {
-            $module.Result.vm_subnet = ConvertTo-SCVMMDict -InputObject $vmSubnet -Properties @(
-                'Name', 'VMNetwork', 'Subnet', 'VLanID', 'ID'
-            )
+            $module.Result.vm_subnet = ConvertTo-SCVMMDict -InputObject $vmSubnet -Properties @('Name', 'VMNetwork', 'Subnet', 'VLanID', 'ID')
         }
     }
     else {

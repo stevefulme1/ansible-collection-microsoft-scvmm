@@ -84,9 +84,7 @@ try {
 
         $module.Result.changed = $needsChange
         $module.Result.dvd_drive = if ($existing) {
-            ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-                'Bus', 'Lun', 'ISO', 'ID'
-            )
+            ConvertTo-SCVMMDict -InputObject $existing -Properties @('Bus', 'Lun', 'ISO', 'ID')
         }
         else {
             @{

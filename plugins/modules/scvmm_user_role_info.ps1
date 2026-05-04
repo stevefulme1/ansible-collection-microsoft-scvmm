@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($role in $roles) {
-        $result += ConvertTo-SCVMMDict -InputObject $role -Properties @(
-            'Name', 'Description', 'Profile', 'Members', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $role -Properties @('Name', 'Description', 'Profile', 'Members', 'ID')
     }
 
     $module.Result.user_roles = $result

@@ -34,9 +34,7 @@ try {
 
     $result = @()
     foreach ($job in $jobs) {
-        $result += ConvertTo-SCVMMDict -InputObject $job -Properties @(
-            'Name', 'ID', 'Status', 'StartTime', 'EndTime', 'Progress', 'ResultName'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $job -Properties @('Name', 'ID', 'Status', 'StartTime', 'EndTime', 'Progress', 'ResultName')
     }
 
     $module.Result.jobs = $result

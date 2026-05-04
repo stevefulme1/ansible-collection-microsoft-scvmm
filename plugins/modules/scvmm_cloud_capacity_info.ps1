@@ -22,9 +22,7 @@ try {
     $capacity = Get-SCCloudCapacity -Cloud $cloud -ErrorAction SilentlyContinue
 
     $module.Result.cloud_capacity = if ($capacity) {
-        ConvertTo-SCVMMDict -InputObject $capacity -Properties @(
-            'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID'
-        )
+        ConvertTo-SCVMMDict -InputObject $capacity -Properties @('CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID')
     }
     else {
         @{}

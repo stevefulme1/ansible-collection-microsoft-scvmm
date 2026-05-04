@@ -15,8 +15,6 @@ $spec = @{
         vm_name = @{ type = 'str'; required = $true }
         vm_network = @{ type = 'str' }
     }
-)
-    )
     supports_check_mode = $true
 }
 
@@ -92,9 +90,7 @@ try {
 
         $module.Result.changed = $needsChange
         $module.Result.nic = if ($existing) {
-            ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-                'Name', 'VMNetwork', 'MACAddress', 'MACAddressType', 'ID'
-            )
+            ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'VMNetwork', 'MACAddress', 'MACAddressType', 'ID')
         }
         else {
             @{

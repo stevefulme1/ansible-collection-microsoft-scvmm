@@ -14,8 +14,6 @@ $spec = @{
         profile = @{ type = 'str'; choices = @('Administrator', 'DelegatedAdmin', 'ReadOnlyAdmin', 'SelfServiceUser', 'TenantAdmin') }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
-)
-    )
     supports_check_mode = $true
 }
 

@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($server in $servers) {
-        $result += ConvertTo-SCVMMDict -InputObject $server -Properties @(
-            'Name', 'ComputerName', 'Port', 'IsConnectionSuccessful', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $server -Properties @('Name', 'ComputerName', 'Port', 'IsConnectionSuccessful', 'ID')
     }
 
     $module.Result.update_servers = $result

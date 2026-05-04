@@ -12,8 +12,6 @@ $spec = @{
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
-)
-    )
     supports_check_mode = $true
 }
 

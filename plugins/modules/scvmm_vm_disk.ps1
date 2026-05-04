@@ -15,8 +15,6 @@ $spec = @{
         vhd_name = @{ type = 'str'; required = $true }
         vm_name = @{ type = 'str'; required = $true }
     }
-)
-    )
     supports_check_mode = $true
 }
 
@@ -64,9 +62,7 @@ try {
         }
 
         $module.Result.disk = if ($existing) {
-            ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-                'Bus', 'Lun', 'Size', 'FileName', 'ID'
-            )
+            ConvertTo-SCVMMDict -InputObject $existing -Properties @('Bus', 'Lun', 'Size', 'FileName', 'ID')
         }
         else {
             @{

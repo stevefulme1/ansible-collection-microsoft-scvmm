@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($server in $servers) {
-        $result += ConvertTo-SCVMMDict -InputObject $server -Properties @(
-            'Name', 'ComputerName', 'State', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $server -Properties @('Name', 'ComputerName', 'State', 'ID')
     }
 
     $module.Result.pxe_servers = $result

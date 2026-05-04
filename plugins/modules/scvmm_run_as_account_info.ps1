@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($account in $accounts) {
-        $result += ConvertTo-SCVMMDict -InputObject $account -Properties @(
-            'Name', 'Description', 'CredentialType', 'UserName', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $account -Properties @('Name', 'Description', 'CredentialType', 'UserName', 'ID')
     }
 
     $module.Result.run_as_accounts = $result

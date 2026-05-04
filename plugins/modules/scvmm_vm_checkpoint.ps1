@@ -13,9 +13,6 @@ $spec = @{
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent', 'restored') }
         vm_name = @{ type = 'str'; required = $true }
     }
-)
-        @('state', 'restored', @('name'))
-    )
     supports_check_mode = $true
 }
 
@@ -53,9 +50,7 @@ try {
                 $existing = Get-SCVMCheckpoint -VM $vm -Name $module.Params.name -ErrorAction SilentlyContinue
             }
             $module.Result.changed = $true
-            $module.Result.checkpoint = ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-                'Name', 'Description', 'VM', 'CreationTime', 'ID'
-            )
+            $module.Result.checkpoint = ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'VM', 'CreationTime', 'ID')
             $module.Diff.after = $module.Result.checkpoint
         }
         else {
@@ -79,9 +74,7 @@ try {
         }
 
         $module.Result.checkpoint = if ($existing) {
-            ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-                'Name', 'Description', 'VM', 'CreationTime', 'ID'
-            )
+            ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'VM', 'CreationTime', 'ID')
         }
         else {
             @{

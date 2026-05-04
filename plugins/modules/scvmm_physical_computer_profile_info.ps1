@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($profile in $profiles) {
-        $result += ConvertTo-SCVMMDict -InputObject $profile -Properties @(
-            'Name', 'Description', 'OperatingSystem', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $profile -Properties @('Name', 'Description', 'OperatingSystem', 'ID')
     }
 
     $module.Result.profiles = $result

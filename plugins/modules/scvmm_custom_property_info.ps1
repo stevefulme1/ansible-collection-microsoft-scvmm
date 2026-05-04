@@ -27,9 +27,7 @@ try {
 
     $result = @()
     foreach ($property in $properties) {
-        $result += ConvertTo-SCVMMDict -InputObject $property -Properties @(
-            'Name', 'Description', 'MemberType', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $property -Properties @('Name', 'Description', 'MemberType', 'ID')
     }
 
     $module.Result.custom_properties = $result

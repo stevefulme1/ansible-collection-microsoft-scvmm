@@ -90,9 +90,8 @@ try {
         }
 
         if ($hostGroup) {
-            $module.Result.host_group = ConvertTo-SCVMMDict -InputObject $hostGroup -Properties @(
-                'Name', 'Description', 'Path', 'ParentHostGroup', 'CreationTime', 'ID'
-            )
+            $props = @('Name', 'Description', 'Path', 'ParentHostGroup', 'CreationTime', 'ID')
+            $module.Result.host_group = ConvertTo-SCVMMDict -InputObject $hostGroup -Properties $props
         }
     }
     else {

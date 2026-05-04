@@ -36,9 +36,7 @@ try {
 
     $result = @()
     foreach ($item in $status) {
-        $result += ConvertTo-SCVMMDict -InputObject $item -Properties @(
-            'VMHost', 'Baseline', 'Status', 'LastScanTime', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $item -Properties @('VMHost', 'Baseline', 'Status', 'LastScanTime', 'ID')
     }
 
     $module.Result.compliance_status = $result

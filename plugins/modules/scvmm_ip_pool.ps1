@@ -138,9 +138,8 @@ try {
         }
 
         if ($ipPool) {
-            $module.Result.ip_pool = ConvertTo-SCVMMDict -InputObject $ipPool -Properties @(
-                'Name', 'VMSubnet', 'IPAddressRangeStart', 'IPAddressRangeEnd', 'DefaultGateways', 'DNSServers', 'DNSSuffix', 'ID'
-            )
+            $props = @('Name', 'VMSubnet', 'IPAddressRangeStart', 'IPAddressRangeEnd', 'DefaultGateways', 'DNSServers', 'DNSSuffix', 'ID')
+            $module.Result.ip_pool = ConvertTo-SCVMMDict -InputObject $ipPool -Properties $props
         }
     }
     else {

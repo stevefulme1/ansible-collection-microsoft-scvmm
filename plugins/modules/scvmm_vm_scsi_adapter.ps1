@@ -64,9 +64,7 @@ try {
 
         $module.Result.changed = $needsChange
         $module.Result.scsi_adapter = if ($existing) {
-            ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-                'AdapterID', 'Shared', 'ID'
-            )
+            ConvertTo-SCVMMDict -InputObject $existing -Properties @('AdapterID', 'Shared', 'ID')
         }
         else {
             @{

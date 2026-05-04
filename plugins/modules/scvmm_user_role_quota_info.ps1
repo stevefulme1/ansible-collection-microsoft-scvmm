@@ -39,9 +39,7 @@ try {
 
     $result = @()
     foreach ($quota in $quotas) {
-        $result += ConvertTo-SCVMMDict -InputObject $quota -Properties @(
-            'UserRole', 'Cloud', 'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $quota -Properties @('UserRole', 'Cloud', 'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'ID')
     }
 
     $module.Result.quotas = $result

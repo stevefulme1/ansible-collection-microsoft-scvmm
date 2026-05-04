@@ -94,9 +94,8 @@ try {
         }
 
         if ($vmNetwork) {
-            $module.Result.vm_network = ConvertTo-SCVMMDict -InputObject $vmNetwork -Properties @(
-                'Name', 'Description', 'LogicalNetwork', 'IsolationType', 'VMSubnet', 'ID'
-            )
+            $props = @('Name', 'Description', 'LogicalNetwork', 'IsolationType', 'VMSubnet', 'ID')
+            $module.Result.vm_network = ConvertTo-SCVMMDict -InputObject $vmNetwork -Properties $props
         }
     }
     else {

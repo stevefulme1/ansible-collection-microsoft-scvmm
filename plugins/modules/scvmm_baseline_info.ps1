@@ -26,9 +26,7 @@ try {
 
     $result = @()
     foreach ($baseline in $baselines) {
-        $result += ConvertTo-SCVMMDict -InputObject $baseline -Properties @(
-            'Name', 'Description', 'BaselineType', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $baseline -Properties @('Name', 'Description', 'BaselineType', 'ID')
     }
 
     $module.Result.baselines = $result

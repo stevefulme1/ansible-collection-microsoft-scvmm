@@ -49,9 +49,7 @@ try {
     $job = Start-SCComplianceScan @scanParams
 
     $module.Result.changed = $true
-    $module.Result.scan = ConvertTo-SCVMMDict -InputObject $job -Properties @(
-        'Name', 'ID', 'Status', 'Progress', 'StartTime'
-    )
+    $module.Result.scan = ConvertTo-SCVMMDict -InputObject $job -Properties @('Name', 'ID', 'Status', 'Progress', 'StartTime')
 
     $module.ExitJson()
 }

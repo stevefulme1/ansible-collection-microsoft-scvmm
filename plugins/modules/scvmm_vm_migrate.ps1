@@ -27,9 +27,7 @@ try {
 
     if ($currentHost -eq $targetHost.Name) {
         $module.Result.changed = $false
-        $module.Result.vm = ConvertTo-SCVMMDict -InputObject $vm -Properties @(
-            'Name', 'VMHost', 'Status', 'ID'
-        )
+        $module.Result.vm = ConvertTo-SCVMMDict -InputObject $vm -Properties @('Name', 'VMHost', 'Status', 'ID')
         $module.ExitJson()
     }
 
@@ -62,9 +60,7 @@ try {
     $vm = Get-SCVirtualMachine -VMMServer $vmmServer -Name $module.Params.name -ErrorAction Stop
 
     $module.Result.changed = $true
-    $module.Result.vm = ConvertTo-SCVMMDict -InputObject $vm -Properties @(
-        'Name', 'VMHost', 'Status', 'ID'
-    )
+    $module.Result.vm = ConvertTo-SCVMMDict -InputObject $vm -Properties @('Name', 'VMHost', 'Status', 'ID')
 
     $module.ExitJson()
 }

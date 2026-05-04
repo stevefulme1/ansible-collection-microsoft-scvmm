@@ -29,9 +29,7 @@ try {
 
     $result = @()
     foreach ($checkpoint in $checkpoints) {
-        $result += ConvertTo-SCVMMDict -InputObject $checkpoint -Properties @(
-            'Name', 'Description', 'VM', 'CreationTime', 'ID'
-        )
+        $result += ConvertTo-SCVMMDict -InputObject $checkpoint -Properties @('Name', 'Description', 'VM', 'CreationTime', 'ID')
     }
 
     $module.Result.checkpoints = $result

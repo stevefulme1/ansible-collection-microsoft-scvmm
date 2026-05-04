@@ -115,9 +115,8 @@ try {
                     }
 
                     if ($definition) {
-                    $module.Result.logical_network_definition = ConvertTo-SCVMMDict -InputObject $definition -Properties @(
-                    'Name', 'LogicalNetwork', 'HostGroups', 'SubnetVLans', 'ID'
-                    )
+                    $props = @('Name', 'LogicalNetwork', 'HostGroups', 'SubnetVLans', 'ID')
+                    $module.Result.logical_network_definition = ConvertTo-SCVMMDict -InputObject $definition -Properties $props
                     }
                     }
                     else {

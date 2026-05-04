@@ -102,9 +102,7 @@ try {
     }
 
     $module.Result.changed = $needsChange
-    $module.Result.vm = ConvertTo-SCVMMDict -InputObject $vm -Properties @(
-        'Name', 'Status', 'ID'
-    )
+    $module.Result.vm = ConvertTo-SCVMMDict -InputObject $vm -Properties @('Name', 'Status', 'ID')
     if ($actionTaken) {
         $module.Result.action = $actionTaken
     }

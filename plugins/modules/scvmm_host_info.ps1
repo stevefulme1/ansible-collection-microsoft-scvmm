@@ -40,9 +40,8 @@ try {
     $hosts = @(Get-SCVMHost @params)
 
     $module.Result.hosts = @($hosts | ForEach-Object {
-            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
-            'Name', 'ComputerName', 'OperatingSystem', 'VMHostGroup', 'OverallState', 'CommunicationState', 'ID'
-            )
+            $props = @('Name', 'ComputerName', 'OperatingSystem', 'VMHostGroup', 'OverallState', 'CommunicationState', 'ID')
+            ConvertTo-SCVMMDict -InputObject $_ -Properties $props
         })
 
 }

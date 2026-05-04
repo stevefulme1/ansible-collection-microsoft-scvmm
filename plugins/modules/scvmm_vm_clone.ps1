@@ -26,9 +26,7 @@ try {
 
     if ($existingClone) {
         $module.Result.changed = $false
-        $module.Result.vm = ConvertTo-SCVMMDict -InputObject $existingClone -Properties @(
-            'Name', 'Status', 'VMHost', 'ID'
-        )
+        $module.Result.vm = ConvertTo-SCVMMDict -InputObject $existingClone -Properties @('Name', 'Status', 'VMHost', 'ID')
         $module.ExitJson()
     }
 
@@ -64,9 +62,7 @@ try {
     }
 
     $module.Result.changed = $true
-    $module.Result.vm = ConvertTo-SCVMMDict -InputObject $clonedVM -Properties @(
-        'Name', 'Status', 'VMHost', 'ID'
-    )
+    $module.Result.vm = ConvertTo-SCVMMDict -InputObject $clonedVM -Properties @('Name', 'Status', 'VMHost', 'ID')
 
     $module.ExitJson()
 }

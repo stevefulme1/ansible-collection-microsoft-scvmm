@@ -72,9 +72,8 @@ try {
         logical_network = $logicalNetwork
     }
 
-    $module.Result.network_adapter = ConvertTo-SCVMMDict -InputObject $adapter -Properties @(
-        'Name', 'ConnectionName', 'VMHost', 'LogicalNetwork', 'MaxBandwidth', 'ID'
-    )
+    $props = @('Name', 'ConnectionName', 'VMHost', 'LogicalNetwork', 'MaxBandwidth', 'ID')
+    $module.Result.network_adapter = ConvertTo-SCVMMDict -InputObject $adapter -Properties $props
 
 }
 

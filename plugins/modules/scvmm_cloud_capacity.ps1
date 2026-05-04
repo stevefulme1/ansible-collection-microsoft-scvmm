@@ -62,9 +62,7 @@ try {
 
     $module.Result.changed = $needsChange
     $module.Result.cloud_capacity = if ($existing) {
-        ConvertTo-SCVMMDict -InputObject $existing -Properties @(
-            'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID'
-        )
+        ConvertTo-SCVMMDict -InputObject $existing -Properties @('CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID')
     }
     else {
         @{
