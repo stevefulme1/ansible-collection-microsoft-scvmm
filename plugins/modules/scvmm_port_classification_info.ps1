@@ -25,4 +25,4 @@ else {
 }
 
 $module.Result.port_classifications = @($items | ForEach-Object { ConvertTo-SCVMMDict -InputObject $_ -Properties $props })
-$module.ExitJson()
+        $module.ExitJson()
