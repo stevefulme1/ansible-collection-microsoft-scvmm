@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $templates = Get-SCServiceTemplate -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $templates = Get-SCServiceTemplate -VMMServer $vmmServer
 }
 

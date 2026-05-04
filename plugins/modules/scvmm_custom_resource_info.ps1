@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $resources = Get-SCCustomResource -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $resources = Get-SCCustomResource -VMMServer $vmmServer
 }
 

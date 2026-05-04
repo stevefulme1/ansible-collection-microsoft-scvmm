@@ -42,7 +42,8 @@ try {
             subnet = $vmSubnet.Subnet
             vlan_id = $vmSubnet.VLanID
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -66,7 +67,8 @@ try {
                 $vmSubnet = New-SCVMSubnet @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
             $params = @{
                 VMSubnet = $vmSubnet
@@ -101,7 +103,8 @@ try {
                 'Name', 'VMNetwork', 'Subnet', 'VLanID', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($vmSubnet) {
             if (-not $module.CheckMode) {
                 Remove-SCVMSubnet -VMSubnet $vmSubnet -ErrorAction Stop
@@ -112,7 +115,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage VM subnet: $($_.Exception.Message)", $_)
 }
 

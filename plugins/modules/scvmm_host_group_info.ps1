@@ -23,7 +23,8 @@ try {
 
     if ($name) {
         $hostGroups = @(Get-SCVMHostGroup -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue)
-    } else {
+    }
+    else {
         $hostGroups = @(Get-SCVMHostGroup -VMMServer $vmmServer -ErrorAction SilentlyContinue)
     }
 
@@ -33,7 +34,9 @@ try {
         )
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve host groups: $($_.Exception.Message)", $_)
 }
 

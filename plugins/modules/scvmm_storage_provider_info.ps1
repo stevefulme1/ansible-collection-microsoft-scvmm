@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $providers = Get-SCStorageProvider -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $providers = Get-SCStorageProvider -VMMServer $vmmServer
 }
 

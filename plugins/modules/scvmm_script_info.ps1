@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $scripts = Get-SCScript -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $scripts = Get-SCScript -VMMServer $vmmServer
 }
 

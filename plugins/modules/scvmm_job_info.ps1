@@ -21,7 +21,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $jobs = if ($module.Params.id) {
         Get-SCJob -VMMServer $vmmServer -ID $module.Params.id -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         $jobParams = @{
             VMMServer = $vmmServer
         }
@@ -40,6 +41,7 @@ try {
 
     $module.Result.jobs = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve jobs: $($_.Exception.Message)", $_)
 }

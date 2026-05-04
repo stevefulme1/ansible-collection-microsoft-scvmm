@@ -19,7 +19,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $properties = if ($module.Params.name) {
         Get-SCCustomProperty -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCCustomProperty -VMMServer $vmmServer
     }
 
@@ -32,6 +33,7 @@ try {
 
     $module.Result.custom_properties = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve custom properties: $($_.Exception.Message)", $_)
 }

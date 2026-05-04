@@ -45,7 +45,9 @@ try {
         )
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve VM subnets: $($_.Exception.Message)", $_)
 }
 

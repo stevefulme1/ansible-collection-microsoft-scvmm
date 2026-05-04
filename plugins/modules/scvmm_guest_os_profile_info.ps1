@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $profiles = Get-SCGuestOSProfile -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $profiles = Get-SCGuestOSProfile -VMMServer $vmmServer
 }
 

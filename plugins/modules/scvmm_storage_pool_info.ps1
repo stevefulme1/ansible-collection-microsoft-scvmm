@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $pools = Get-SCStoragePool -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $pools = Get-SCStoragePool -VMMServer $vmmServer
 }
 

@@ -19,7 +19,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $baselines = if ($module.Params.name) {
         Get-SCBaseline -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCBaseline -VMMServer $vmmServer
     }
 
@@ -32,6 +33,7 @@ try {
 
     $module.Result.baselines = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve baselines: $($_.Exception.Message)", $_)
 }

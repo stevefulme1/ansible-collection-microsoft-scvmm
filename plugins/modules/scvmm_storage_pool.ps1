@@ -28,7 +28,8 @@ $current = Get-SCStoragePool -VMMServer $vmmServer -Name $name -ErrorAction Sile
 if ($state -eq 'present') {
     if ($null -eq $current) {
         $module.FailJson("Storage pools cannot be created directly via SCVMM. They are discovered from storage providers.")
-    } else {
+    }
+    else {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'TotalManagedSpace', 'RemainingManagedSpace', 'State', 'ID')
         $needsUpdate = $false
         $params = @{ ErrorAction = 'Stop' }
@@ -45,19 +46,23 @@ if ($state -eq 'present') {
             if (-not $module.CheckMode) {
                 $result = Set-SCStoragePool -StoragePool $current @params
                 $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'TotalManagedSpace', 'RemainingManagedSpace', 'State', 'ID')
-            } else {
+            }
+            else {
                 $module.Diff.after = $module.Diff.before.Clone()
                 $module.Diff.after.StorageClassification = $storageClassification
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $module.Diff.after = $module.Diff.before
         }
     }
-} else {
+}
+else {
     if ($null -ne $current) {
         $module.FailJson("Storage pools cannot be removed directly. Remove them from the storage provider.")
-    } else {
+    }
+    else {
         $module.Diff.before = @{}
         $module.Diff.after = @{}
     }

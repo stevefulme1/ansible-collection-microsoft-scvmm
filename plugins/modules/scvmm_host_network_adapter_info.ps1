@@ -24,7 +24,8 @@ try {
     if ($vmHostName) {
         $vmHost = Get-SCVMHost -VMMServer $vmmServer -ComputerName $vmHostName -ErrorAction Stop
         $adapters = @(Get-SCVMHostNetworkAdapter -VMHost $vmHost -ErrorAction SilentlyContinue)
-    } else {
+    }
+    else {
         $adapters = @(Get-SCVMHostNetworkAdapter -VMMServer $vmmServer -ErrorAction SilentlyContinue)
     }
 
@@ -34,7 +35,9 @@ try {
         )
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve host network adapters: $($_.Exception.Message)", $_)
 }
 

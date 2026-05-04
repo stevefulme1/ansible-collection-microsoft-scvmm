@@ -26,7 +26,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('AdapterID', 'Shared', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -36,7 +37,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         $needsChange = $false
 
         if (-not $existing) {
@@ -50,7 +52,8 @@ try {
                 $existing = New-SCVirtualSCSIAdapter @newParams
             }
             $needsChange = $true
-        } else {
+        }
+        else {
             if ($existing.Shared -ne $module.Params.shared) {
                 if (-not $module.CheckMode) {
                     Set-SCVirtualSCSIAdapter -VirtualSCSIAdapter $existing -Shared $module.Params.shared -ErrorAction Stop
@@ -65,7 +68,8 @@ try {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @(
                 'AdapterID', 'Shared', 'ID'
             )
-        } else {
+        }
+        else {
             @{
                 AdapterID = $module.Params.adapter_id
                 Shared = $module.Params.shared
@@ -75,6 +79,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage VM SCSI adapter: $($_.Exception.Message)", $_)
 }

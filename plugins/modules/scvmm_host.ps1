@@ -38,7 +38,8 @@ try {
             host_group = $vmHost.VMHostGroup.Path
             overall_state = $vmHost.OverallState
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -63,7 +64,8 @@ try {
                 $vmHost = Add-SCVMHost @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
 
             if ($hostGroup) {
@@ -105,7 +107,8 @@ try {
                 'Name', 'ComputerName', 'OperatingSystem', 'VMHostGroup', 'OverallState', 'CommunicationState', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($vmHost) {
             if (-not $module.CheckMode) {
                 Remove-SCVMHost -VMHost $vmHost -ErrorAction Stop
@@ -116,7 +119,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage VM host: $($_.Exception.Message)", $_)
 }
 

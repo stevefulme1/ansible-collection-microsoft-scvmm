@@ -31,7 +31,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'VMNetwork', 'MACAddress', 'MACAddressType', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -41,7 +42,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         $needsChange = $false
 
         if (-not $existing) {
@@ -66,7 +68,8 @@ try {
                 $existing = New-SCVirtualNetworkAdapter @newParams
             }
             $needsChange = $true
-        } else {
+        }
+        else {
             $setParams = @{}
             if ($module.Params.vm_network -and $existing.VMNetwork.Name -ne $module.Params.vm_network) {
                 $vmNetwork = Get-SCVMNetwork -VMMServer $vmmServer -Name $module.Params.vm_network -ErrorAction Stop
@@ -93,7 +96,8 @@ try {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @(
                 'Name', 'VMNetwork', 'MACAddress', 'MACAddressType', 'ID'
             )
-        } else {
+        }
+        else {
             @{
                 Name = $module.Params.name
                 VMNetwork = $module.Params.vm_network
@@ -105,6 +109,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage VM network adapter: $($_.Exception.Message)", $_)
 }

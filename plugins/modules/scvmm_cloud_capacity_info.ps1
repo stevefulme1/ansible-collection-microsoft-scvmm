@@ -25,11 +25,13 @@ try {
         ConvertTo-SCVMMDict -InputObject $capacity -Properties @(
             'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID'
         )
-    } else {
+    }
+    else {
         @{}
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve cloud capacity: $($_.Exception.Message)", $_)
 }

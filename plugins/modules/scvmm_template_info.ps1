@@ -17,7 +17,8 @@ $vmmServer = Connect-SCVMM -Module $module
 
 if ($module.Params.name) {
     $templates = @(Get-SCVMTemplate -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue)
-} else {
+}
+else {
     $templates = @(Get-SCVMTemplate -VMMServer $vmmServer -ErrorAction Stop)
 }
 

@@ -39,7 +39,8 @@ try {
             logical_network = $definition.LogicalNetwork.Name
             host_groups = @($definition.HostGroups | ForEach-Object { $_.Path })
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -73,7 +74,8 @@ try {
                 $definition = New-SCLogicalNetworkDefinition @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
             $params = @{
                 LogicalNetworkDefinition = $definition
@@ -117,7 +119,8 @@ try {
                 'Name', 'LogicalNetwork', 'HostGroups', 'SubnetVLans', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($definition) {
             if (-not $module.CheckMode) {
                 Remove-SCLogicalNetworkDefinition -LogicalNetworkDefinition $definition -ErrorAction Stop
@@ -128,7 +131,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage logical network definition: $($_.Exception.Message)", $_)
 }
 

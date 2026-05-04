@@ -21,7 +21,8 @@ $computerName = $module.Params.computer_name
 
 if ($computerName) {
     $servers = Get-SCLibraryServer -VMMServer $vmmServer -ComputerName $computerName -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $servers = Get-SCLibraryServer -VMMServer $vmmServer
 }
 

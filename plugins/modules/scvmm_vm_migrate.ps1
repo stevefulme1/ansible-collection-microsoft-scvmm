@@ -67,6 +67,7 @@ try {
     )
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to migrate VM: $($_.Exception.Message)", $_)
 }

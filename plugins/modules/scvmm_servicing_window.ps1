@@ -27,7 +27,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'StartDate', 'EndDate', 'TimeZone', 'Category', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -37,7 +38,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         $needsChange = $false
 
         if (-not $existing) {
@@ -65,7 +67,8 @@ try {
                 $existing = New-SCServicingWindow @newParams
             }
             $needsChange = $true
-        } else {
+        }
+        else {
             $setParams = @{}
             if ($module.Params.description -and $existing.Description -ne $module.Params.description) {
                 $setParams.Description = $module.Params.description
@@ -94,7 +97,8 @@ try {
         $module.Result.changed = $needsChange
         $module.Diff.after = if ($existing) {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'StartDate', 'EndDate', 'TimeZone', 'Category', 'ID')
-        } else {
+        }
+        else {
             @{
                 Name = $module.Params.name
                 Description = $module.Params.description
@@ -107,6 +111,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage servicing window: $($_.Exception.Message)", $_)
 }

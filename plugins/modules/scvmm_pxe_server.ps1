@@ -27,7 +27,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'ComputerName', 'State', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -37,7 +38,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         if (-not $existing) {
             if (-not $module.CheckMode) {
                 $addParams = @{
@@ -55,7 +57,8 @@ try {
 
         $module.Diff.after = if ($existing) {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'ComputerName', 'State', 'ID')
-        } else {
+        }
+        else {
             @{
                 Name = $module.Params.name
                 ComputerName = $module.Params.computer_name
@@ -64,6 +67,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage PXE server: $($_.Exception.Message)", $_)
 }

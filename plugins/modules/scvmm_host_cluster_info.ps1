@@ -23,7 +23,8 @@ try {
 
     if ($name) {
         $clusters = @(Get-SCVMHostCluster -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue)
-    } else {
+    }
+    else {
         $clusters = @(Get-SCVMHostCluster -VMMServer $vmmServer -ErrorAction SilentlyContinue)
     }
 
@@ -33,7 +34,9 @@ try {
         )
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve host clusters: $($_.Exception.Message)", $_)
 }
 

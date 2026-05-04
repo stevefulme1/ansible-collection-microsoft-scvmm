@@ -19,7 +19,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $windows = if ($module.Params.name) {
         Get-SCServicingWindow -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCServicingWindow -VMMServer $vmmServer
     }
 
@@ -32,6 +33,7 @@ try {
 
     $module.Result.servicing_windows = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve servicing windows: $($_.Exception.Message)", $_)
 }

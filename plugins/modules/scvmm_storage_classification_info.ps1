@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $classifications = Get-SCStorageClassification -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $classifications = Get-SCStorageClassification -VMMServer $vmmServer
 }
 

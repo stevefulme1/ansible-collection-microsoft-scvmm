@@ -42,7 +42,8 @@ try {
             description = $vmNetwork.Description
             isolation_type = $vmNetwork.IsolationType
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -66,7 +67,8 @@ try {
                 $vmNetwork = New-SCVMNetwork @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
             $params = @{
                 VMNetwork = $vmNetwork
@@ -96,7 +98,8 @@ try {
                 'Name', 'Description', 'LogicalNetwork', 'IsolationType', 'VMSubnet', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($vmNetwork) {
             if (-not $module.CheckMode) {
                 Remove-SCVMNetwork -VMNetwork $vmNetwork -ErrorAction Stop
@@ -107,7 +110,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage VM network: $($_.Exception.Message)", $_)
 }
 

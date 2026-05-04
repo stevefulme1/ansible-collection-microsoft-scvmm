@@ -19,7 +19,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $servers = if ($module.Params.name) {
         Get-SCPXEServer -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCPXEServer -VMMServer $vmmServer
     }
 
@@ -32,6 +33,7 @@ try {
 
     $module.Result.pxe_servers = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve PXE servers: $($_.Exception.Message)", $_)
 }

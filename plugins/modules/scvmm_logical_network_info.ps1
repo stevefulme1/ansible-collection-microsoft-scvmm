@@ -23,7 +23,8 @@ try {
 
     if ($name) {
         $logicalNetworks = @(Get-SCLogicalNetwork -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue)
-    } else {
+    }
+    else {
         $logicalNetworks = @(Get-SCLogicalNetwork -VMMServer $vmmServer -ErrorAction SilentlyContinue)
     }
 
@@ -33,7 +34,9 @@ try {
         )
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve logical networks: $($_.Exception.Message)", $_)
 }
 

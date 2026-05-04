@@ -24,13 +24,16 @@ try {
         $role = Get-SCUserRole -VMMServer $vmmServer -Name $module.Params.user_role -ErrorAction Stop
         $cloudObj = Get-SCCloud -VMMServer $vmmServer -Name $module.Params.cloud -ErrorAction Stop
         $quotas = @(Get-SCUserRoleQuota -VMMServer $vmmServer -UserRole $role -Cloud $cloudObj -ErrorAction SilentlyContinue)
-    } elseif ($module.Params.user_role) {
+    }
+    elseif ($module.Params.user_role) {
         $role = Get-SCUserRole -VMMServer $vmmServer -Name $module.Params.user_role -ErrorAction Stop
         $quotas = Get-SCUserRoleQuota -VMMServer $vmmServer -UserRole $role
-    } elseif ($module.Params.cloud) {
+    }
+    elseif ($module.Params.cloud) {
         $cloudObj = Get-SCCloud -VMMServer $vmmServer -Name $module.Params.cloud -ErrorAction Stop
         $quotas = Get-SCUserRoleQuota -VMMServer $vmmServer -Cloud $cloudObj
-    } else {
+    }
+    else {
         $quotas = Get-SCUserRoleQuota -VMMServer $vmmServer
     }
 
@@ -43,6 +46,7 @@ try {
 
     $module.Result.quotas = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve user role quotas: $($_.Exception.Message)", $_)
 }

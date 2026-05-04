@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $isos = Get-SCISO -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $isos = Get-SCISO -VMMServer $vmmServer
 }
 

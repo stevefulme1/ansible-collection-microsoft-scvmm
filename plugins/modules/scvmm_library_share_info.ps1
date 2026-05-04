@@ -21,7 +21,8 @@ $path = $module.Params.path
 
 if ($path) {
     $shares = Get-SCLibraryShare -VMMServer $vmmServer | Where-Object { $_.Path -eq $path }
-} else {
+}
+else {
     $shares = Get-SCLibraryShare -VMMServer $vmmServer
 }
 

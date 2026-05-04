@@ -56,6 +56,7 @@ try {
     )
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to start compliance scan: $($_.Exception.Message)", $_)
 }

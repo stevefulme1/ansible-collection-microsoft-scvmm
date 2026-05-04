@@ -19,7 +19,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $roles = if ($module.Params.name) {
         Get-SCUserRole -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCUserRole -VMMServer $vmmServer
     }
 
@@ -32,6 +33,7 @@ try {
 
     $module.Result.user_roles = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve user roles: $($_.Exception.Message)", $_)
 }

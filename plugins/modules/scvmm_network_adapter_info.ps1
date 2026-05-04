@@ -21,7 +21,8 @@ if ($module.Params.vm_name) {
     $vm = Get-SCVirtualMachine -VMMServer $vmmServer -Name $module.Params.vm_name -ErrorAction SilentlyContinue
     if (-not $vm) { $module.FailJson("VM '$($module.Params.vm_name)' not found.") }
     $adapters = @(Get-SCVirtualNetworkAdapter -VM $vm -ErrorAction Stop)
-} else {
+}
+else {
     $adapters = @(Get-SCVirtualNetworkAdapter -VMMServer $vmmServer -ErrorAction Stop)
 }
 

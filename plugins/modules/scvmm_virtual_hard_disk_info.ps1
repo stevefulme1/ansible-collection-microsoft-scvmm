@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $disks = Get-SCVirtualHardDisk -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $disks = Get-SCVirtualHardDisk -VMMServer $vmmServer
 }
 

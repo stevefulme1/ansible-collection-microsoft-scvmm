@@ -29,7 +29,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Bus', 'Lun', 'ISO', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -39,7 +40,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         $needsChange = $false
 
         if (-not $existing) {
@@ -61,7 +63,8 @@ try {
                 $existing = New-SCVirtualDVDDrive @newParams
             }
             $needsChange = $true
-        } else {
+        }
+        else {
             if ($module.Params.iso_path) {
                 $currentISO = if ($existing.ISO) { $existing.ISO.SharePath } else { $null }
                 if ($currentISO -ne $module.Params.iso_path) {
@@ -84,7 +87,8 @@ try {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @(
                 'Bus', 'Lun', 'ISO', 'ID'
             )
-        } else {
+        }
+        else {
             @{
                 Bus = $module.Params.bus
                 Lun = $module.Params.lun
@@ -95,6 +99,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage VM DVD drive: $($_.Exception.Message)", $_)
 }

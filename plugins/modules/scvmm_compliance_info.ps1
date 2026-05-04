@@ -43,6 +43,7 @@ try {
 
     $module.Result.compliance_status = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve compliance status: $($_.Exception.Message)", $_)
 }

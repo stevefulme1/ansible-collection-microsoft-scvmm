@@ -17,7 +17,8 @@ $vmmServer = Connect-SCVMM -Module $module
 
 if ($module.Params.name) {
     $profiles = @(Get-SCNativeUplinkPortProfile -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue)
-} else {
+}
+else {
     $profiles = @(Get-SCNativeUplinkPortProfile -VMMServer $vmmServer -ErrorAction Stop)
 }
 

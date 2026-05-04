@@ -19,7 +19,8 @@ $vmmServer = Connect-SCVMM -Module $module
 try {
     $servers = if ($module.Params.name) {
         Get-SCUpdateServer -VMMServer $vmmServer -ComputerName $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCUpdateServer -VMMServer $vmmServer
     }
 
@@ -32,6 +33,7 @@ try {
 
     $module.Result.update_servers = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve update servers: $($_.Exception.Message)", $_)
 }

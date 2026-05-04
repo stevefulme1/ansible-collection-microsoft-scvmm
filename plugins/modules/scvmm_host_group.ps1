@@ -35,7 +35,8 @@ try {
             description = $hostGroup.Description
             parent = $hostGroup.ParentHostGroup.Path
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -55,7 +56,8 @@ try {
                 $hostGroup = New-SCVMHostGroup @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
 
             if ($description -and $hostGroup.Description -ne $description) {
@@ -92,7 +94,8 @@ try {
                 'Name', 'Description', 'Path', 'ParentHostGroup', 'CreationTime', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($hostGroup) {
             if (-not $module.CheckMode) {
                 Remove-SCVMHostGroup -VMHostGroup $hostGroup -ErrorAction Stop
@@ -103,7 +106,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage host group: $($_.Exception.Message)", $_)
 }
 

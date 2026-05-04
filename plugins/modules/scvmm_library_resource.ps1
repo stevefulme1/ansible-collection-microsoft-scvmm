@@ -35,7 +35,8 @@ if ($action -eq 'refresh') {
         Read-SCLibraryShare -LibraryShare $share -ErrorAction Stop
     }
     $module.Result.changed = $true
-} elseif ($action -eq 'remove') {
+}
+elseif ($action -eq 'remove') {
     $module.Diff.before = ConvertTo-SCVMMDict -InputObject $share -Properties @('Name', 'Description', 'Path', 'ID')
     $module.Diff.after = @{}
 

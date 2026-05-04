@@ -22,7 +22,8 @@ try {
 
     $checkpoints = if ($module.Params.name) {
         Get-SCVMCheckpoint -VM $vm -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         Get-SCVMCheckpoint -VM $vm
     }
 
@@ -35,6 +36,7 @@ try {
 
     $module.Result.checkpoints = $result
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to retrieve VM checkpoints: $($_.Exception.Message)", $_)
 }

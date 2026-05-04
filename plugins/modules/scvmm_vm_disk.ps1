@@ -34,7 +34,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Bus', 'Lun', 'Size', 'FileName', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -44,7 +45,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         if (-not $existing) {
             if (-not $module.CheckMode) {
                 $newParams = @{
@@ -67,7 +69,8 @@ try {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @(
                 'Bus', 'Lun', 'Size', 'FileName', 'ID'
             )
-        } else {
+        }
+        else {
             @{
                 Bus = $module.Params.bus
                 Lun = $module.Params.lun
@@ -79,6 +82,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage VM disk: $($_.Exception.Message)", $_)
 }

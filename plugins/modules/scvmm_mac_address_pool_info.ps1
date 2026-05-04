@@ -17,7 +17,8 @@ $vmmServer = Connect-SCVMM -Module $module
 
 if ($module.Params.name) {
     $pools = @(Get-SCMACAddressPool -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue)
-} else {
+}
+else {
     $pools = @(Get-SCMACAddressPool -VMMServer $vmmServer -ErrorAction Stop)
 }
 

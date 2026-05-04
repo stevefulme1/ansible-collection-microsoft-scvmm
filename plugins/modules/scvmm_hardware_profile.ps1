@@ -44,11 +44,13 @@ if ($state -eq 'present') {
         if (-not $module.CheckMode) {
             $result = New-SCHardwareProfile @params
             $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'CPUCount', 'MemoryMB', 'ID')
-        } else {
+        }
+        else {
             $module.Diff.after = @{ Name = $name }
         }
         $module.Result.changed = $true
-    } else {
+    }
+    else {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'CPUCount', 'MemoryMB', 'ID')
         $needsUpdate = $false
         $params = @{ ErrorAction = 'Stop' }
@@ -70,7 +72,8 @@ if ($state -eq 'present') {
             if (-not $module.CheckMode) {
                 $result = Set-SCHardwareProfile -HardwareProfile $current @params
                 $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'CPUCount', 'MemoryMB', 'ID')
-            } else {
+            }
+            else {
                 $module.Diff.after = $module.Diff.before.Clone()
                 foreach ($key in $params.Keys) {
                     if ($key -ne 'ErrorAction') {
@@ -79,11 +82,13 @@ if ($state -eq 'present') {
                 }
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $module.Diff.after = $module.Diff.before
         }
     }
-} else {
+}
+else {
     if ($null -ne $current) {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'CPUCount', 'MemoryMB', 'ID')
         $module.Diff.after = @{}
@@ -92,7 +97,8 @@ if ($state -eq 'present') {
             Remove-SCHardwareProfile -HardwareProfile $current -ErrorAction Stop
         }
         $module.Result.changed = $true
-    } else {
+    }
+    else {
         $module.Diff.before = @{}
         $module.Diff.after = @{}
     }

@@ -28,13 +28,15 @@ try {
 
     $existing = if ($module.Params.name) {
         Get-SCVMCheckpoint -VM $vm -Name $module.Params.name -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         $null
     }
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'VM', 'CreationTime', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -44,7 +46,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } elseif ($module.Params.state -eq 'restored') {
+    }
+    elseif ($module.Params.state -eq 'restored') {
         if ($existing) {
             if (-not $module.CheckMode) {
                 Restore-SCVMCheckpoint -VMCheckpoint $existing -ErrorAction Stop
@@ -55,10 +58,12 @@ try {
                 'Name', 'Description', 'VM', 'CreationTime', 'ID'
             )
             $module.Diff.after = $module.Result.checkpoint
-        } else {
+        }
+        else {
             $module.FailJson("Checkpoint '$($module.Params.name)' not found on VM '$($module.Params.vm_name)'")
         }
-    } else {
+    }
+    else {
         if (-not $existing) {
             if (-not $module.CheckMode) {
                 $newParams = @{
@@ -78,7 +83,8 @@ try {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @(
                 'Name', 'Description', 'VM', 'CreationTime', 'ID'
             )
-        } else {
+        }
+        else {
             @{
                 Name = $module.Params.name
                 Description = $module.Params.description
@@ -89,6 +95,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage VM checkpoint: $($_.Exception.Message)", $_)
 }

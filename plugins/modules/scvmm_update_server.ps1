@@ -28,7 +28,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'ComputerName', 'Port', 'IsConnectionSuccessful', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -38,7 +39,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         $needsChange = $false
 
         if (-not $existing) {
@@ -57,7 +59,8 @@ try {
                 $existing = Add-SCUpdateServer @addParams
             }
             $needsChange = $true
-        } else {
+        }
+        else {
             $setParams = @{}
             if ($module.Params.port -and $existing.Port -ne $module.Params.port) {
                 $setParams.TCPPort = $module.Params.port
@@ -72,7 +75,8 @@ try {
         $module.Result.changed = $needsChange
         $module.Diff.after = if ($existing) {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'ComputerName', 'Port', 'IsConnectionSuccessful', 'ID')
-        } else {
+        }
+        else {
             @{
                 Name = $module.Params.name
                 ComputerName = $module.Params.computer_name
@@ -82,6 +86,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage update server: $($_.Exception.Message)", $_)
 }

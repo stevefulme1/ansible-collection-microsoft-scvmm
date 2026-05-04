@@ -41,11 +41,13 @@ if ($state -eq 'present') {
         if (-not $module.CheckMode) {
             $result = New-SCSQLProfile @params
             $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'SQLInstance', 'ID')
-        } else {
+        }
+        else {
             $module.Diff.after = @{ Name = $name }
         }
         $module.Result.changed = $true
-    } else {
+    }
+    else {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'SQLInstance', 'ID')
         $needsUpdate = $false
         $params = @{ ErrorAction = 'Stop' }
@@ -63,7 +65,8 @@ if ($state -eq 'present') {
             if (-not $module.CheckMode) {
                 $result = Set-SCSQLProfile -SQLProfile $current @params
                 $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'SQLInstance', 'ID')
-            } else {
+            }
+            else {
                 $module.Diff.after = $module.Diff.before.Clone()
                 foreach ($key in $params.Keys) {
                     if ($key -ne 'ErrorAction') {
@@ -72,11 +75,13 @@ if ($state -eq 'present') {
                 }
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $module.Diff.after = $module.Diff.before
         }
     }
-} else {
+}
+else {
     if ($null -ne $current) {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'SQLInstance', 'ID')
         $module.Diff.after = @{}
@@ -85,7 +90,8 @@ if ($state -eq 'present') {
             Remove-SCSQLProfile -SQLProfile $current -ErrorAction Stop
         }
         $module.Result.changed = $true
-    } else {
+    }
+    else {
         $module.Diff.before = @{}
         $module.Diff.after = @{}
     }

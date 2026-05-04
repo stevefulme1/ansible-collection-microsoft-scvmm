@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $profiles = Get-SCHardwareProfile -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $profiles = Get-SCHardwareProfile -VMMServer $vmmServer
 }
 

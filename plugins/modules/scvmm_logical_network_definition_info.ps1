@@ -45,7 +45,9 @@ try {
         )
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve logical network definitions: $($_.Exception.Message)", $_)
 }
 

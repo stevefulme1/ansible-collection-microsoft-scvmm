@@ -38,11 +38,13 @@ if ($state -eq 'present') {
         if (-not $module.CheckMode) {
             $result = New-SCStorageClassification @params
             $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'ID')
-        } else {
+        }
+        else {
             $module.Diff.after = @{ Name = $name }
         }
         $module.Result.changed = $true
-    } else {
+    }
+    else {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'ID')
         $needsUpdate = $false
         $params = @{ ErrorAction = 'Stop' }
@@ -56,7 +58,8 @@ if ($state -eq 'present') {
             if (-not $module.CheckMode) {
                 $result = Set-SCStorageClassification -StorageClassification $current @params
                 $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'ID')
-            } else {
+            }
+            else {
                 $module.Diff.after = $module.Diff.before.Clone()
                 foreach ($key in $params.Keys) {
                     if ($key -ne 'ErrorAction') {
@@ -65,11 +68,13 @@ if ($state -eq 'present') {
                 }
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $module.Diff.after = $module.Diff.before
         }
     }
-} else {
+}
+else {
     if ($null -ne $current) {
         $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'ID')
         $module.Diff.after = @{}
@@ -78,7 +83,8 @@ if ($state -eq 'present') {
             Remove-SCStorageClassification -StorageClassification $current -ErrorAction Stop
         }
         $module.Result.changed = $true
-    } else {
+    }
+    else {
         $module.Diff.before = @{}
         $module.Diff.after = @{}
     }

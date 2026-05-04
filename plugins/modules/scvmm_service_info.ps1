@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $services = Get-SCService -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $services = Get-SCService -VMMServer $vmmServer
 }
 

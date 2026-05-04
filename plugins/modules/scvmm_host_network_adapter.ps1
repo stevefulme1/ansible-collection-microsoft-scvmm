@@ -76,7 +76,9 @@ try {
         'Name', 'ConnectionName', 'VMHost', 'LogicalNetwork', 'MaxBandwidth', 'ID'
     )
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage host network adapter: $($_.Exception.Message)", $_)
 }
 

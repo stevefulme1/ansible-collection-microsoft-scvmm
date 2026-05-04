@@ -21,7 +21,8 @@ $name = $module.Params.name
 
 if ($name) {
     $shares = Get-SCStorageFileShare -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
-} else {
+}
+else {
     $shares = Get-SCStorageFileShare -VMMServer $vmmServer
 }
 

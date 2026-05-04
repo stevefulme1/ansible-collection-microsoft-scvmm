@@ -39,7 +39,8 @@ if ($state -eq "present") {
             try { $profile = New-SCNativeUplinkPortProfile @params }
             catch { $module.FailJson("Failed to create uplink profile '$name': $($_.Exception.Message)", $_) }
         }
-    } else {
+    }
+    else {
         $changed = $false
         $setParams = @{ NativeUplinkPortProfile = $profile; ErrorAction = "Stop" }
         if ($module.Params.description -and $profile.Description -ne $module.Params.description) {
@@ -56,7 +57,8 @@ if ($state -eq "present") {
     $after = @{}
     if ($profile) { $after = ConvertTo-SCVMMDict -InputObject $profile -Properties $props }
     $module.Result.uplink_profile = $after
-} else {
+}
+else {
     if ($profile) {
         $module.Result.changed = $true
         if (-not $module.CheckMode) {

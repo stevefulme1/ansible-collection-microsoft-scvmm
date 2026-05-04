@@ -17,7 +17,8 @@ $vmmServer = Connect-SCVMM -Module $module
 
 if ($module.Params.name) {
     $items = @(Get-SCPortClassification -VMMServer $vmmServer -Name $module.Params.name -ErrorAction SilentlyContinue)
-} else {
+}
+else {
     $items = @(Get-SCPortClassification -VMMServer $vmmServer -ErrorAction Stop)
 }
 

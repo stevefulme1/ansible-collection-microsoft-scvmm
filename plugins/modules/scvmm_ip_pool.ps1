@@ -51,7 +51,8 @@ try {
             dns_servers = @($ipPool.DNSServers)
             dns_suffix = $ipPool.DNSSuffix
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -87,7 +88,8 @@ try {
                 $ipPool = New-SCStaticIPAddressPool @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
             $params = @{
                 StaticIPAddressPool = $ipPool
@@ -140,7 +142,8 @@ try {
                 'Name', 'VMSubnet', 'IPAddressRangeStart', 'IPAddressRangeEnd', 'DefaultGateways', 'DNSServers', 'DNSSuffix', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($ipPool) {
             if (-not $module.CheckMode) {
                 Remove-SCStaticIPAddressPool -StaticIPAddressPool $ipPool -ErrorAction Stop
@@ -151,7 +154,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage IP pool: $($_.Exception.Message)", $_)
 }
 

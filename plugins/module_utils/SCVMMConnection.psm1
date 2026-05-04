@@ -85,10 +85,16 @@ Function ConvertTo-SCVMMDict {
         }
         elseif ($value -is [System.Collections.IEnumerable] -and $value -isnot [string]) {
             $result[$prop] = @($value | ForEach-Object {
-                if ($_ -is [enum]) { $_.ToString() }
-                elseif ($_ -is [datetime]) { $_.ToString("o") }
-                else { $_ }
-            })
+                    if ($_ -is [enum]) {
+                        $_.ToString()
+                    }
+                    elseif ($_ -is [datetime]) {
+                        $_.ToString("o")
+                    }
+                    else {
+                        $_
+                    }
+                })
         }
         else {
             $result[$prop] = $value

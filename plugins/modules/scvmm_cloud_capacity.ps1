@@ -28,7 +28,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     $needsChange = $false
     $setParams = @{}
@@ -64,7 +65,8 @@ try {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @(
             'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'CustomQuotaCount', 'ID'
         )
-    } else {
+    }
+    else {
         @{
             CPUCount = $module.Params.cpu_count
             MemoryMB = $module.Params.memory_mb
@@ -76,6 +78,7 @@ try {
     $module.Diff.after = $module.Result.cloud_capacity
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage cloud capacity: $($_.Exception.Message)", $_)
 }

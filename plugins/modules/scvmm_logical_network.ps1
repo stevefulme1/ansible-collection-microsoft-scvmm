@@ -35,7 +35,8 @@ try {
             description = $logicalNetwork.Description
             network_virtualization_enabled = $logicalNetwork.IsNetworkVirtualizationEnabled
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -55,7 +56,8 @@ try {
                 $logicalNetwork = New-SCLogicalNetwork @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
             $params = @{
                 LogicalNetwork = $logicalNetwork
@@ -89,7 +91,8 @@ try {
                 'Name', 'Description', 'IsNetworkVirtualizationEnabled', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($logicalNetwork) {
             if (-not $module.CheckMode) {
                 Remove-SCLogicalNetwork -LogicalNetwork $logicalNetwork -ErrorAction Stop
@@ -100,7 +103,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage logical network: $($_.Exception.Message)", $_)
 }
 

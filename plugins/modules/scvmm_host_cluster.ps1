@@ -37,7 +37,8 @@ try {
             description = $cluster.Description
             host_group = $cluster.HostGroup.Path
         }
-    } else {
+    }
+    else {
         @{}
     }
 
@@ -66,7 +67,8 @@ try {
                 $cluster = Add-SCVMHostCluster @params -ErrorAction Stop
             }
             $module.Result.changed = $true
-        } else {
+        }
+        else {
             $changed = $false
 
             $params = @{
@@ -104,7 +106,8 @@ try {
                 'Name', 'Description', 'HostGroup', 'ClusterNodeCount', 'AvailableStorageNodes', 'ID'
             )
         }
-    } else {
+    }
+    else {
         if ($cluster) {
             if (-not $module.CheckMode) {
                 Remove-SCVMHostCluster -VMHostCluster $cluster -ErrorAction Stop
@@ -115,7 +118,9 @@ try {
         $module.Diff.after = @{}
     }
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to manage host cluster: $($_.Exception.Message)", $_)
 }
 

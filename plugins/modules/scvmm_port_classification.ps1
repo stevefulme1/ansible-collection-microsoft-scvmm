@@ -35,7 +35,8 @@ if ($state -eq "present") {
             try { $pc = New-SCPortClassification @params }
             catch { $module.FailJson("Failed to create port classification '$name': $($_.Exception.Message)", $_) }
         }
-    } else {
+    }
+    else {
         $changed = $false
         $setParams = @{ PortClassification = $pc; ErrorAction = "Stop" }
         if ($module.Params.description -and $pc.Description -ne $module.Params.description) {
@@ -52,7 +53,8 @@ if ($state -eq "present") {
     $after = @{}
     if ($pc) { $after = ConvertTo-SCVMMDict -InputObject $pc -Properties $props }
     $module.Result.port_classification = $after
-} else {
+}
+else {
     if ($pc) {
         $module.Result.changed = $true
         if (-not $module.CheckMode) {

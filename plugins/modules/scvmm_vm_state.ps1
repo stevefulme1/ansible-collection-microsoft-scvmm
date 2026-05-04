@@ -30,20 +30,25 @@ try {
         if ($module.Params.state -eq 'restarted') {
             $needsChange = $true
             $actionTaken = 'would_restart'
-        } elseif ($module.Params.state -eq 'started' -and $currentStatus -ne 'Running') {
+        }
+        elseif ($module.Params.state -eq 'started' -and $currentStatus -ne 'Running') {
             $needsChange = $true
             $actionTaken = 'would_start'
-        } elseif ($module.Params.state -eq 'stopped' -and $currentStatus -ne 'PowerOff') {
+        }
+        elseif ($module.Params.state -eq 'stopped' -and $currentStatus -ne 'PowerOff') {
             $needsChange = $true
             $actionTaken = 'would_stop'
-        } elseif ($module.Params.state -eq 'paused' -and $currentStatus -ne 'Paused') {
+        }
+        elseif ($module.Params.state -eq 'paused' -and $currentStatus -ne 'Paused') {
             $needsChange = $true
             $actionTaken = 'would_pause'
-        } elseif ($module.Params.state -eq 'saved' -and $currentStatus -ne 'Saved') {
+        }
+        elseif ($module.Params.state -eq 'saved' -and $currentStatus -ne 'Saved') {
             $needsChange = $true
             $actionTaken = 'would_save'
         }
-    } else {
+    }
+    else {
         switch ($module.Params.state) {
             'started' {
                 if ($currentStatus -ne 'Running') {
@@ -56,7 +61,8 @@ try {
                 if ($currentStatus -ne 'PowerOff') {
                     if ($module.Params.force) {
                         Stop-SCVirtualMachine -VM $vm -Force -ErrorAction Stop | Out-Null
-                    } else {
+                    }
+                    else {
                         Stop-SCVirtualMachine -VM $vm -ErrorAction Stop | Out-Null
                     }
                     $needsChange = $true
@@ -81,7 +87,8 @@ try {
                 if ($currentStatus -ne 'PowerOff') {
                     if ($module.Params.force) {
                         Stop-SCVirtualMachine -VM $vm -Force -ErrorAction Stop | Out-Null
-                    } else {
+                    }
+                    else {
                         Stop-SCVirtualMachine -VM $vm -ErrorAction Stop | Out-Null
                     }
                 }
@@ -103,6 +110,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage VM state: $($_.Exception.Message)", $_)
 }

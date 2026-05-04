@@ -33,7 +33,9 @@ try {
         }
     })
 
-} catch {
+}
+
+catch {
     $module.FailJson("Failed to retrieve host ratings: $($_.Exception.Message)", $_)
 }
 

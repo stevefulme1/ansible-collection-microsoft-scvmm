@@ -68,6 +68,7 @@ try {
     )
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to clone VM: $($_.Exception.Message)", $_)
 }

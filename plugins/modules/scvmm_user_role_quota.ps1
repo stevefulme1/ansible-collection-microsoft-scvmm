@@ -30,7 +30,8 @@ try {
 
     $module.Diff.before = if ($existing) {
         ConvertTo-SCVMMDict -InputObject $existing -Properties @('UserRole', 'Cloud', 'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'ID')
-    } else { @{} }
+    }
+    else { @{} }
 
     if ($module.Params.state -eq 'absent') {
         if ($existing) {
@@ -40,7 +41,8 @@ try {
             $module.Result.changed = $true
             $module.Diff.after = @{}
         }
-    } else {
+    }
+    else {
         $needsChange = $false
         $setParams = @{}
 
@@ -72,7 +74,8 @@ try {
         if ($needsChange -and -not $module.CheckMode) {
             if ($existing) {
                 Set-SCUserRoleQuota -UserRoleQuota $existing @setParams -ErrorAction Stop
-            } else {
+            }
+            else {
                 $setParams.UserRole = $role
                 $setParams.Cloud = $cloudObj
                 Set-SCUserRoleQuota @setParams -ErrorAction Stop
@@ -83,7 +86,8 @@ try {
         $module.Result.changed = $needsChange
         $module.Diff.after = if ($existing) {
             ConvertTo-SCVMMDict -InputObject $existing -Properties @('UserRole', 'Cloud', 'CPUCount', 'MemoryMB', 'StorageGB', 'VMCount', 'ID')
-        } else {
+        }
+        else {
             @{
                 UserRole = $module.Params.user_role
                 Cloud = $module.Params.cloud
@@ -96,6 +100,7 @@ try {
     }
 
     $module.ExitJson()
-} catch {
+}
+catch {
     $module.FailJson("Failed to manage user role quota: $($_.Exception.Message)", $_)
 }
