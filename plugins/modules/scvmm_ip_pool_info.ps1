@@ -32,7 +32,7 @@ else {
 }
 
 $module.Result.ip_pools = @($pools | ForEach-Object {
-    ConvertTo-SCVMMDict -InputObject $_ -Properties $props
-})
+        ConvertTo-SCVMMDict -InputObject $_ -Properties $props
+    })
 
 $module.ExitJson()

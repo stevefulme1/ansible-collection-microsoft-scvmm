@@ -24,7 +24,6 @@ $vmmServer = Connect-SCVMM -Module $module
 $name = $module.Params.name
 $state = $module.Params.state
 $computerName = $module.Params.computer_name
-$credential = $module.Params.credential
 $providerType = $module.Params.provider_type
 
 $current = Get-SCStorageProvider -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue

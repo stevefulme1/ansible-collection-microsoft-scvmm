@@ -40,10 +40,10 @@ try {
     $definitions = @(Get-SCLogicalNetworkDefinition @params)
 
     $module.Result.definitions = @($definitions | ForEach-Object {
-        ConvertTo-SCVMMDict -InputObject $_ -Properties @(
+            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
             'Name', 'LogicalNetwork', 'HostGroups', 'SubnetVLans', 'ID'
-        )
-    })
+            )
+        })
 
 }
 

@@ -25,4 +25,4 @@ else {
 }
 
 $module.Result.templates = @($templates | ForEach-Object { ConvertTo-SCVMMDict -InputObject $_ -Properties $props })
-$module.ExitJson()
+        $module.ExitJson()

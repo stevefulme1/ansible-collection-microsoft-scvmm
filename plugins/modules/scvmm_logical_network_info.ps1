@@ -29,10 +29,10 @@ try {
     }
 
     $module.Result.logical_networks = @($logicalNetworks | ForEach-Object {
-        ConvertTo-SCVMMDict -InputObject $_ -Properties @(
+            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
             'Name', 'Description', 'IsNetworkVirtualizationEnabled', 'ID'
-        )
-    })
+            )
+        })
 
 }
 

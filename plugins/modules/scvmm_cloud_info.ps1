@@ -30,7 +30,7 @@ else {
 }
 
 $module.Result.clouds = @($clouds | ForEach-Object {
-    ConvertTo-SCVMMDict -InputObject $_ -Properties $cloudProps
-})
+        ConvertTo-SCVMMDict -InputObject $_ -Properties $cloudProps
+    })
 
 $module.ExitJson()

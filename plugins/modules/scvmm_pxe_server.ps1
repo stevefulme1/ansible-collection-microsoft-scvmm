@@ -12,8 +12,7 @@ $spec = @{
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
-    required_if = @(
-        @('state', 'present', @('computer_name'))
+)
     )
     supports_check_mode = $true
 }

@@ -56,8 +56,8 @@ try {
     }
 
     if ($uplinkPortProfile) {
-        $profile = Get-SCUplinkPortProfile -VMMServer $vmmServer -Name $uplinkPortProfile -ErrorAction Stop
-        $params.UplinkPortProfileSet = $profile
+        $uplinkProfile = Get-SCUplinkPortProfile -VMMServer $vmmServer -Name $uplinkPortProfile -ErrorAction Stop
+        $params.UplinkPortProfileSet = $uplinkProfile
         $changed = $true
     }
 

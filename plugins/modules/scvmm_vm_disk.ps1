@@ -15,8 +15,7 @@ $spec = @{
         vhd_name = @{ type = 'str'; required = $true }
         vm_name = @{ type = 'str'; required = $true }
     }
-    required_if = @(
-        @('state', 'present', @('size_gb'))
+)
     )
     supports_check_mode = $true
 }

@@ -28,4 +28,4 @@ else {
 }
 
 $module.Result.network_adapters = @($adapters | ForEach-Object { ConvertTo-SCVMMDict -InputObject $_ -Properties $props })
-$module.ExitJson()
+        $module.ExitJson()

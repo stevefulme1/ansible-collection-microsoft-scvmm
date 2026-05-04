@@ -29,10 +29,10 @@ try {
     }
 
     $module.Result.host_clusters = @($clusters | ForEach-Object {
-        ConvertTo-SCVMMDict -InputObject $_ -Properties @(
+            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
             'Name', 'Description', 'HostGroup', 'ClusterNodeCount', 'AvailableStorageNodes', 'ID'
-        )
-    })
+            )
+        })
 
 }
 

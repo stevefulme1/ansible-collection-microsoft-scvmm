@@ -29,12 +29,12 @@ try {
     $ratings = @(Get-SCVMHostRating -VMMServer $vmmServer -VM $vm -ErrorAction SilentlyContinue)
 
     $module.Result.ratings = @($ratings | ForEach-Object {
-        @{
+            @{
             vmhost = if ($_.VMHost) { $_.VMHost.Name } else { $null }
             rating = $_.Rating
             details = $_.RatingExplanation
-        }
-    })
+            }
+        })
 
 }
 

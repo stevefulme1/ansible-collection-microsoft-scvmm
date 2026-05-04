@@ -11,12 +11,11 @@ $spec = @{
         credential_type = @{ type = 'str'; choices = @('WindowsCredential', 'CertificateCredential', 'SSHKeyCredential') }
         description = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
-        password = @{ type = 'str' }
+        password = @{ type = 'str'; no_log = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         username = @{ type = 'str' }
     }
-    required_if = @(
-        @('state', 'present', @('credential_type', 'username', 'password'))
+)
     )
     supports_check_mode = $true
 }

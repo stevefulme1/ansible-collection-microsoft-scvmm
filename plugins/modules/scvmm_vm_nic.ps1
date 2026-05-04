@@ -15,8 +15,7 @@ $spec = @{
         vm_name = @{ type = 'str'; required = $true }
         vm_network = @{ type = 'str' }
     }
-    required_if = @(
-        @('state', 'present', @('vm_network'))
+)
     )
     supports_check_mode = $true
 }

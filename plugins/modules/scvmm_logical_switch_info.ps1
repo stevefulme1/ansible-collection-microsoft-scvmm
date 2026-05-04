@@ -27,6 +27,6 @@ else {
 }
 
 $module.Result.logical_switches = @($switches | ForEach-Object {
-    ConvertTo-SCVMMDict -InputObject $_ -Properties $props
-})
+        ConvertTo-SCVMMDict -InputObject $_ -Properties $props
+    })
 $module.ExitJson()

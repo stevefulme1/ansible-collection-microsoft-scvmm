@@ -13,8 +13,7 @@ $spec = @{
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent', 'restored') }
         vm_name = @{ type = 'str'; required = $true }
     }
-    required_if = @(
-        @('state', 'present', @('name'))
+)
         @('state', 'restored', @('name'))
     )
     supports_check_mode = $true

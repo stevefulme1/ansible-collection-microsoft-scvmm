@@ -23,45 +23,45 @@ $state = $module.Params.state
 $props = @("Name", "Description", "LoadBalancingAlgorithm", "TeamingMode", "ID")
 $vmmServer = Connect-SCVMM -Module $module
 
-$profile = Get-SCNativeUplinkPortProfile -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
+$uplinkProfile = Get-SCNativeUplinkPortProfile -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
 $before = @{}
-if ($profile) { $before = ConvertTo-SCVMMDict -InputObject $profile -Properties $props }
+if ($uplinkProfile) { $before = ConvertTo-SCVMMDict -InputObject $uplinkProfile -Properties $props }
 
 if ($state -eq "present") {
-    if (-not $profile) {
+    if (-not $uplinkProfile) {
         $module.Result.changed = $true
         if (-not $module.CheckMode) {
             $params = @{ VMMServer = $vmmServer; Name = $name; ErrorAction = "Stop" }
             if ($module.Params.description) { $params.Description = $module.Params.description }
             if ($module.Params.load_balancing_algorithm) { $params.LoadBalancingAlgorithm = $module.Params.load_balancing_algorithm }
             if ($module.Params.teaming_mode) { $params.TeamingMode = $module.Params.teaming_mode }
-            try { $profile = New-SCNativeUplinkPortProfile @params }
+            try { $uplinkProfile = New-SCNativeUplinkPortProfile @params }
             catch { $module.FailJson("Failed to create uplink profile '$name': $($_.Exception.Message)", $_) }
         }
     }
     else {
         $changed = $false
-        $setParams = @{ NativeUplinkPortProfile = $profile; ErrorAction = "Stop" }
-        if ($module.Params.description -and $profile.Description -ne $module.Params.description) {
+        $setParams = @{ NativeUplinkPortProfile = $uplinkProfile; ErrorAction = "Stop" }
+        if ($module.Params.description -and $uplinkProfile.Description -ne $module.Params.description) {
             $setParams.Description = $module.Params.description; $changed = $true
         }
         if ($changed) {
             $module.Result.changed = $true
             if (-not $module.CheckMode) {
-                try { $profile = Set-SCNativeUplinkPortProfile @setParams }
+                try { $uplinkProfile = Set-SCNativeUplinkPortProfile @setParams }
                 catch { $module.FailJson("Failed to update uplink profile '$name': $($_.Exception.Message)", $_) }
             }
         }
     }
     $after = @{}
-    if ($profile) { $after = ConvertTo-SCVMMDict -InputObject $profile -Properties $props }
+    if ($uplinkProfile) { $after = ConvertTo-SCVMMDict -InputObject $uplinkProfile -Properties $props }
     $module.Result.uplink_profile = $after
 }
 else {
-    if ($profile) {
+    if ($uplinkProfile) {
         $module.Result.changed = $true
         if (-not $module.CheckMode) {
-            try { Remove-SCNativeUplinkPortProfile -NativeUplinkPortProfile $profile -ErrorAction Stop }
+            try { Remove-SCNativeUplinkPortProfile -NativeUplinkPortProfile $uplinkProfile -ErrorAction Stop }
             catch { $module.FailJson("Failed to remove uplink profile '$name': $($_.Exception.Message)", $_) }
         }
     }

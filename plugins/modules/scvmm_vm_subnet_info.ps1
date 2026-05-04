@@ -40,10 +40,10 @@ try {
     }
 
     $module.Result.vm_subnets = @($vmSubnets | ForEach-Object {
-        ConvertTo-SCVMMDict -InputObject $_ -Properties @(
+            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
             'Name', 'VMNetwork', 'Subnet', 'VLanID', 'ID'
-        )
-    })
+            )
+        })
 
 }
 

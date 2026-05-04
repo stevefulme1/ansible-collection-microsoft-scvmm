@@ -30,10 +30,10 @@ try {
     }
 
     $module.Result.host_groups = @($hostGroups | ForEach-Object {
-        ConvertTo-SCVMMDict -InputObject $_ -Properties @(
+            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
             'Name', 'Description', 'Path', 'ParentHostGroup', 'CreationTime', 'ID'
-        )
-    })
+            )
+        })
 
 }
 

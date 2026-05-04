@@ -30,10 +30,10 @@ try {
     }
 
     $module.Result.network_adapters = @($adapters | ForEach-Object {
-        ConvertTo-SCVMMDict -InputObject $_ -Properties @(
+            ConvertTo-SCVMMDict -InputObject $_ -Properties @(
             'Name', 'ConnectionName', 'VMHost', 'LogicalNetwork', 'MaxBandwidth', 'ID'
-        )
-    })
+            )
+        })
 
 }
 

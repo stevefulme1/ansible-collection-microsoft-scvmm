@@ -51,7 +51,7 @@ else {
 }
 
 $module.Result.vms = @($vms | ForEach-Object {
-    ConvertTo-SCVMMDict -InputObject $_ -Properties $vmProps
-})
+        ConvertTo-SCVMMDict -InputObject $_ -Properties $vmProps
+    })
 
 $module.ExitJson()

@@ -14,8 +14,7 @@ $spec = @{
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         use_ssl = @{ type = 'bool'; default = $false }
     }
-    required_if = @(
-        @('state', 'present', @('computer_name'))
+)
     )
     supports_check_mode = $true
 }
