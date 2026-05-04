@@ -26,114 +26,112 @@ $state = $module.Params.state
 $hostGroups = $module.Params.host_groups
 $subnetVlans = $module.Params.subnet_vlans
 
-try {
-    $vmmServer = Connect-SCVMM -Module $module
+$vmmServer = Connect-SCVMM -Module $module
 
-    $logicalNetwork = Get-SCLogicalNetwork -VMMServer $vmmServer -Name $logicalNetworkName -ErrorAction Stop
+$logicalNetwork = Get-SCLogicalNetwork -VMMServer $vmmServer `
+    -Name $logicalNetworkName -ErrorAction Stop
 
-    $definition = Get-SCLogicalNetworkDefinition -VMMServer $vmmServer -Name $name -LogicalNetwork $logicalNetwork -ErrorAction SilentlyContinue
+$definition = Get-SCLogicalNetworkDefinition -VMMServer $vmmServer `
+    -Name $name -LogicalNetwork $logicalNetwork -ErrorAction SilentlyContinue
 
-    $module.Diff.before = if ($definition) {
-        @{
-            name = $definition.Name
-            logical_network = $definition.LogicalNetwork.Name
-            host_groups = @($definition.HostGroups | ForEach-Object { $_.Path })
-                    }
-                    }
-                    else {
-                    @{}
-                    }
+$props = @('Name', 'LogicalNetwork', 'HostGroups', 'SubnetVLans', 'ID')
 
-                    if ($state -eq "present") {
-                    if (-not $definition) {
-                    $params = @{
-                    VMMServer = $vmmServer
-                    Name = $name
-                    LogicalNetwork = $logicalNetwork
-                    }
+$before = @{}
+if ($definition) {
+    $before = ConvertTo-SCVMMDict -InputObject $definition -Properties $props
+}
 
-                    if ($hostGroups) {
-                    $vmHostGroups = @()
-                    foreach ($hg in $hostGroups) {
-                    $vmHostGroup = Get-SCVMHostGroup -VMMServer $vmmServer -Name $hg -ErrorAction Stop
-                    $vmHostGroups += $vmHostGroup
-                    }
-                    $params.VMHostGroup = $vmHostGroups
-                    }
+if ($state -eq "present") {
+    if (-not $definition) {
+        $params = @{
+            VMMServer = $vmmServer
+            Name = $name
+            LogicalNetwork = $logicalNetwork
+            ErrorAction = "Stop"
+        }
 
-                    if ($subnetVlans) {
-                    $subnetVlanList = @()
-                    foreach ($sv in $subnetVlans) {
-                    $subnetVlan = New-SCSubnetVLan -Subnet $sv.subnet -VLanID $sv.vlan_id
-                    $subnetVlanList += $subnetVlan
-                    }
-                    $params.SubnetVLan = $subnetVlanList
-                    }
+        if ($hostGroups) {
+            $vmHostGroups = @()
+            foreach ($hg in $hostGroups) {
+                $vmHostGroup = Get-SCVMHostGroup -VMMServer $vmmServer `
+                    -Name $hg -ErrorAction Stop
+                $vmHostGroups += $vmHostGroup
+            }
+            $params.VMHostGroup = $vmHostGroups
+        }
 
-                    if (-not $module.CheckMode) {
-                    $definition = New-SCLogicalNetworkDefinition @params -ErrorAction Stop
-                    }
-                    $module.Result.changed = $true
-                    }
-                    else {
-                    $changed = $false
-                    $params = @{
-                    LogicalNetworkDefinition = $definition
-                    }
+        if ($subnetVlans) {
+            $subnetVlanList = @()
+            foreach ($sv in $subnetVlans) {
+                $subnetVlan = New-SCSubnetVLan -Subnet $sv.subnet `
+                    -VLanID $sv.vlan_id
+                $subnetVlanList += $subnetVlan
+            }
+            $params.SubnetVLan = $subnetVlanList
+        }
 
-                    if ($hostGroups) {
-                    $vmHostGroups = @()
-                    foreach ($hg in $hostGroups) {
-                    $vmHostGroup = Get-SCVMHostGroup -VMMServer $vmmServer -Name $hg -ErrorAction Stop
-                    $vmHostGroups += $vmHostGroup
-                    }
-                    $params.VMHostGroup = $vmHostGroups
-                    $changed = $true
-                    }
+        $module.Result.changed = $true
+        if (-not $module.CheckMode) {
+            $definition = New-SCLogicalNetworkDefinition @params
+        }
+    }
+    else {
+        $changed = $false
+        $setParams = @{
+            LogicalNetworkDefinition = $definition
+            ErrorAction = "Stop"
+        }
 
-                    if ($subnetVlans) {
-                    $subnetVlanList = @()
-                    foreach ($sv in $subnetVlans) {
-                    $subnetVlan = New-SCSubnetVLan -Subnet $sv.subnet -VLanID $sv.vlan_id
-                    $subnetVlanList += $subnetVlan
-                    }
-                    $params.SubnetVLan = $subnetVlanList
-                    $changed = $true
-                    }
+        if ($hostGroups) {
+            $vmHostGroups = @()
+            foreach ($hg in $hostGroups) {
+                $vmHostGroup = Get-SCVMHostGroup -VMMServer $vmmServer `
+                    -Name $hg -ErrorAction Stop
+                $vmHostGroups += $vmHostGroup
+            }
+            $setParams.VMHostGroup = $vmHostGroups
+            $changed = $true
+        }
 
-                    if ($changed -and -not $module.CheckMode) {
-                    $definition = Set-SCLogicalNetworkDefinition @params -ErrorAction Stop
-                    }
+        if ($subnetVlans) {
+            $subnetVlanList = @()
+            foreach ($sv in $subnetVlans) {
+                $subnetVlan = New-SCSubnetVLan -Subnet $sv.subnet `
+                    -VLanID $sv.vlan_id
+                $subnetVlanList += $subnetVlan
+            }
+            $setParams.SubnetVLan = $subnetVlanList
+            $changed = $true
+        }
 
-                    $module.Result.changed = $changed
-                    }
+        if ($changed) {
+            $module.Result.changed = $true
+            if (-not $module.CheckMode) {
+                $definition = Set-SCLogicalNetworkDefinition @setParams
+            }
+        }
+    }
 
-                    $module.Diff.after = @{
-                    name = $name
-                    logical_network = $logicalNetworkName
-                    host_groups = $hostGroups
-                    }
+    $after = @{}
+    if ($definition) {
+        $after = ConvertTo-SCVMMDict -InputObject $definition -Properties $props
+        $module.Result.logical_network_definition = $after
+    }
+}
+else {
+    if ($definition) {
+        $module.Result.changed = $true
+        if (-not $module.CheckMode) {
+            Remove-SCLogicalNetworkDefinition `
+                -LogicalNetworkDefinition $definition -ErrorAction Stop
+        }
+    }
+    $after = @{}
+}
 
-                    if ($definition) {
-                    $props = @('Name', 'LogicalNetwork', 'HostGroups', 'SubnetVLans', 'ID')
-                    $module.Result.logical_network_definition = ConvertTo-SCVMMDict -InputObject $definition -Properties $props
-                    }
-                    }
-                    else {
-                    if ($definition) {
-                    if (-not $module.CheckMode) {
-                    Remove-SCLogicalNetworkDefinition -LogicalNetworkDefinition $definition -ErrorAction Stop
-                    }
-                    $module.Result.changed = $true
-                    }
+if ($module.DiffMode) {
+    $module.Diff.before = $before
+    $module.Diff.after = $after
+}
 
-                    $module.Diff.after = @{}
-                    }
-
-                    }
-
-                    catch {
-                    $module.FailJson("Failed to manage logical network definition: $($_.Exception.Message)", $_)
-                    }
-
-                    $module.ExitJson()
+$module.ExitJson()
