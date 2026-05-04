@@ -1,0 +1,8 @@
+---
+major_changes:
+  - All modules converted from Python-based PowerShell command builders to native
+    PowerShell modules using ``Ansible.Basic``. Modules now run directly on the target
+    host, eliminating the Python-to-PowerShell translation layer.
+  - Added ``SCVMMConnection.psm1`` shared module utility for connection management
+    and object serialization.
+  - All modules support check mode and diff mode.
