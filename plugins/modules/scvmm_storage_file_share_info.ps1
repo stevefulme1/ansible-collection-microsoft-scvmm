@@ -1,0 +1,35 @@
+#!powershell
+
+# Copyright: (c) 2026, Red Hat
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+
+#AnsibleRequires -CSharpUtil Ansible.Basic
+#AnsibleRequires -PowerShell ..module_utils.SCVMMConnection
+
+$connectionSpec = Get-SCVMMConnectionSpec
+$spec = @{
+    options = $connectionSpec + @{
+        name = @{ type = 'str' }
+        storage_provider = @{ type = 'str' }
+    }
+    supports_check_mode = $true
+}
+
+$module = [Ansible.Basic.AnsibleModule]::Create($args, $spec)
+$vmmServer = Connect-SCVMM -Module $module
+
+$name = $module.Params.name
+
+if ($name) {
+    $shares = Get-SCStorageFileShare -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
+}
+else {
+    $shares = Get-SCStorageFileShare -VMMServer $vmmServer
+}
+
+$module.Result.file_shares = @()
+foreach ($share in $shares) {
+    $module.Result.file_shares += ConvertTo-SCVMMDict -InputObject $share -Properties @('Name', 'SharePath', 'FreeSpace', 'Capacity', 'ID')
+}
+
+$module.ExitJson()

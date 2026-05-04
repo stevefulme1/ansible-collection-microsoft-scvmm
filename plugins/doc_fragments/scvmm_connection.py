@@ -23,12 +23,9 @@ requirements:
   - The target host must be a Windows machine with the
     C(VirtualMachineManager) PowerShell module installed.
   - WinRM or SSH connectivity from the Ansible controller to the SCVMM server.
-  - For WinRM, install C(pywinrm) or C(pypsrp) on the Ansible controller.
-  - For SSH, enable the OpenSSH server on the Windows host (available on
-    Windows Server 2019 and later) and set C(ansible_shell_type=powershell).
 notes:
-  - All modules in this collection execute PowerShell cmdlets from the
-    C(VirtualMachineManager) module on the SCVMM server.
+  - All modules in this collection are native PowerShell modules that run
+    directly on the target host via C(Ansible.Basic).
   - Both WinRM and SSH connection methods are supported. WinRM is the
     default and most common in SCVMM environments.
   - Run these modules against the SCVMM management server or a host that
