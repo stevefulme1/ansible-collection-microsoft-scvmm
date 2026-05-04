@@ -9,11 +9,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        credential = @{ type = "str" }
-        host_group = @{ type = "str" }
-        reassociate = @{ type = "bool"; default = $false }
+        credential = @{ type = 'str' }
+        host_group = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        reassociate = @{ type = 'bool'; default = $false }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

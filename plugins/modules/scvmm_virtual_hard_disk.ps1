@@ -9,11 +9,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        disk_type = @{ type = 'str'; default = 'Dynamic'; choices = @('Dynamic', 'Fixed') }
+        format = @{ type = 'str'; default = 'VHDX'; choices = @('VHD', 'VHDX') }
         name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        description = @{ type = 'str' }
-        vhd_type = @{ type = 'str'; choices = @('DynamicallyExpanding', 'FixedSize', 'Differencing') }
+        path = @{ type = 'str' }
         size_gb = @{ type = 'int' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

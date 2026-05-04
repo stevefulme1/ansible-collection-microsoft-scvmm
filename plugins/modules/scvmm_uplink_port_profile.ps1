@@ -9,11 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        description = @{ type = "str" }
-        load_balancing_algorithm = @{ type = "str"; choices = @("HostDefault", "HyperVPort", "Dynamic") }
-        teaming_mode = @{ type = "str"; choices = @("LACP", "Static", "SwitchIndependent") }
+        load_balancing_algorithm = @{ type = 'str'; choices = @('HostDefault', 'HyperVPort', 'Dynamic', 'TransportPorts', 'IPAddresses', 'MACAddresses') }
+        logical_network_definitions = @{ type = 'list'; elements = 'str' }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

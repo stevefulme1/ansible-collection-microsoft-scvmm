@@ -8,11 +8,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_name = @{ type = 'str'; required = $true }
-        bus = @{ type = 'int'; required = $true }
-        lun = @{ type = 'int'; required = $true }
+        bus = @{ type = 'int'; default = 0 }
+        iso = @{ type = 'str' }
+        lun = @{ type = 'int'; default = 0 }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        iso_path = @{ type = 'str' }
+        vm_name = @{ type = 'str'; required = $true }
     }
     supports_check_mode = $true
 }

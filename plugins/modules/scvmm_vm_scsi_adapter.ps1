@@ -8,10 +8,9 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_name = @{ type = 'str'; required = $true }
-        adapter_id = @{ type = 'int'; required = $true }
+        scsi_bus = @{ type = 'int'; default = 0 }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        shared = @{ type = 'bool'; default = $false }
+        vm_name = @{ type = 'str'; required = $true }
     }
     supports_check_mode = $true
 }

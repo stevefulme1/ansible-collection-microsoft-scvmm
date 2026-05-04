@@ -10,11 +10,11 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        mac_range_start = @{ type = "str" }
-        mac_range_end = @{ type = "str" }
-        description = @{ type = "str" }
+        description = @{ type = 'str' }
+        mac_address_range_end = @{ type = 'str' }
+        mac_address_range_start = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

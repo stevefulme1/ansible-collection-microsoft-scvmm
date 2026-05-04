@@ -9,7 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_name = @{ required = $true; type = "str" }
+        hardware_profile = @{ type = 'str' }
+        host_group = @{ type = 'str' }
+        template = @{ type = 'str' }
+        vm_name = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

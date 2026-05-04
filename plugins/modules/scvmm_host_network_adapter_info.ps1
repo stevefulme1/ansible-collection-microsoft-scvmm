@@ -9,7 +9,7 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_host = @{ type = "str" }
+        vm_host = @{ type = 'str'; required = $true }
     }
     supports_check_mode = $true
 }

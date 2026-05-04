@@ -8,12 +8,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        credential_type = @{ type = 'str'; choices = @('WindowsCredential', 'CertificateCredential', 'SSHKeyCredential') }
         description = @{ type = 'str' }
-        credential_type = @{ type = 'str'; choices = @('ActiveDirectoryCredential', 'NetworkCredential', 'CertificateCredential') }
+        name = @{ type = 'str'; required = $true }
+        password = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         username = @{ type = 'str' }
-        password = @{ type = 'str'; no_log = $true }
     }
     required_if = @(
         @('state', 'present', @('credential_type', 'username', 'password'))

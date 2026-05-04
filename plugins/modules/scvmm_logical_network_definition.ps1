@@ -9,11 +9,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        logical_network = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        host_groups = @{ type = "list"; elements = "str" }
-        subnet_vlans = @{ type = "list"; elements = "dict" }
+        host_groups = @{ type = 'list'; elements = 'str' }
+        logical_network = @{ type = 'str'; required = $true }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        subnet_vlans = @{ type = 'list'; elements = 'dict' }
     }
     supports_check_mode = $true
 }

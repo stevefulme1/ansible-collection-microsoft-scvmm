@@ -10,10 +10,10 @@ $spec = @{
     options = $connectionSpec + @{
         cloud = @{ type = 'str'; required = $true }
         cpu_count = @{ type = 'int' }
+        custom_quota_count = @{ type = 'int' }
         memory_mb = @{ type = 'int' }
         storage_gb = @{ type = 'int' }
         vm_count = @{ type = 'int' }
-        custom_quota_count = @{ type = 'int' }
     }
     supports_check_mode = $true
 }

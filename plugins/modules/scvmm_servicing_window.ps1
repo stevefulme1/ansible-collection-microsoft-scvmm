@@ -8,13 +8,14 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        category = @{ type = 'str'; choices = @('None', 'Runbook', 'WindowsUpdateAgent') }
         description = @{ type = 'str' }
-        start_date = @{ type = 'str' }
         end_date = @{ type = 'str' }
+        minutes_duration = @{ type = 'int' }
+        name = @{ type = 'str'; required = $true }
+        start_date = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         time_zone = @{ type = 'str' }
-        category = @{ type = 'str'; choices = @('None', 'OwnerServiceAgreement', 'ChangeRequestTicket') }
     }
     supports_check_mode = $true
 }

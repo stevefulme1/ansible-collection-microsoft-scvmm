@@ -9,11 +9,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        service_template = @{ type = 'str' }
         cloud = @{ type = 'str' }
         description = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        service_template = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent', 'started', 'stopped') }
+        vm_host_group = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

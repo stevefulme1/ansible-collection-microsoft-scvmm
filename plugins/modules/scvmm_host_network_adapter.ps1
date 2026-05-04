@@ -9,10 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_host = @{ required = $true; type = "str" }
-        name = @{ required = $true; type = "str" }
-        logical_network = @{ type = "str" }
-        uplink_port_profile = @{ type = "str" }
+        logical_network = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        uplink_port_profile = @{ type = 'str' }
+        vm_host = @{ type = 'str'; required = $true }
     }
     supports_check_mode = $true
 }

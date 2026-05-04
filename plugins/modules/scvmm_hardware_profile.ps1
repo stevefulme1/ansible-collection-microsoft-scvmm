@@ -9,11 +9,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        cpu_count = @{ type = 'int' }
+        description = @{ type = 'str' }
+        dynamic_memory_enabled = @{ type = 'bool' }
+        memory_mb = @{ type = 'int' }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        cpu_count = @{ type = 'int' }
-        memory_mb = @{ type = 'int' }
-        description = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

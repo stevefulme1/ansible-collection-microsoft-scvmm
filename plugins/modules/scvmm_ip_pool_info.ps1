@@ -10,7 +10,8 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = "str" }
+        logical_network_definition = @{ type = 'str' }
+        name = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

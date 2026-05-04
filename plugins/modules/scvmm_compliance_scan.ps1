@@ -8,9 +8,9 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_host = @{ type = 'str' }
-        host_cluster = @{ type = 'str' }
         baseline = @{ type = 'str' }
+        host_cluster = @{ type = 'str' }
+        vm_host = @{ type = 'str' }
     }
     required_one_of = @(
         @('vm_host', 'host_cluster')
@@ -34,8 +34,8 @@ try {
     }
 
     if ($module.Params.vm_host) {
-        $host = Get-SCVMHost -VMMServer $vmmServer -ComputerName $module.Params.vm_host -ErrorAction Stop
-        $scanParams.VMHost = $host
+        $vmHostName = Get-SCVMHost -VMMServer $vmmServer -ComputerName $module.Params.vm_host -ErrorAction Stop
+        $scanParams.VMHost = $vmHostName
     }
 
     if ($module.Params.host_cluster) {

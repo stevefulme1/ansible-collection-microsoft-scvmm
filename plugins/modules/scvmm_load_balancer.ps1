@@ -10,13 +10,13 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        address = @{ type = "str" }
-        credential = @{ type = "str" }
-        manufacturer = @{ type = "str" }
-        model = @{ type = "str" }
-        configuration_provider = @{ type = "str" }
+        address = @{ type = 'str' }
+        credential = @{ type = 'str' }
+        manufacturer = @{ type = 'str' }
+        model = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        port = @{ type = 'int' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

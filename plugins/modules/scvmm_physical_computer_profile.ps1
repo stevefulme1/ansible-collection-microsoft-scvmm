@@ -9,11 +9,13 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        computer_access_credential = @{ type = 'str' }
         description = @{ type = 'str' }
-        boot_order = @{ type = 'list'; elements = 'str' }
-        bios_guid = @{ type = 'str' }
+        hardware_profile = @{ type = 'str' }
+        host_group = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        operating_system = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

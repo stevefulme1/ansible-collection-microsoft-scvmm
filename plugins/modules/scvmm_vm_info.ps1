@@ -10,8 +10,9 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{
-            type = "str"
+        cloud = @{ type = 'str' }
+        name = @{ type = 'str' }
+        vm_host = @{ type = 'str' }
         }
         cloud = @{
             type = "str"

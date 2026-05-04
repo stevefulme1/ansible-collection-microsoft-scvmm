@@ -8,10 +8,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        description = @{ type = 'str' }
+        member_type = @{ type = 'str'; choices = @('VM', 'VMHost', 'Cloud', 'VMTemplate', 'ServiceTemplate', 'ServiceInstance') }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        description = @{ type = 'str' }
-        member_type = @{ type = 'str'; default = 'All'; choices = @('VM', 'VMHost', 'Cloud', 'VMTemplate', 'ServiceTemplate', 'All') }
     }
     supports_check_mode = $true
 }

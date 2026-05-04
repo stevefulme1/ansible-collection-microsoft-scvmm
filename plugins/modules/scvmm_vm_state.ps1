@@ -8,9 +8,9 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        force = @{ type = 'bool'; default = $false }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; required = $true; choices = @('started', 'stopped', 'paused', 'saved', 'restarted') }
-        force = @{ type = 'bool'; default = $false }
     }
     supports_check_mode = $true
 }

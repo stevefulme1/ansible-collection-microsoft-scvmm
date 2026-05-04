@@ -9,11 +9,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        logical_network = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        description = @{ type = "str" }
-        isolation_type = @{ type = "str"; choices = @("NoIsolation", "VLANNetwork", "WindowsNetworkVirtualization") }
+        description = @{ type = 'str' }
+        isolation_type = @{ type = 'str'; default = 'NoIsolation'; choices = @('NoIsolation', 'VLANNetwork', 'WindowsNetworkVirtualization') }
+        logical_network = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

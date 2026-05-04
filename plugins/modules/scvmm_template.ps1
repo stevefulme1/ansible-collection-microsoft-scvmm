@@ -10,15 +10,15 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        source_vm = @{ type = "str" }
-        vhd = @{ type = "str" }
-        library_server = @{ type = "str" }
-        cpu_count = @{ type = "int" }
-        memory_mb = @{ type = "int" }
-        description = @{ type = "str" }
-        os_type = @{ type = "str" }
+        cpu_count = @{ type = 'int' }
+        description = @{ type = 'str' }
+        library_server = @{ type = 'str' }
+        memory_mb = @{ type = 'int' }
+        name = @{ type = 'str'; required = $true }
+        os_type = @{ type = 'str' }
+        source_vm = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        vhd = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

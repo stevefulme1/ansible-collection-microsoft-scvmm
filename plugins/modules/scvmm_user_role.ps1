@@ -8,11 +8,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         description = @{ type = 'str' }
-        profile = @{ type = 'str'; choices = @('Administrator', 'DelegatedAdmin', 'ReadOnlyAdmin', 'SelfServiceUser', 'TenantAdmin') }
         members = @{ type = 'list'; elements = 'str' }
+        name = @{ type = 'str'; required = $true }
+        profile = @{ type = 'str'; choices = @('Administrator', 'DelegatedAdmin', 'ReadOnlyAdmin', 'SelfServiceUser', 'TenantAdmin') }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     required_if = @(
         @('state', 'present', @('profile'))

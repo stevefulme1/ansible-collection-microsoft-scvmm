@@ -9,8 +9,8 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        host = @{ type = 'str'; required = $true }
         name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         storage_classification = @{ type = 'str' }
     }
     supports_check_mode = $true

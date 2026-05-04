@@ -8,10 +8,9 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        credential = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        computer_name = @{ type = 'str' }
-        credential = @{ type = 'str' }
     }
     required_if = @(
         @('state', 'present', @('computer_name'))

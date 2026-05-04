@@ -9,10 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        compatibility_type = @{ type = 'str'; default = 'General'; choices = @('General', 'SQLProfile') }
+        description = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        description = @{ type = 'str' }
-        compatibility_type = @{ type = 'str'; choices = @('General', 'SQLProfile') }
     }
     supports_check_mode = $true
 }

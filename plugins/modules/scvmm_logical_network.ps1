@@ -9,10 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        description = @{ type = "str" }
-        network_virtualization_enabled = @{ type = "bool"; default = $false }
+        description = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        network_virtualization_enabled = @{ type = 'bool'; default = $false }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

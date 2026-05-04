@@ -9,15 +9,13 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        admin_password = @{ type = 'str' }
+        computer_name_pattern = @{ type = 'str' }
         description = @{ type = 'str' }
-        os_type = @{ type = 'str' }
-        computer_name = @{ type = 'str' }
-        admin_password = @{ type = 'str'; no_log = $true }
-        timezone = @{ type = 'int' }
         domain = @{ type = 'str' }
-        domain_admin_credential = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        operating_system = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

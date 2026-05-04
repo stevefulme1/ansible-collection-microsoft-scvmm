@@ -9,9 +9,9 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        description = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        description = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

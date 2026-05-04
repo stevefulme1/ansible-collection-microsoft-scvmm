@@ -10,6 +10,7 @@ $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
         name = @{ type = 'str' }
+        storage_provider = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

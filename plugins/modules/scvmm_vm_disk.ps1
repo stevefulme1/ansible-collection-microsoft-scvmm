@@ -8,13 +8,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        bus = @{ type = 'int'; default = 0 }
+        bus_type = @{ type = 'str'; default = 'SCSI'; choices = @('SCSI', 'IDE') }
+        lun = @{ type = 'int' }
+        state = @{ type = 'str'; default = 'attached'; choices = @('attached', 'detached') }
+        vhd_name = @{ type = 'str'; required = $true }
         vm_name = @{ type = 'str'; required = $true }
-        bus = @{ type = 'int'; required = $true }
-        lun = @{ type = 'int'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        size_gb = @{ type = 'int' }
-        dynamic = @{ type = 'bool'; default = $false }
-        file_name = @{ type = 'str' }
     }
     required_if = @(
         @('state', 'present', @('size_gb'))

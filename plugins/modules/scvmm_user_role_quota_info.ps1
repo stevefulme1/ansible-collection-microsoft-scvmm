@@ -8,8 +8,8 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        user_role = @{ type = 'str' }
         cloud = @{ type = 'str' }
+        user_role = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

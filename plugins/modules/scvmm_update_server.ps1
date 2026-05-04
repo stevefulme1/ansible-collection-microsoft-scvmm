@@ -8,11 +8,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        computer_name = @{ type = 'str' }
         credential = @{ type = 'str' }
-        port = @{ type = 'int' }
+        name = @{ type = 'str'; required = $true }
+        port = @{ type = 'int'; default = 8530 }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        use_ssl = @{ type = 'bool'; default = $false }
     }
     required_if = @(
         @('state', 'present', @('computer_name'))

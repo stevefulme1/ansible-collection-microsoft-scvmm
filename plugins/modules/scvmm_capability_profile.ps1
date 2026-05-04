@@ -9,10 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        description = @{ type = 'str' }
+        fabric_capability = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        description = @{ type = 'str' }
-        fabric_capability_type = @{ type = 'str'; choices = @('HyperV', 'ESX', 'Xen') }
     }
     supports_check_mode = $true
 }

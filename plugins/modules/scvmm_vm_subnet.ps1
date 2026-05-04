@@ -9,11 +9,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        vm_network = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        subnet = @{ type = "str" }
-        vlan_id = @{ type = "int" }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        subnet = @{ type = 'str' }
+        vm_network = @{ type = 'str'; required = $true }
     }
     supports_check_mode = $true
 }

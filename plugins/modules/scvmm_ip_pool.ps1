@@ -9,14 +9,14 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        vm_subnet = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        ip_range_start = @{ type = "str" }
-        ip_range_end = @{ type = "str" }
-        gateway = @{ type = "list"; elements = "str" }
-        dns_servers = @{ type = "list"; elements = "str" }
-        dns_suffix = @{ type = "str" }
+        dns_servers = @{ type = 'list'; elements = 'str' }
+        gateway = @{ type = 'list'; elements = 'str' }
+        ip_range_end = @{ type = 'str' }
+        ip_range_start = @{ type = 'str' }
+        logical_network = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        subnet = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

@@ -9,10 +9,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        add_default_resources = @{ type = 'bool'; default = $false }
         description = @{ type = 'str' }
-        library_server = @{ type = 'str' }
+        library_server = @{ type = 'str'; required = $true }
+        path = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

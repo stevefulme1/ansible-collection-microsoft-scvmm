@@ -8,12 +8,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        user_role = @{ type = 'str'; required = $true }
         cloud = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         cpu_count = @{ type = 'int' }
+        custom_quota_count = @{ type = 'int' }
         memory_mb = @{ type = 'int' }
         storage_gb = @{ type = 'int' }
+        user_role = @{ type = 'str'; required = $true }
         vm_count = @{ type = 'int' }
     }
     supports_check_mode = $true

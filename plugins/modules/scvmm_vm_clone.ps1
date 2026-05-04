@@ -8,11 +8,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        source_vm = @{ type = 'str'; required = $true }
+        cloud = @{ type = 'str' }
+        description = @{ type = 'str' }
+        host_group = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
-        vm_host = @{ type = 'str'; required = $true }
-        path = @{ type = 'str' }
-        start_vm = @{ type = 'bool'; default = $false }
+        source_vm = @{ type = 'str'; required = $true }
+        vm_host = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

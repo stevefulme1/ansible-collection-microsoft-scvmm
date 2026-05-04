@@ -10,9 +10,17 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{
-            required = $true
-            type = "str"
+        cloud = @{ type = 'str' }
+        cpu_count = @{ type = 'int' }
+        description = @{ type = 'str' }
+        host_group = @{ type = 'str' }
+        memory_mb = @{ type = 'int' }
+        name = @{ type = 'str'; required = $true }
+        start_action = @{ type = 'str'; choices = @('NeverAutoTurnOnVM', 'AlwaysAutoTurnOnVM', 'TurnOnVMIfRunningWhenVSStopped') }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        stop_action = @{ type = 'str'; choices = @('SaveVM', 'TurnOffVM', 'ShutdownGuestOS') }
+        template = @{ type = 'str' }
+        vm_host = @{ type = 'str' }
         }
         state = @{
             type = "str"

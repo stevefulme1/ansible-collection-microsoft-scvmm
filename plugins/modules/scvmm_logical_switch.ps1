@@ -10,10 +10,11 @@ $connectionSpec = Get-SCVMMConnectionSpec
 
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ required = $true; type = "str" }
-        state = @{ type = "str"; choices = @("present", "absent"); default = "present" }
-        description = @{ type = "str" }
-        switch_uplink_mode = @{ type = "str"; choices = @("NoTeam", "Team", "EmbeddedTeam") }
+        description = @{ type = 'str' }
+        enable_sr_iov = @{ type = 'bool'; default = $false }
+        name = @{ type = 'str'; required = $true }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        uplink_port_profile = @{ type = 'str' }
     }
     supports_check_mode = $true
 }

@@ -10,7 +10,8 @@ $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
         library_share = @{ type = 'str'; required = $true }
-        action = @{ type = 'str'; required = $true; choices = @('refresh', 'remove') }
+        overwrite = @{ type = 'bool'; default = $false }
+        source_path = @{ type = 'str'; required = $true }
     }
     supports_check_mode = $true
 }

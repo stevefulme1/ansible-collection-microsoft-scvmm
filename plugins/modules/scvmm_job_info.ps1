@@ -8,9 +8,9 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        id = @{ type = 'str' }
-        most_recent = @{ type = 'int'; default = 10 }
-        status = @{ type = 'str'; choices = @('Running', 'Completed', 'Failed', 'Cancelled') }
+        job_id = @{ type = 'str' }
+        recent = @{ type = 'int' }
+        status = @{ type = 'str'; choices = @('Running', 'Completed', 'Failed', 'Canceled') }
     }
     supports_check_mode = $true
 }

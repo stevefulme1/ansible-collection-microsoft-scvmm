@@ -9,11 +9,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         computer_name = @{ type = 'str' }
         credential = @{ type = 'str' }
-        provider_type = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        provider_type = @{ type = 'str'; choices = @('SMIS', 'SMP') }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }

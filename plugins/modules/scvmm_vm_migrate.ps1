@@ -8,10 +8,10 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        destination_host = @{ type = 'str' }
+        destination_storage = @{ type = 'str' }
+        migration_type = @{ type = 'str'; default = 'Live'; choices = @('Live', 'Storage', 'LiveAndStorage') }
         name = @{ type = 'str'; required = $true }
-        vm_host = @{ type = 'str'; required = $true }
-        path = @{ type = 'str' }
-        use_live_migration = @{ type = 'bool'; default = $false }
     }
     supports_check_mode = $true
 }

@@ -9,6 +9,7 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
+        library_server = @{ type = 'str' }
         name = @{ type = 'str' }
     }
     supports_check_mode = $true

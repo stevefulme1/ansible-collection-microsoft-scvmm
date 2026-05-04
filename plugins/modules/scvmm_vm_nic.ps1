@@ -8,12 +8,12 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        vm_name = @{ type = 'str'; required = $true }
+        mac_address = @{ type = 'str' }
+        mac_type = @{ type = 'str'; default = 'Dynamic'; choices = @('Dynamic', 'Static') }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        vm_name = @{ type = 'str'; required = $true }
         vm_network = @{ type = 'str' }
-        mac_address = @{ type = 'str' }
-        mac_address_type = @{ type = 'str'; choices = @('Dynamic', 'Static') }
     }
     required_if = @(
         @('state', 'present', @('vm_network'))

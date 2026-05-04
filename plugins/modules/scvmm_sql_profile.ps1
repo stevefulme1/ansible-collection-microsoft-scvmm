@@ -9,10 +9,11 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        name = @{ type = 'str'; required = $true }
-        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
+        deployment_order = @{ type = 'int' }
         description = @{ type = 'str' }
-        sql_instance = @{ type = 'str' }
+        name = @{ type = 'str'; required = $true }
+        sql_instance_name = @{ type = 'str' }
+        state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
     }
     supports_check_mode = $true
 }
