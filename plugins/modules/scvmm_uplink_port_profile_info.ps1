@@ -25,4 +25,4 @@ else {
 }
 
 $module.Result.uplink_profiles = @($profiles | ForEach-Object { ConvertTo-SCVMMDict -InputObject $_ -Properties $props })
-        $module.ExitJson()
+$module.ExitJson()

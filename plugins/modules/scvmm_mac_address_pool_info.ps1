@@ -25,4 +25,4 @@ else {
 }
 
 $module.Result.mac_pools = @($pools | ForEach-Object { ConvertTo-SCVMMDict -InputObject $_ -Properties $props })
-        $module.ExitJson()
+$module.ExitJson()
