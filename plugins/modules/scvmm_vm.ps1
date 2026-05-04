@@ -21,41 +21,6 @@ $spec = @{
         stop_action = @{ type = 'str'; choices = @('SaveVM', 'TurnOffVM', 'ShutdownGuestOS') }
         template = @{ type = 'str' }
         vm_host = @{ type = 'str' }
-        }
-        state = @{
-            type = "str"
-            choices = @("present", "absent")
-            default = "present"
-        }
-        template = @{
-            type = "str"
-        }
-        cloud = @{
-            type = "str"
-        }
-        host_group = @{
-            type = "str"
-        }
-        vm_host = @{
-            type = "str"
-        }
-        cpu_count = @{
-            type = "int"
-        }
-        memory_mb = @{
-            type = "int"
-        }
-        description = @{
-            type = "str"
-        }
-        start_action = @{
-            type = "str"
-            choices = @("NeverAutoTurnOnVM", "AlwaysAutoTurnOnVM", "TurnOnVMIfRunningWhenVSStopped")
-        }
-        stop_action = @{
-            type = "str"
-            choices = @("SaveVM", "TurnOffVM", "ShutdownGuestOS")
-        }
     }
     mutually_exclusive = @(
         , @("cloud", "vm_host")

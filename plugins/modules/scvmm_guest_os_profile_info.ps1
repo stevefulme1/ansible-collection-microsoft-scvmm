@@ -26,9 +26,12 @@ else {
     $profiles = Get-SCGuestOSProfile -VMMServer $vmmServer
 }
 
+$props = @('Name', 'Description', 'OperatingSystem',
+    'ComputerName', 'TimeZone', 'ID')
 $module.Result.guest_os_profiles = @()
 foreach ($profile in $profiles) {
-    $module.Result.guest_os_profiles += ConvertTo-SCVMMDict -InputObject $profile -Properties @('Name', 'Description', 'OperatingSystem', 'ComputerName', 'TimeZone', 'ID')
+    $module.Result.guest_os_profiles += ConvertTo-SCVMMDict `
+        -InputObject $profile -Properties $props
 }
 
 $module.ExitJson()

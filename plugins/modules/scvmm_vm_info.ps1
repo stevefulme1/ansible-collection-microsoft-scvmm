@@ -13,13 +13,6 @@ $spec = @{
         cloud = @{ type = 'str' }
         name = @{ type = 'str' }
         vm_host = @{ type = 'str' }
-        }
-        cloud = @{
-            type = "str"
-        }
-        vm_host = @{
-            type = "str"
-        }
     }
     supports_check_mode = $true
 }

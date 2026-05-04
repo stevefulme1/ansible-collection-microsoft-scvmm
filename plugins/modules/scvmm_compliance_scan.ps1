@@ -12,9 +12,7 @@ $spec = @{
         host_cluster = @{ type = 'str' }
         vm_host = @{ type = 'str' }
     }
-    required_one_of = @(
-        @('vm_host', 'host_cluster')
-    )
+    required_one_of = @(, @('vm_host', 'host_cluster'))
     supports_check_mode = $true
 }
 

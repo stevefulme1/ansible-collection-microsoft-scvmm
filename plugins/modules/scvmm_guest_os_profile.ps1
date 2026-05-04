@@ -9,7 +9,7 @@
 $connectionSpec = Get-SCVMMConnectionSpec
 $spec = @{
     options = $connectionSpec + @{
-        admin_password = @{ type = 'str' }
+        admin_password = @{ type = 'str'; no_log = $true }
         computer_name_pattern = @{ type = 'str' }
         description = @{ type = 'str' }
         domain = @{ type = 'str' }
@@ -26,12 +26,12 @@ $vmmServer = Connect-SCVMM -Module $module
 $name = $module.Params.name
 $state = $module.Params.state
 $description = $module.Params.description
-$osType = $module.Params.os_type
-$computerName = $module.Params.computer_name
-$adminPassword = $module.Params.admin_password
-$timezone = $module.Params.timezone
+$osType = $module.Params.operating_system
+$computerName = $module.Params.computer_name_pattern
 $domain = $module.Params.domain
-$domainAdminCredential = $module.Params.domain_admin_credential
+
+$outputProps = @('Name', 'Description', 'OperatingSystem',
+    'ComputerName', 'TimeZone', 'ID')
 
 $current = Get-SCGuestOSProfile -VMMServer $vmmServer -Name $name -ErrorAction SilentlyContinue
 
@@ -46,12 +46,11 @@ if ($state -eq 'present') {
         if ($null -ne $description) { $params.Description = $description }
         if ($null -ne $osType) { $params.OperatingSystem = $osType }
         if ($null -ne $computerName) { $params.ComputerName = $computerName }
-        if ($null -ne $timezone) { $params.TimeZone = $timezone }
         if ($null -ne $domain) { $params.Domain = $domain }
 
         if (-not $module.CheckMode) {
             $result = New-SCGuestOSProfile @params
-            $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'OperatingSystem', 'ComputerName', 'TimeZone', 'ID')
+            $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties $outputProps
         }
         else {
             $module.Diff.after = @{ Name = $name }
@@ -59,7 +58,7 @@ if ($state -eq 'present') {
         $module.Result.changed = $true
     }
     else {
-        $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'OperatingSystem', 'ComputerName', 'TimeZone', 'ID')
+        $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties $outputProps
         $needsUpdate = $false
         $params = @{ ErrorAction = 'Stop' }
 
@@ -71,15 +70,10 @@ if ($state -eq 'present') {
             $needsUpdate = $true
             $params.ComputerName = $computerName
         }
-        if ($null -ne $timezone -and $current.TimeZone -ne $timezone) {
-            $needsUpdate = $true
-            $params.TimeZone = $timezone
-        }
-
         if ($needsUpdate) {
             if (-not $module.CheckMode) {
                 $result = Set-SCGuestOSProfile -GuestOSProfile $current @params
-                $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties @('Name', 'Description', 'OperatingSystem', 'ComputerName', 'TimeZone', 'ID')
+                $module.Diff.after = ConvertTo-SCVMMDict -InputObject $result -Properties $outputProps
             }
             else {
                 $module.Diff.after = $module.Diff.before.Clone()
@@ -98,7 +92,7 @@ if ($state -eq 'present') {
 }
 else {
     if ($null -ne $current) {
-        $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties @('Name', 'Description', 'OperatingSystem', 'ComputerName', 'TimeZone', 'ID')
+        $module.Diff.before = ConvertTo-SCVMMDict -InputObject $current -Properties $outputProps
         $module.Diff.after = @{}
 
         if (-not $module.CheckMode) {

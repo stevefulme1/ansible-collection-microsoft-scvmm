@@ -14,18 +14,6 @@ $spec = @{
         host_group = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
-        }
-        state = @{
-            type = "str"
-            choices = @("present", "absent")
-            default = "present"
-        }
-        host_group = @{
-            type = "str"
-        }
-        description = @{
-            type = "str"
-        }
     }
     supports_check_mode = $true
 }
