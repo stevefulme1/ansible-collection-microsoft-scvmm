@@ -30,8 +30,8 @@ try {
 
     $module.Result.ratings = @($ratings | ForEach-Object {
             @{
-                vmhost  = if ($_.VMHost) { $_.VMHost.Name } else { $null }
-                rating  = $_.Rating
+                vmhost = if ($_.VMHost) { $_.VMHost.Name } else { $null }
+                rating = $_.Rating
                 details = $_.RatingExplanation
             }
         })
