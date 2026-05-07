@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -43,13 +43,13 @@ options:
 
 EXAMPLES = r"""
 - name: Create a logical network
-  microsoft.scvmm.scvmm_logical_network:
+  stevefulme1.svcmm.scvmm_logical_network:
     scvmm_server: scvmm01.example.com
     name: Corp-Network
     description: Corporate network backbone
 
 - name: Remove a logical network
-  microsoft.scvmm.scvmm_logical_network:
+  stevefulme1.svcmm.scvmm_logical_network:
     scvmm_server: scvmm01.example.com
     name: Corp-Network
     state: absent

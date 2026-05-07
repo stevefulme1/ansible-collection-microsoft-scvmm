@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   vm_host:
     description:
@@ -41,14 +41,14 @@ options:
 
 EXAMPLES = r"""
 - name: Associate a NIC with a logical network
-  microsoft.scvmm.scvmm_host_network_adapter:
+  stevefulme1.svcmm.scvmm_host_network_adapter:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv01.example.com
     name: Ethernet1
     logical_network: Management
 
 - name: Assign an uplink port profile to a NIC
-  microsoft.scvmm.scvmm_host_network_adapter:
+  stevefulme1.svcmm.scvmm_host_network_adapter:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv01.example.com
     name: Ethernet2

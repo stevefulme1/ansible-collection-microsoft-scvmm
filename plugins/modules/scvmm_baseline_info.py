@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all baselines
-  microsoft.scvmm.scvmm_baseline_info:
+  stevefulme1.svcmm.scvmm_baseline_info:
     scvmm_server: scvmm01.example.com
   register: baselines
 
 - name: Get a specific baseline
-  microsoft.scvmm.scvmm_baseline_info:
+  stevefulme1.svcmm.scvmm_baseline_info:
     scvmm_server: scvmm01.example.com
     name: Security Updates Q1
   register: baseline

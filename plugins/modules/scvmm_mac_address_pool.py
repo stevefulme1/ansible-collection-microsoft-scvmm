@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -49,7 +49,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a MAC address pool
-  microsoft.scvmm.scvmm_mac_address_pool:
+  stevefulme1.svcmm.scvmm_mac_address_pool:
     scvmm_server: scvmm01.example.com
     name: Prod-MAC-Pool
     mac_address_range_start: "00:1D:D8:B7:1C:00"
@@ -57,7 +57,7 @@ EXAMPLES = r"""
     description: Production MAC pool
 
 - name: Remove a MAC address pool
-  microsoft.scvmm.scvmm_mac_address_pool:
+  stevefulme1.svcmm.scvmm_mac_address_pool:
     scvmm_server: scvmm01.example.com
     name: Prod-MAC-Pool
     state: absent

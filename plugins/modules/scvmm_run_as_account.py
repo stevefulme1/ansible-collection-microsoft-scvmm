@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -52,7 +52,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a Windows RunAs account
-  microsoft.scvmm.scvmm_run_as_account:
+  stevefulme1.svcmm.scvmm_run_as_account:
     scvmm_server: scvmm01.example.com
     name: fabric-admin
     credential_type: WindowsCredential
@@ -61,7 +61,7 @@ EXAMPLES = r"""
     description: Fabric administration credentials
 
 - name: Create an SSH key RunAs account
-  microsoft.scvmm.scvmm_run_as_account:
+  stevefulme1.svcmm.scvmm_run_as_account:
     scvmm_server: scvmm01.example.com
     name: linux-deploy
     credential_type: SSHKeyCredential
@@ -69,7 +69,7 @@ EXAMPLES = r"""
     description: SSH key for Linux host management
 
 - name: Remove a RunAs account
-  microsoft.scvmm.scvmm_run_as_account:
+  stevefulme1.svcmm.scvmm_run_as_account:
     scvmm_server: scvmm01.example.com
     name: fabric-admin
     state: absent

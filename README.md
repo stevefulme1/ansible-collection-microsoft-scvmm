@@ -12,7 +12,7 @@ This collection provides 97 Ansible modules for managing Microsoft System Center
 ## Installation
 
 ```bash
-ansible-galaxy collection install microsoft.scvmm
+ansible-galaxy collection install stevefulme1.svcmm
 ```
 
 Or from source:
@@ -192,12 +192,12 @@ All modules require connection details for the SCVMM management server:
 
 ```yaml
 - name: Get all VMs
-  microsoft.scvmm.scvmm_vm_info:
+  stevefulme1.svcmm.scvmm_vm_info:
     scvmm_server: scvmm01.example.com
   register: all_vms
 
 - name: Create a VM
-  microsoft.scvmm.scvmm_vm:
+  stevefulme1.svcmm.scvmm_vm:
     scvmm_server: scvmm01.example.com
     name: web-server-01
     template: Windows2022-Base
@@ -206,7 +206,7 @@ All modules require connection details for the SCVMM management server:
     memory_mb: 8192
 
 - name: Create a logical network
-  microsoft.scvmm.scvmm_logical_network:
+  stevefulme1.svcmm.scvmm_logical_network:
     scvmm_server: scvmm01.example.com
     name: Corp-Network
     description: Corporate network backbone

@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a self-service user role
-  microsoft.scvmm.scvmm_user_role:
+  stevefulme1.svcmm.scvmm_user_role:
     scvmm_server: scvmm01.example.com
     name: Dev-Team-Role
     profile: SelfServiceUser
@@ -57,7 +57,7 @@ EXAMPLES = r"""
       - DOMAIN\\dev-team
 
 - name: Remove a user role
-  microsoft.scvmm.scvmm_user_role:
+  stevefulme1.svcmm.scvmm_user_role:
     scvmm_server: scvmm01.example.com
     name: Dev-Team-Role
     state: absent

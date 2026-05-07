@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -49,7 +49,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a VM network
-  microsoft.scvmm.scvmm_vm_network:
+  stevefulme1.svcmm.scvmm_vm_network:
     scvmm_server: scvmm01.example.com
     name: App-Network
     logical_network: Corp-Network

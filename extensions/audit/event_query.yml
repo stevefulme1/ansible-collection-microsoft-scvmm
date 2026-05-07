@@ -1,5 +1,5 @@
 ---
-# Audit event queries for the microsoft.scvmm collection.
+# Audit event queries for the stevefulme1.svcmm collection.
 # Maps each module's return data to structured facts for
 # Ansible Automation Platform inventory and audit integration.
 #
@@ -11,7 +11,7 @@
 # ---------------------------------------------------------------------------
 # VM Lifecycle
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_vm:
+stevefulme1.svcmm.scvmm_vm:
   query: >-
     .vm | select(. != null) | {
       name: ("scvmm_vm:" + (.id | tostring)),
@@ -25,7 +25,7 @@ microsoft.scvmm.scvmm_vm:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_info:
+stevefulme1.svcmm.scvmm_vm_info:
   query: >-
     .vms[] | {
       name: ("scvmm_vm_info:" + (.id | tostring)),
@@ -39,7 +39,7 @@ microsoft.scvmm.scvmm_vm_info:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_state:
+stevefulme1.svcmm.scvmm_vm_state:
   query: >-
     .vm | select(. != null) | {
       name: ("scvmm_vm_state:" + (.id | tostring)),
@@ -53,7 +53,7 @@ microsoft.scvmm.scvmm_vm_state:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_checkpoint:
+stevefulme1.svcmm.scvmm_vm_checkpoint:
   query: >-
     .checkpoint | select(. != null) | {
       name: ("scvmm_vm_checkpoint:" + (.id | tostring)),
@@ -67,7 +67,7 @@ microsoft.scvmm.scvmm_vm_checkpoint:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_checkpoint_info:
+stevefulme1.svcmm.scvmm_vm_checkpoint_info:
   query: >-
     .checkpoints[] | {
       name: ("scvmm_vm_checkpoint_info:" + (.id | tostring)),
@@ -85,7 +85,7 @@ microsoft.scvmm.scvmm_vm_checkpoint_info:
 # ---------------------------------------------------------------------------
 # VM Peripherals
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_vm_disk:
+stevefulme1.svcmm.scvmm_vm_disk:
   query: >-
     .disk | select(. != null) | {
       name: ("scvmm_vm_disk:" + (.id | tostring)),
@@ -99,7 +99,7 @@ microsoft.scvmm.scvmm_vm_disk:
         device_type: "VirtualHardDisk"
       }
     }
-microsoft.scvmm.scvmm_vm_nic:
+stevefulme1.svcmm.scvmm_vm_nic:
   query: >-
     .nic | select(. != null) | {
       name: ("scvmm_vm_nic:" + (.id | tostring)),
@@ -117,7 +117,7 @@ microsoft.scvmm.scvmm_vm_nic:
 # ---------------------------------------------------------------------------
 # Templates
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_template:
+stevefulme1.svcmm.scvmm_template:
   query: >-
     .template | select(. != null) | {
       name: ("scvmm_template:" + (.id | tostring)),
@@ -131,7 +131,7 @@ microsoft.scvmm.scvmm_template:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_template_info:
+stevefulme1.svcmm.scvmm_template_info:
   query: >-
     .templates[] | {
       name: ("scvmm_template_info:" + (.id | tostring)),
@@ -149,7 +149,7 @@ microsoft.scvmm.scvmm_template_info:
 # ---------------------------------------------------------------------------
 # Cloud and Host Management
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_cloud:
+stevefulme1.svcmm.scvmm_cloud:
   query: >-
     .cloud | select(. != null) | {
       name: ("scvmm_cloud:" + (.id | tostring)),
@@ -163,7 +163,7 @@ microsoft.scvmm.scvmm_cloud:
         device_type: "Cloud"
       }
     }
-microsoft.scvmm.scvmm_cloud_info:
+stevefulme1.svcmm.scvmm_cloud_info:
   query: >-
     .clouds[] | {
       name: ("scvmm_cloud_info:" + (.id | tostring)),
@@ -177,7 +177,7 @@ microsoft.scvmm.scvmm_cloud_info:
         device_type: "Cloud"
       }
     }
-microsoft.scvmm.scvmm_host_group:
+stevefulme1.svcmm.scvmm_host_group:
   query: >-
     .host_group | select(. != null) | {
       name: ("scvmm_host_group:" + (.id | tostring)),
@@ -191,7 +191,7 @@ microsoft.scvmm.scvmm_host_group:
         device_type: "HostGroup"
       }
     }
-microsoft.scvmm.scvmm_host_group_info:
+stevefulme1.svcmm.scvmm_host_group_info:
   query: >-
     .host_groups[] | {
       name: ("scvmm_host_group_info:" + (.id | tostring)),
@@ -205,7 +205,7 @@ microsoft.scvmm.scvmm_host_group_info:
         device_type: "HostGroup"
       }
     }
-microsoft.scvmm.scvmm_host_info:
+stevefulme1.svcmm.scvmm_host_info:
   query: >-
     .hosts[] | {
       name: ("scvmm_host_info:" + (.id | tostring)),
@@ -223,7 +223,7 @@ microsoft.scvmm.scvmm_host_info:
 # ---------------------------------------------------------------------------
 # Networking
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_logical_network:
+stevefulme1.svcmm.scvmm_logical_network:
   query: >-
     .logical_network | select(. != null) | {
       name: ("scvmm_logical_network:" + (.id | tostring)),
@@ -237,7 +237,7 @@ microsoft.scvmm.scvmm_logical_network:
         device_type: "LogicalNetwork"
       }
     }
-microsoft.scvmm.scvmm_logical_network_info:
+stevefulme1.svcmm.scvmm_logical_network_info:
   query: >-
     .logical_networks[] | {
       name: ("scvmm_logical_network_info:" + (.id | tostring)),
@@ -251,7 +251,7 @@ microsoft.scvmm.scvmm_logical_network_info:
         device_type: "LogicalNetwork"
       }
     }
-microsoft.scvmm.scvmm_vm_network:
+stevefulme1.svcmm.scvmm_vm_network:
   query: >-
     .vm_network | select(. != null) | {
       name: ("scvmm_vm_network:" + (.id | tostring)),
@@ -265,7 +265,7 @@ microsoft.scvmm.scvmm_vm_network:
         device_type: "VMNetwork"
       }
     }
-microsoft.scvmm.scvmm_vm_network_info:
+stevefulme1.svcmm.scvmm_vm_network_info:
   query: >-
     .vm_networks[] | {
       name: ("scvmm_vm_network_info:" + (.id | tostring)),
@@ -279,7 +279,7 @@ microsoft.scvmm.scvmm_vm_network_info:
         device_type: "VMNetwork"
       }
     }
-microsoft.scvmm.scvmm_ip_pool:
+stevefulme1.svcmm.scvmm_ip_pool:
   query: >-
     .ip_pool | select(. != null) | {
       name: ("scvmm_ip_pool:" + (.id | tostring)),
@@ -293,7 +293,7 @@ microsoft.scvmm.scvmm_ip_pool:
         device_type: "IPPool"
       }
     }
-microsoft.scvmm.scvmm_port_classification:
+stevefulme1.svcmm.scvmm_port_classification:
   query: >-
     .port_classification | select(. != null) | {
       name: ("scvmm_port_classification:" + (.id | tostring)),
@@ -311,7 +311,7 @@ microsoft.scvmm.scvmm_port_classification:
 # ---------------------------------------------------------------------------
 # Storage
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_virtual_hard_disk:
+stevefulme1.svcmm.scvmm_virtual_hard_disk:
   query: >-
     .virtual_hard_disk | select(. != null) | {
       name: ("scvmm_virtual_hard_disk:" + (.id | tostring)),
@@ -325,7 +325,7 @@ microsoft.scvmm.scvmm_virtual_hard_disk:
         device_type: "VirtualHardDisk"
       }
     }
-microsoft.scvmm.scvmm_virtual_hard_disk_info:
+stevefulme1.svcmm.scvmm_virtual_hard_disk_info:
   query: >-
     .virtual_hard_disks[] | {
       name: ("scvmm_virtual_hard_disk_info:" + (.id | tostring)),
@@ -339,7 +339,7 @@ microsoft.scvmm.scvmm_virtual_hard_disk_info:
         device_type: "VirtualHardDisk"
       }
     }
-microsoft.scvmm.scvmm_storage_classification:
+stevefulme1.svcmm.scvmm_storage_classification:
   query: >-
     .storage_classification | select(. != null) | {
       name: ("scvmm_storage_classification:" + (.id | tostring)),
@@ -357,7 +357,7 @@ microsoft.scvmm.scvmm_storage_classification:
 # ---------------------------------------------------------------------------
 # Infrastructure
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_library_server_info:
+stevefulme1.svcmm.scvmm_library_server_info:
   query: >-
     .library_servers[] | {
       name: ("scvmm_library_server_info:" + (.id | tostring)),
@@ -375,7 +375,7 @@ microsoft.scvmm.scvmm_library_server_info:
 # ---------------------------------------------------------------------------
 # RBAC
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_user_role:
+stevefulme1.svcmm.scvmm_user_role:
   query: >-
     .user_role | select(. != null) | {
       name: ("scvmm_user_role:" + (.id | tostring)),
@@ -389,7 +389,7 @@ microsoft.scvmm.scvmm_user_role:
         device_type: "UserRole"
       }
     }
-microsoft.scvmm.scvmm_user_role_info:
+stevefulme1.svcmm.scvmm_user_role_info:
   query: >-
     .user_roles[] | {
       name: ("scvmm_user_role_info:" + (.id | tostring)),
@@ -407,7 +407,7 @@ microsoft.scvmm.scvmm_user_role_info:
 # ---------------------------------------------------------------------------
 # VM Operations
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_vm_migrate:
+stevefulme1.svcmm.scvmm_vm_migrate:
   query: >-
     .vm | select(. != null) | {
       name: ("scvmm_vm_migrate:" + (.id | tostring)),
@@ -421,7 +421,7 @@ microsoft.scvmm.scvmm_vm_migrate:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_clone:
+stevefulme1.svcmm.scvmm_vm_clone:
   query: >-
     .vm | select(. != null) | {
       name: ("scvmm_vm_clone:" + (.id | tostring)),
@@ -435,7 +435,7 @@ microsoft.scvmm.scvmm_vm_clone:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_dvd_drive:
+stevefulme1.svcmm.scvmm_vm_dvd_drive:
   query: >-
     .dvd_drive | select(. != null) | {
       name: ("scvmm_vm_dvd_drive:" + (.id | tostring)),
@@ -449,7 +449,7 @@ microsoft.scvmm.scvmm_vm_dvd_drive:
         device_type: "VM"
       }
     }
-microsoft.scvmm.scvmm_vm_scsi_adapter:
+stevefulme1.svcmm.scvmm_vm_scsi_adapter:
   query: >-
     .scsi_adapter | select(. != null) | {
       name: ("scvmm_vm_scsi_adapter:" + (.id | tostring)),
@@ -467,7 +467,7 @@ microsoft.scvmm.scvmm_vm_scsi_adapter:
 # ---------------------------------------------------------------------------
 # Profiles
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_hardware_profile:
+stevefulme1.svcmm.scvmm_hardware_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_hardware_profile:" + (.id | tostring)),
@@ -481,7 +481,7 @@ microsoft.scvmm.scvmm_hardware_profile:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_hardware_profile_info:
+stevefulme1.svcmm.scvmm_hardware_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_hardware_profile_info:" + (.id | tostring)),
@@ -495,7 +495,7 @@ microsoft.scvmm.scvmm_hardware_profile_info:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_guest_os_profile:
+stevefulme1.svcmm.scvmm_guest_os_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_guest_os_profile:" + (.id | tostring)),
@@ -509,7 +509,7 @@ microsoft.scvmm.scvmm_guest_os_profile:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_guest_os_profile_info:
+stevefulme1.svcmm.scvmm_guest_os_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_guest_os_profile_info:" + (.id | tostring)),
@@ -523,7 +523,7 @@ microsoft.scvmm.scvmm_guest_os_profile_info:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_application_profile:
+stevefulme1.svcmm.scvmm_application_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_application_profile:" + (.id | tostring)),
@@ -537,7 +537,7 @@ microsoft.scvmm.scvmm_application_profile:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_application_profile_info:
+stevefulme1.svcmm.scvmm_application_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_application_profile_info:" + (.id | tostring)),
@@ -551,7 +551,7 @@ microsoft.scvmm.scvmm_application_profile_info:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_capability_profile:
+stevefulme1.svcmm.scvmm_capability_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_capability_profile:" + (.id | tostring)),
@@ -565,7 +565,7 @@ microsoft.scvmm.scvmm_capability_profile:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_capability_profile_info:
+stevefulme1.svcmm.scvmm_capability_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_capability_profile_info:" + (.id | tostring)),
@@ -583,7 +583,7 @@ microsoft.scvmm.scvmm_capability_profile_info:
 # ---------------------------------------------------------------------------
 # Host Management
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_host:
+stevefulme1.svcmm.scvmm_host:
   query: >-
     .host | select(. != null) | {
       name: ("scvmm_host:" + (.id | tostring)),
@@ -597,7 +597,7 @@ microsoft.scvmm.scvmm_host:
         device_type: "HyperVHost"
       }
     }
-microsoft.scvmm.scvmm_host_cluster:
+stevefulme1.svcmm.scvmm_host_cluster:
   query: >-
     .cluster | select(. != null) | {
       name: ("scvmm_host_cluster:" + (.id | tostring)),
@@ -611,7 +611,7 @@ microsoft.scvmm.scvmm_host_cluster:
         device_type: "HostCluster"
       }
     }
-microsoft.scvmm.scvmm_host_cluster_info:
+stevefulme1.svcmm.scvmm_host_cluster_info:
   query: >-
     .clusters[] | {
       name: ("scvmm_host_cluster_info:" + (.id | tostring)),
@@ -625,7 +625,7 @@ microsoft.scvmm.scvmm_host_cluster_info:
         device_type: "HostCluster"
       }
     }
-microsoft.scvmm.scvmm_host_network_adapter:
+stevefulme1.svcmm.scvmm_host_network_adapter:
   query: >-
     .adapter | select(. != null) | {
       name: ("scvmm_host_network_adapter:" + (.id | tostring)),
@@ -639,7 +639,7 @@ microsoft.scvmm.scvmm_host_network_adapter:
         device_type: "NetworkAdapter"
       }
     }
-microsoft.scvmm.scvmm_host_network_adapter_info:
+stevefulme1.svcmm.scvmm_host_network_adapter_info:
   query: >-
     .adapters[] | {
       name: ("scvmm_host_network_adapter_info:" + (.id | tostring)),
@@ -653,7 +653,7 @@ microsoft.scvmm.scvmm_host_network_adapter_info:
         device_type: "NetworkAdapter"
       }
     }
-microsoft.scvmm.scvmm_host_rating_info:
+stevefulme1.svcmm.scvmm_host_rating_info:
   query: >-
     .ratings[] | {
       name: ("scvmm_host_rating_info:" + (.id | tostring)),
@@ -667,7 +667,7 @@ microsoft.scvmm.scvmm_host_rating_info:
         device_type: "HyperVHost"
       }
     }
-microsoft.scvmm.scvmm_cloud_capacity:
+stevefulme1.svcmm.scvmm_cloud_capacity:
   query: >-
     .capacity | select(. != null) | {
       name: ("scvmm_cloud_capacity:" + (.id | tostring)),
@@ -681,7 +681,7 @@ microsoft.scvmm.scvmm_cloud_capacity:
         device_type: "Cloud"
       }
     }
-microsoft.scvmm.scvmm_cloud_capacity_info:
+stevefulme1.svcmm.scvmm_cloud_capacity_info:
   query: >-
     .capacity | select(. != null) | {
       name: ("scvmm_cloud_capacity_info:" + (.id | tostring)),
@@ -699,7 +699,7 @@ microsoft.scvmm.scvmm_cloud_capacity_info:
 # ---------------------------------------------------------------------------
 # Networking (continued)
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_logical_network_definition:
+stevefulme1.svcmm.scvmm_logical_network_definition:
   query: >-
     .definition | select(. != null) | {
       name: ("scvmm_logical_network_definition:" + (.id | tostring)),
@@ -713,7 +713,7 @@ microsoft.scvmm.scvmm_logical_network_definition:
         device_type: "LogicalNetwork"
       }
     }
-microsoft.scvmm.scvmm_logical_network_definition_info:
+stevefulme1.svcmm.scvmm_logical_network_definition_info:
   query: >-
     .definitions[] | {
       name: ("scvmm_logical_network_definition_info:" + (.id | tostring)),
@@ -727,7 +727,7 @@ microsoft.scvmm.scvmm_logical_network_definition_info:
         device_type: "LogicalNetwork"
       }
     }
-microsoft.scvmm.scvmm_vm_subnet:
+stevefulme1.svcmm.scvmm_vm_subnet:
   query: >-
     .subnet | select(. != null) | {
       name: ("scvmm_vm_subnet:" + (.id | tostring)),
@@ -741,7 +741,7 @@ microsoft.scvmm.scvmm_vm_subnet:
         device_type: "VMSubnet"
       }
     }
-microsoft.scvmm.scvmm_vm_subnet_info:
+stevefulme1.svcmm.scvmm_vm_subnet_info:
   query: >-
     .subnets[] | {
       name: ("scvmm_vm_subnet_info:" + (.id | tostring)),
@@ -755,7 +755,7 @@ microsoft.scvmm.scvmm_vm_subnet_info:
         device_type: "VMSubnet"
       }
     }
-microsoft.scvmm.scvmm_logical_switch:
+stevefulme1.svcmm.scvmm_logical_switch:
   query: >-
     .switch | select(. != null) | {
       name: ("scvmm_logical_switch:" + (.id | tostring)),
@@ -769,7 +769,7 @@ microsoft.scvmm.scvmm_logical_switch:
         device_type: "LogicalSwitch"
       }
     }
-microsoft.scvmm.scvmm_logical_switch_info:
+stevefulme1.svcmm.scvmm_logical_switch_info:
   query: >-
     .switches[] | {
       name: ("scvmm_logical_switch_info:" + (.id | tostring)),
@@ -783,7 +783,7 @@ microsoft.scvmm.scvmm_logical_switch_info:
         device_type: "LogicalSwitch"
       }
     }
-microsoft.scvmm.scvmm_uplink_port_profile:
+stevefulme1.svcmm.scvmm_uplink_port_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_uplink_port_profile:" + (.id | tostring)),
@@ -797,7 +797,7 @@ microsoft.scvmm.scvmm_uplink_port_profile:
         device_type: "UplinkPortProfile"
       }
     }
-microsoft.scvmm.scvmm_uplink_port_profile_info:
+stevefulme1.svcmm.scvmm_uplink_port_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_uplink_port_profile_info:" + (.id | tostring)),
@@ -811,7 +811,7 @@ microsoft.scvmm.scvmm_uplink_port_profile_info:
         device_type: "UplinkPortProfile"
       }
     }
-microsoft.scvmm.scvmm_port_classification_info:
+stevefulme1.svcmm.scvmm_port_classification_info:
   query: >-
     .classifications[] | {
       name: ("scvmm_port_classification_info:" + (.id | tostring)),
@@ -825,7 +825,7 @@ microsoft.scvmm.scvmm_port_classification_info:
         device_type: "PortClassification"
       }
     }
-microsoft.scvmm.scvmm_mac_address_pool:
+stevefulme1.svcmm.scvmm_mac_address_pool:
   query: >-
     .pool | select(. != null) | {
       name: ("scvmm_mac_address_pool:" + (.id | tostring)),
@@ -839,7 +839,7 @@ microsoft.scvmm.scvmm_mac_address_pool:
         device_type: "MACPool"
       }
     }
-microsoft.scvmm.scvmm_mac_address_pool_info:
+stevefulme1.svcmm.scvmm_mac_address_pool_info:
   query: >-
     .pools[] | {
       name: ("scvmm_mac_address_pool_info:" + (.id | tostring)),
@@ -853,7 +853,7 @@ microsoft.scvmm.scvmm_mac_address_pool_info:
         device_type: "MACPool"
       }
     }
-microsoft.scvmm.scvmm_ip_pool_info:
+stevefulme1.svcmm.scvmm_ip_pool_info:
   query: >-
     .pools[] | {
       name: ("scvmm_ip_pool_info:" + (.id | tostring)),
@@ -867,7 +867,7 @@ microsoft.scvmm.scvmm_ip_pool_info:
         device_type: "IPPool"
       }
     }
-microsoft.scvmm.scvmm_network_adapter_info:
+stevefulme1.svcmm.scvmm_network_adapter_info:
   query: >-
     .adapters[] | {
       name: ("scvmm_network_adapter_info:" + (.id | tostring)),
@@ -881,7 +881,7 @@ microsoft.scvmm.scvmm_network_adapter_info:
         device_type: "NetworkAdapter"
       }
     }
-microsoft.scvmm.scvmm_load_balancer:
+stevefulme1.svcmm.scvmm_load_balancer:
   query: >-
     .load_balancer | select(. != null) | {
       name: ("scvmm_load_balancer:" + (.id | tostring)),
@@ -899,7 +899,7 @@ microsoft.scvmm.scvmm_load_balancer:
 # ---------------------------------------------------------------------------
 # Storage (continued)
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_storage_classification_info:
+stevefulme1.svcmm.scvmm_storage_classification_info:
   query: >-
     .classifications[] | {
       name: ("scvmm_storage_classification_info:" + (.id | tostring)),
@@ -913,7 +913,7 @@ microsoft.scvmm.scvmm_storage_classification_info:
         device_type: "StorageClassification"
       }
     }
-microsoft.scvmm.scvmm_storage_pool:
+stevefulme1.svcmm.scvmm_storage_pool:
   query: >-
     .pool | select(. != null) | {
       name: ("scvmm_storage_pool:" + (.id | tostring)),
@@ -927,7 +927,7 @@ microsoft.scvmm.scvmm_storage_pool:
         device_type: "StoragePool"
       }
     }
-microsoft.scvmm.scvmm_storage_pool_info:
+stevefulme1.svcmm.scvmm_storage_pool_info:
   query: >-
     .pools[] | {
       name: ("scvmm_storage_pool_info:" + (.id | tostring)),
@@ -941,7 +941,7 @@ microsoft.scvmm.scvmm_storage_pool_info:
         device_type: "StoragePool"
       }
     }
-microsoft.scvmm.scvmm_storage_provider:
+stevefulme1.svcmm.scvmm_storage_provider:
   query: >-
     .provider | select(. != null) | {
       name: ("scvmm_storage_provider:" + (.id | tostring)),
@@ -955,7 +955,7 @@ microsoft.scvmm.scvmm_storage_provider:
         device_type: "StorageProvider"
       }
     }
-microsoft.scvmm.scvmm_storage_provider_info:
+stevefulme1.svcmm.scvmm_storage_provider_info:
   query: >-
     .providers[] | {
       name: ("scvmm_storage_provider_info:" + (.id | tostring)),
@@ -969,7 +969,7 @@ microsoft.scvmm.scvmm_storage_provider_info:
         device_type: "StorageProvider"
       }
     }
-microsoft.scvmm.scvmm_storage_file_share_info:
+stevefulme1.svcmm.scvmm_storage_file_share_info:
   query: >-
     .file_shares[] | {
       name: ("scvmm_storage_file_share_info:" + (.id | tostring)),
@@ -987,7 +987,7 @@ microsoft.scvmm.scvmm_storage_file_share_info:
 # ---------------------------------------------------------------------------
 # Library
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_library_share:
+stevefulme1.svcmm.scvmm_library_share:
   query: >-
     .share | select(. != null) | {
       name: ("scvmm_library_share:" + (.id | tostring)),
@@ -1001,7 +1001,7 @@ microsoft.scvmm.scvmm_library_share:
         device_type: "LibraryShare"
       }
     }
-microsoft.scvmm.scvmm_library_share_info:
+stevefulme1.svcmm.scvmm_library_share_info:
   query: >-
     .shares[] | {
       name: ("scvmm_library_share_info:" + (.id | tostring)),
@@ -1015,7 +1015,7 @@ microsoft.scvmm.scvmm_library_share_info:
         device_type: "LibraryShare"
       }
     }
-microsoft.scvmm.scvmm_iso_info:
+stevefulme1.svcmm.scvmm_iso_info:
   query: >-
     .isos[] | {
       name: ("scvmm_iso_info:" + (.id | tostring)),
@@ -1029,7 +1029,7 @@ microsoft.scvmm.scvmm_iso_info:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_script_info:
+stevefulme1.svcmm.scvmm_script_info:
   query: >-
     .scripts[] | {
       name: ("scvmm_script_info:" + (.id | tostring)),
@@ -1043,7 +1043,7 @@ microsoft.scvmm.scvmm_script_info:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_custom_resource_info:
+stevefulme1.svcmm.scvmm_custom_resource_info:
   query: >-
     .resources[] | {
       name: ("scvmm_custom_resource_info:" + (.id | tostring)),
@@ -1057,7 +1057,7 @@ microsoft.scvmm.scvmm_custom_resource_info:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_library_resource:
+stevefulme1.svcmm.scvmm_library_resource:
   query: >-
     .resource | select(. != null) | {
       name: ("scvmm_library_resource:" + (.id | tostring)),
@@ -1075,7 +1075,7 @@ microsoft.scvmm.scvmm_library_resource:
 # ---------------------------------------------------------------------------
 # RBAC (continued)
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_run_as_account:
+stevefulme1.svcmm.scvmm_run_as_account:
   query: >-
     .account | select(. != null) | {
       name: ("scvmm_run_as_account:" + (.id | tostring)),
@@ -1089,7 +1089,7 @@ microsoft.scvmm.scvmm_run_as_account:
         device_type: "RunAsAccount"
       }
     }
-microsoft.scvmm.scvmm_run_as_account_info:
+stevefulme1.svcmm.scvmm_run_as_account_info:
   query: >-
     .accounts[] | {
       name: ("scvmm_run_as_account_info:" + (.id | tostring)),
@@ -1103,7 +1103,7 @@ microsoft.scvmm.scvmm_run_as_account_info:
         device_type: "RunAsAccount"
       }
     }
-microsoft.scvmm.scvmm_user_role_quota:
+stevefulme1.svcmm.scvmm_user_role_quota:
   query: >-
     .quota | select(. != null) | {
       name: ("scvmm_user_role_quota:" + (.id | tostring)),
@@ -1117,7 +1117,7 @@ microsoft.scvmm.scvmm_user_role_quota:
         device_type: "UserRoleQuota"
       }
     }
-microsoft.scvmm.scvmm_user_role_quota_info:
+stevefulme1.svcmm.scvmm_user_role_quota_info:
   query: >-
     .quotas[] | {
       name: ("scvmm_user_role_quota_info:" + (.id | tostring)),
@@ -1135,7 +1135,7 @@ microsoft.scvmm.scvmm_user_role_quota_info:
 # ---------------------------------------------------------------------------
 # Services
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_service_template:
+stevefulme1.svcmm.scvmm_service_template:
   query: >-
     .template | select(. != null) | {
       name: ("scvmm_service_template:" + (.id | tostring)),
@@ -1149,7 +1149,7 @@ microsoft.scvmm.scvmm_service_template:
         device_type: "ServiceTemplate"
       }
     }
-microsoft.scvmm.scvmm_service_template_info:
+stevefulme1.svcmm.scvmm_service_template_info:
   query: >-
     .templates[] | {
       name: ("scvmm_service_template_info:" + (.id | tostring)),
@@ -1163,7 +1163,7 @@ microsoft.scvmm.scvmm_service_template_info:
         device_type: "ServiceTemplate"
       }
     }
-microsoft.scvmm.scvmm_service:
+stevefulme1.svcmm.scvmm_service:
   query: >-
     .service | select(. != null) | {
       name: ("scvmm_service:" + (.id | tostring)),
@@ -1177,7 +1177,7 @@ microsoft.scvmm.scvmm_service:
         device_type: "Service"
       }
     }
-microsoft.scvmm.scvmm_service_info:
+stevefulme1.svcmm.scvmm_service_info:
   query: >-
     .services[] | {
       name: ("scvmm_service_info:" + (.id | tostring)),
@@ -1191,7 +1191,7 @@ microsoft.scvmm.scvmm_service_info:
         device_type: "Service"
       }
     }
-microsoft.scvmm.scvmm_sql_profile:
+stevefulme1.svcmm.scvmm_sql_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_sql_profile:" + (.id | tostring)),
@@ -1205,7 +1205,7 @@ microsoft.scvmm.scvmm_sql_profile:
         device_type: "Resource"
       }
     }
-microsoft.scvmm.scvmm_sql_profile_info:
+stevefulme1.svcmm.scvmm_sql_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_sql_profile_info:" + (.id | tostring)),
@@ -1223,7 +1223,7 @@ microsoft.scvmm.scvmm_sql_profile_info:
 # ---------------------------------------------------------------------------
 # Update & Compliance
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_update_server:
+stevefulme1.svcmm.scvmm_update_server:
   query: >-
     .server | select(. != null) | {
       name: ("scvmm_update_server:" + (.id | tostring)),
@@ -1237,7 +1237,7 @@ microsoft.scvmm.scvmm_update_server:
         device_type: "UpdateServer"
       }
     }
-microsoft.scvmm.scvmm_update_server_info:
+stevefulme1.svcmm.scvmm_update_server_info:
   query: >-
     .servers[] | {
       name: ("scvmm_update_server_info:" + (.id | tostring)),
@@ -1251,7 +1251,7 @@ microsoft.scvmm.scvmm_update_server_info:
         device_type: "UpdateServer"
       }
     }
-microsoft.scvmm.scvmm_baseline:
+stevefulme1.svcmm.scvmm_baseline:
   query: >-
     .baseline | select(. != null) | {
       name: ("scvmm_baseline:" + (.id | tostring)),
@@ -1265,7 +1265,7 @@ microsoft.scvmm.scvmm_baseline:
         device_type: "Baseline"
       }
     }
-microsoft.scvmm.scvmm_baseline_info:
+stevefulme1.svcmm.scvmm_baseline_info:
   query: >-
     .baselines[] | {
       name: ("scvmm_baseline_info:" + (.id | tostring)),
@@ -1279,7 +1279,7 @@ microsoft.scvmm.scvmm_baseline_info:
         device_type: "Baseline"
       }
     }
-microsoft.scvmm.scvmm_compliance_scan:
+stevefulme1.svcmm.scvmm_compliance_scan:
   query: >-
     .scan_result | select(. != null) | {
       name: ("scvmm_compliance_scan:" + (.id | tostring)),
@@ -1293,7 +1293,7 @@ microsoft.scvmm.scvmm_compliance_scan:
         device_type: "ComplianceScan"
       }
     }
-microsoft.scvmm.scvmm_compliance_info:
+stevefulme1.svcmm.scvmm_compliance_info:
   query: >-
     .compliance[] | {
       name: ("scvmm_compliance_info:" + (.id | tostring)),
@@ -1311,7 +1311,7 @@ microsoft.scvmm.scvmm_compliance_info:
 # ---------------------------------------------------------------------------
 # Bare Metal
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_pxe_server:
+stevefulme1.svcmm.scvmm_pxe_server:
   query: >-
     .server | select(. != null) | {
       name: ("scvmm_pxe_server:" + (.id | tostring)),
@@ -1325,7 +1325,7 @@ microsoft.scvmm.scvmm_pxe_server:
         device_type: "PXEServer"
       }
     }
-microsoft.scvmm.scvmm_pxe_server_info:
+stevefulme1.svcmm.scvmm_pxe_server_info:
   query: >-
     .servers[] | {
       name: ("scvmm_pxe_server_info:" + (.id | tostring)),
@@ -1339,7 +1339,7 @@ microsoft.scvmm.scvmm_pxe_server_info:
         device_type: "PXEServer"
       }
     }
-microsoft.scvmm.scvmm_physical_computer_profile:
+stevefulme1.svcmm.scvmm_physical_computer_profile:
   query: >-
     .profile | select(. != null) | {
       name: ("scvmm_physical_computer_profile:" + (.id | tostring)),
@@ -1353,7 +1353,7 @@ microsoft.scvmm.scvmm_physical_computer_profile:
         device_type: "PhysicalComputerProfile"
       }
     }
-microsoft.scvmm.scvmm_physical_computer_profile_info:
+stevefulme1.svcmm.scvmm_physical_computer_profile_info:
   query: >-
     .profiles[] | {
       name: ("scvmm_physical_computer_profile_info:" + (.id | tostring)),
@@ -1371,7 +1371,7 @@ microsoft.scvmm.scvmm_physical_computer_profile_info:
 # ---------------------------------------------------------------------------
 # Infrastructure & Config
 # ---------------------------------------------------------------------------
-microsoft.scvmm.scvmm_custom_property:
+stevefulme1.svcmm.scvmm_custom_property:
   query: >-
     .property | select(. != null) | {
       name: ("scvmm_custom_property:" + (.id | tostring)),
@@ -1385,7 +1385,7 @@ microsoft.scvmm.scvmm_custom_property:
         device_type: "CustomProperty"
       }
     }
-microsoft.scvmm.scvmm_custom_property_info:
+stevefulme1.svcmm.scvmm_custom_property_info:
   query: >-
     .properties[] | {
       name: ("scvmm_custom_property_info:" + (.id | tostring)),
@@ -1399,7 +1399,7 @@ microsoft.scvmm.scvmm_custom_property_info:
         device_type: "CustomProperty"
       }
     }
-microsoft.scvmm.scvmm_servicing_window:
+stevefulme1.svcmm.scvmm_servicing_window:
   query: >-
     .window | select(. != null) | {
       name: ("scvmm_servicing_window:" + (.id | tostring)),
@@ -1413,7 +1413,7 @@ microsoft.scvmm.scvmm_servicing_window:
         device_type: "ServicingWindow"
       }
     }
-microsoft.scvmm.scvmm_servicing_window_info:
+stevefulme1.svcmm.scvmm_servicing_window_info:
   query: >-
     .windows[] | {
       name: ("scvmm_servicing_window_info:" + (.id | tostring)),
@@ -1427,7 +1427,7 @@ microsoft.scvmm.scvmm_servicing_window_info:
         device_type: "ServicingWindow"
       }
     }
-microsoft.scvmm.scvmm_job_info:
+stevefulme1.svcmm.scvmm_job_info:
   query: >-
     .jobs[] | {
       name: ("scvmm_job_info:" + (.id | tostring)),

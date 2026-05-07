@@ -71,7 +71,7 @@ description:
   - Longer description of the module.
   - Can be multiple paragraphs.
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -82,7 +82,7 @@ options:
 
 EXAMPLES = r'''
 - name: Example task
-  microsoft.scvmm.scvmm_example:
+  stevefulme1.svcmm.scvmm_example:
     scvmm_server: scvmm01.example.com
     name: example_resource
     state: present

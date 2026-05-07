@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   logical_network:
     description:
@@ -31,12 +31,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all logical network definitions
-  microsoft.scvmm.scvmm_logical_network_definition_info:
+  stevefulme1.svcmm.scvmm_logical_network_definition_info:
     scvmm_server: scvmm01.example.com
   register: net_defs
 
 - name: Get definitions for a specific logical network
-  microsoft.scvmm.scvmm_logical_network_definition_info:
+  stevefulme1.svcmm.scvmm_logical_network_definition_info:
     scvmm_server: scvmm01.example.com
     logical_network: Corp-Network
   register: corp_defs

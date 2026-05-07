@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -38,13 +38,13 @@ options:
 
 EXAMPLES = r"""
 - name: Create a storage classification
-  microsoft.scvmm.scvmm_storage_classification:
+  stevefulme1.svcmm.scvmm_storage_classification:
     scvmm_server: scvmm01.example.com
     name: Gold-Storage
     description: High-performance SSD storage
 
 - name: Remove a storage classification
-  microsoft.scvmm.scvmm_storage_classification:
+  stevefulme1.svcmm.scvmm_storage_classification:
     scvmm_server: scvmm01.example.com
     name: Gold-Storage
     state: absent

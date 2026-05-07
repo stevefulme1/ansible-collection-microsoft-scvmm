@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   vm_host:
     description:
@@ -28,7 +28,7 @@ options:
 
 EXAMPLES = r"""
 - name: List all network adapters on a host
-  microsoft.scvmm.scvmm_host_network_adapter_info:
+  stevefulme1.svcmm.scvmm_host_network_adapter_info:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv01.example.com
   register: adapters

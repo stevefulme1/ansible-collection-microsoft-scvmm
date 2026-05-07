@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all storage classifications
-  microsoft.scvmm.scvmm_storage_classification_info:
+  stevefulme1.svcmm.scvmm_storage_classification_info:
     scvmm_server: scvmm01.example.com
   register: classifications
 
 - name: Get a specific storage classification
-  microsoft.scvmm.scvmm_storage_classification_info:
+  stevefulme1.svcmm.scvmm_storage_classification_info:
     scvmm_server: scvmm01.example.com
     name: Gold-Storage
   register: gold_class

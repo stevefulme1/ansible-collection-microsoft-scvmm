@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -43,20 +43,20 @@ options:
 
 EXAMPLES = r"""
 - name: Create a service template
-  microsoft.scvmm.scvmm_service_template:
+  stevefulme1.svcmm.scvmm_service_template:
     scvmm_server: scvmm01.example.com
     name: Three-Tier-App
     description: Three-tier web application template
     release: "1.0.0"
 
 - name: Update service template release
-  microsoft.scvmm.scvmm_service_template:
+  stevefulme1.svcmm.scvmm_service_template:
     scvmm_server: scvmm01.example.com
     name: Three-Tier-App
     release: "1.1.0"
 
 - name: Remove a service template
-  microsoft.scvmm.scvmm_service_template:
+  stevefulme1.svcmm.scvmm_service_template:
     scvmm_server: scvmm01.example.com
     name: Three-Tier-App
     state: absent

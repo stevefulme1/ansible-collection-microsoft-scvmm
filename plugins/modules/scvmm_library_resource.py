@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   source_path:
     description:
@@ -38,13 +38,13 @@ options:
 
 EXAMPLES = r"""
 - name: Import an ISO into the library
-  microsoft.scvmm.scvmm_library_resource:
+  stevefulme1.svcmm.scvmm_library_resource:
     scvmm_server: scvmm01.example.com
     source_path: "\\\\fileserver\\staging\\rhel-9.4-x86_64-dvd.iso"
     library_share: "\\\\lib01.example.com\\MSSCVMMLibrary"
 
 - name: Import a VHD and overwrite if it exists
-  microsoft.scvmm.scvmm_library_resource:
+  stevefulme1.svcmm.scvmm_library_resource:
     scvmm_server: scvmm01.example.com
     source_path: "C:\\Exports\\base-image.vhdx"
     library_share: "\\\\lib01.example.com\\MSSCVMMLibrary"

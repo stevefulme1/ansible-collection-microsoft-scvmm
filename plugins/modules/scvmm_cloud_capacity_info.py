@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   cloud:
     description:
@@ -28,7 +28,7 @@ options:
 
 EXAMPLES = r"""
 - name: Get capacity and usage for a cloud
-  microsoft.scvmm.scvmm_cloud_capacity_info:
+  stevefulme1.svcmm.scvmm_cloud_capacity_info:
     scvmm_server: scvmm01.example.com
     cloud: Production
   register: capacity

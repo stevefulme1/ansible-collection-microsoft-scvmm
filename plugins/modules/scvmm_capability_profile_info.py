@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -29,12 +29,12 @@ options:
 
 EXAMPLES = r"""
 - name: Get all capability profiles
-  microsoft.scvmm.scvmm_capability_profile_info:
+  stevefulme1.svcmm.scvmm_capability_profile_info:
     scvmm_server: scvmm01.example.com
   register: cap_profiles
 
 - name: Get a specific capability profile
-  microsoft.scvmm.scvmm_capability_profile_info:
+  stevefulme1.svcmm.scvmm_capability_profile_info:
     scvmm_server: scvmm01.example.com
     name: HyperV-Gen2
   register: cap_profile

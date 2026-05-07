@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -54,7 +54,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a dynamic VHDX
-  microsoft.scvmm.scvmm_virtual_hard_disk:
+  stevefulme1.svcmm.scvmm_virtual_hard_disk:
     scvmm_server: scvmm01.example.com
     name: data-disk-01
     size_gb: 100

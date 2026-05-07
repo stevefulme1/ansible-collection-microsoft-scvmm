@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -56,7 +56,7 @@ options:
 
 EXAMPLES = r"""
 - name: Register a load balancer
-  microsoft.scvmm.scvmm_load_balancer:
+  stevefulme1.svcmm.scvmm_load_balancer:
     scvmm_server: scvmm01.example.com
     name: Prod-LB-01
     address: lb01.example.com
@@ -66,7 +66,7 @@ EXAMPLES = r"""
     credential: LB-RunAs
 
 - name: Remove a load balancer
-  microsoft.scvmm.scvmm_load_balancer:
+  stevefulme1.svcmm.scvmm_load_balancer:
     scvmm_server: scvmm01.example.com
     name: Prod-LB-01
     state: absent

@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -26,7 +26,7 @@ options:
 
 EXAMPLES = r"""
 - name: List all logical networks
-  microsoft.scvmm.scvmm_logical_network_info:
+  stevefulme1.svcmm.scvmm_logical_network_info:
     scvmm_server: scvmm01.example.com
   register: networks
 """

@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all host clusters
-  microsoft.scvmm.scvmm_host_cluster_info:
+  stevefulme1.svcmm.scvmm_host_cluster_info:
     scvmm_server: scvmm01.example.com
   register: clusters
 
 - name: Get a specific host cluster
-  microsoft.scvmm.scvmm_host_cluster_info:
+  stevefulme1.svcmm.scvmm_host_cluster_info:
     scvmm_server: scvmm01.example.com
     name: cluster01.example.com
   register: cluster

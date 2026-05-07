@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -41,21 +41,21 @@ options:
 
 EXAMPLES = r"""
 - name: Create a checkpoint
-  microsoft.scvmm.scvmm_vm_checkpoint:
+  stevefulme1.svcmm.scvmm_vm_checkpoint:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     name: pre-upgrade
     description: Before applying patches
 
 - name: Restore a checkpoint
-  microsoft.scvmm.scvmm_vm_checkpoint:
+  stevefulme1.svcmm.scvmm_vm_checkpoint:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     name: pre-upgrade
     state: restored
 
 - name: Delete a checkpoint
-  microsoft.scvmm.scvmm_vm_checkpoint:
+  stevefulme1.svcmm.scvmm_vm_checkpoint:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     name: pre-upgrade

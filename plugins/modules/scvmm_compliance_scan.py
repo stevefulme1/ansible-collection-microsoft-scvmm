@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   vm_host:
     description:
@@ -35,12 +35,12 @@ options:
 
 EXAMPLES = r"""
 - name: Scan a single host for compliance
-  microsoft.scvmm.scvmm_compliance_scan:
+  stevefulme1.svcmm.scvmm_compliance_scan:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv01.example.com
 
 - name: Scan a cluster against a specific baseline
-  microsoft.scvmm.scvmm_compliance_scan:
+  stevefulme1.svcmm.scvmm_compliance_scan:
     scvmm_server: scvmm01.example.com
     host_cluster: ProductionCluster
     baseline: Security Updates Q1

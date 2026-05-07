@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -47,7 +47,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a SQL Server profile
-  microsoft.scvmm.scvmm_sql_profile:
+  stevefulme1.svcmm.scvmm_sql_profile:
     scvmm_server: scvmm01.example.com
     name: AppDB-Profile
     description: SQL profile for application database tier
@@ -55,13 +55,13 @@ EXAMPLES = r"""
     deployment_order: 1
 
 - name: Update a SQL Server profile
-  microsoft.scvmm.scvmm_sql_profile:
+  stevefulme1.svcmm.scvmm_sql_profile:
     scvmm_server: scvmm01.example.com
     name: AppDB-Profile
     deployment_order: 2
 
 - name: Remove a SQL Server profile
-  microsoft.scvmm.scvmm_sql_profile:
+  stevefulme1.svcmm.scvmm_sql_profile:
     scvmm_server: scvmm01.example.com
     name: AppDB-Profile
     state: absent

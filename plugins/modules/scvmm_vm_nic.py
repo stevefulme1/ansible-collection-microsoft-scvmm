@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -54,14 +54,14 @@ options:
 
 EXAMPLES = r"""
 - name: Add a NIC to a VM
-  microsoft.scvmm.scvmm_vm_nic:
+  stevefulme1.svcmm.scvmm_vm_nic:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     name: NIC-1
     vm_network: App-Network
 
 - name: Remove a NIC from a VM
-  microsoft.scvmm.scvmm_vm_nic:
+  stevefulme1.svcmm.scvmm_vm_nic:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     name: NIC-1

@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   recent:
     description:
@@ -36,19 +36,19 @@ options:
 
 EXAMPLES = r"""
 - name: Get the 10 most recent jobs
-  microsoft.scvmm.scvmm_job_info:
+  stevefulme1.svcmm.scvmm_job_info:
     scvmm_server: scvmm01.example.com
     recent: 10
   register: recent_jobs
 
 - name: Get all failed jobs
-  microsoft.scvmm.scvmm_job_info:
+  stevefulme1.svcmm.scvmm_job_info:
     scvmm_server: scvmm01.example.com
     status: Failed
   register: failed_jobs
 
 - name: Get a specific job by ID
-  microsoft.scvmm.scvmm_job_info:
+  stevefulme1.svcmm.scvmm_job_info:
     scvmm_server: scvmm01.example.com
     job_id: "12345678-abcd-1234-efgh-123456789012"
   register: job

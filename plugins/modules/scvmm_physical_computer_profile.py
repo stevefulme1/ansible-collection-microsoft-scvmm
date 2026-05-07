@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -54,7 +54,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a bare metal deployment profile
-  microsoft.scvmm.scvmm_physical_computer_profile:
+  stevefulme1.svcmm.scvmm_physical_computer_profile:
     scvmm_server: scvmm01.example.com
     name: HyperV-Server-2025
     description: Standard Hyper-V host deployment
@@ -64,7 +64,7 @@ EXAMPLES = r"""
     computer_access_credential: deploy-runas
 
 - name: Remove a deployment profile
-  microsoft.scvmm.scvmm_physical_computer_profile:
+  stevefulme1.svcmm.scvmm_physical_computer_profile:
     scvmm_server: scvmm01.example.com
     name: HyperV-Server-2025
     state: absent

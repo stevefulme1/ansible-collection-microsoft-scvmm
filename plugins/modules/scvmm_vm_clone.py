@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   source_vm:
     description:
@@ -49,7 +49,7 @@ options:
 
 EXAMPLES = r"""
 - name: Clone a VM to a specific host
-  microsoft.scvmm.scvmm_vm_clone:
+  stevefulme1.svcmm.scvmm_vm_clone:
     scvmm_server: scvmm01.example.com
     source_vm: template-web-01
     name: web-server-02
@@ -57,7 +57,7 @@ EXAMPLES = r"""
     description: Cloned web server for staging
 
 - name: Clone a VM into a cloud
-  microsoft.scvmm.scvmm_vm_clone:
+  stevefulme1.svcmm.scvmm_vm_clone:
     scvmm_server: scvmm01.example.com
     source_vm: base-linux-vm
     name: linux-dev-01

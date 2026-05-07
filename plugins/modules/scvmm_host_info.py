@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.svcmm.scvmm_connection
 options:
   name:
     description:
@@ -30,12 +30,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all Hyper-V hosts
-  microsoft.scvmm.scvmm_host_info:
+  stevefulme1.svcmm.scvmm_host_info:
     scvmm_server: scvmm01.example.com
   register: hosts
 
 - name: Get hosts in a specific group
-  microsoft.scvmm.scvmm_host_info:
+  stevefulme1.svcmm.scvmm_host_info:
     scvmm_server: scvmm01.example.com
     host_group: All Hosts\\Production-DC1
   register: prod_hosts
