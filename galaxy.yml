@@ -1,7 +1,7 @@
 ---
 namespace: stevefulme1
 name: svcmm
-version: 0.4.0
+version: 0.4.1
 readme: README.md
 authors:
   - Steve Fulmer <sfulmer@redhat.com>
