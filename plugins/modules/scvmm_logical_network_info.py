@@ -29,6 +29,20 @@ EXAMPLES = r"""
   stevefulme1.svcmm.scvmm_logical_network_info:
     scvmm_server: scvmm01.example.com
   register: networks
+
+- name: Get details of the management logical network
+  stevefulme1.svcmm.scvmm_logical_network_info:
+    scvmm_server: scvmm01.example.com
+    name: Management Network
+  register: mgmt_network
+
+- name: Get production VLAN network details with explicit credentials
+  stevefulme1.svcmm.scvmm_logical_network_info:
+    scvmm_server: scvmm01.example.com
+    scvmm_username: svc_ansible@contoso.com
+    scvmm_password: "{{ vault_scvmm_password }}"
+    name: Production VLAN
+  register: prod_network
 """
 
 RETURN = r"""

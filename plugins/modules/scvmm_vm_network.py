@@ -48,12 +48,27 @@ options:
 """
 
 EXAMPLES = r"""
-- name: Create a VM network
+- name: Create a VM network bound to the production logical network
   stevefulme1.svcmm.scvmm_vm_network:
     scvmm_server: scvmm01.example.com
-    name: App-Network
-    logical_network: Corp-Network
-    description: Application tier network
+    name: Production VLAN
+    logical_network: Management Network
+    description: Production workload network
+    isolation_type: VLANNetwork
+
+- name: Create a VM network with no isolation for dev workloads
+  stevefulme1.svcmm.scvmm_vm_network:
+    scvmm_server: scvmm01.example.com
+    name: Dev-Network
+    logical_network: Management Network
+    description: Development environment network
+    isolation_type: NoIsolation
+
+- name: Remove a VM network
+  stevefulme1.svcmm.scvmm_vm_network:
+    scvmm_server: scvmm01.example.com
+    name: Dev-Network
+    state: absent
 """
 
 RETURN = r"""

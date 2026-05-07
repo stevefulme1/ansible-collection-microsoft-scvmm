@@ -29,6 +29,19 @@ EXAMPLES = r"""
   stevefulme1.svcmm.scvmm_cloud_info:
     scvmm_server: scvmm01.example.com
   register: clouds
+
+- name: Get details of a specific cloud
+  stevefulme1.svcmm.scvmm_cloud_info:
+    scvmm_server: scvmm01.example.com
+    name: Production Cloud
+  register: prod_cloud
+
+- name: List clouds using WinRM credentials
+  stevefulme1.svcmm.scvmm_cloud_info:
+    scvmm_server: scvmm01.example.com
+    scvmm_username: svc_ansible@contoso.com
+    scvmm_password: "{{ vault_scvmm_password }}"
+  register: clouds
 """
 
 RETURN = r"""

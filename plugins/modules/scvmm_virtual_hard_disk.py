@@ -53,13 +53,28 @@ options:
 """
 
 EXAMPLES = r"""
-- name: Create a dynamic VHDX
+- name: Create a dynamic VHDX for a database server
   stevefulme1.svcmm.scvmm_virtual_hard_disk:
     scvmm_server: scvmm01.example.com
-    name: data-disk-01
-    size_gb: 100
+    name: db-server-01-data
+    size_gb: 500
     disk_type: Dynamic
     format: VHDX
+    path: "\\\\library.contoso.com\\VHDs"
+
+- name: Create a fixed-size VHD for high-performance workloads
+  stevefulme1.svcmm.scvmm_virtual_hard_disk:
+    scvmm_server: scvmm01.example.com
+    name: web-server-01-os
+    size_gb: 80
+    disk_type: Fixed
+    format: VHDX
+
+- name: Remove a virtual hard disk
+  stevefulme1.svcmm.scvmm_virtual_hard_disk:
+    scvmm_server: scvmm01.example.com
+    name: db-server-01-data
+    state: absent
 """
 
 RETURN = r"""

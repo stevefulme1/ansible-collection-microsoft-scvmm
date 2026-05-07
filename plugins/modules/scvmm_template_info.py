@@ -29,6 +29,20 @@ EXAMPLES = r"""
   stevefulme1.svcmm.scvmm_template_info:
     scvmm_server: scvmm01.example.com
   register: templates
+
+- name: Get details of a specific Windows template
+  stevefulme1.svcmm.scvmm_template_info:
+    scvmm_server: scvmm01.example.com
+    name: Windows2022-Template
+  register: win_template
+
+- name: Get a Linux template using explicit credentials
+  stevefulme1.svcmm.scvmm_template_info:
+    scvmm_server: scvmm01.example.com
+    scvmm_username: svc_ansible@contoso.com
+    scvmm_password: "{{ vault_scvmm_password }}"
+    name: Ubuntu2204-Template
+  register: linux_template
 """
 
 RETURN = r"""
