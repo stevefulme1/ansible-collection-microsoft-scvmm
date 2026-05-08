@@ -80,6 +80,7 @@ if ($state -eq 'present') {
             $module.Diff.after = $module.Diff.before
         }
     }
+    $module.Result.virtual_hard_disk = $module.Diff.after
 }
 else {
     if ($null -ne $current) {

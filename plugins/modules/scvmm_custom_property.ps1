@@ -77,6 +77,7 @@ try {
                 MemberType = $module.Params.member_type
             }
         }
+        $module.Result.custom_property = $module.Diff.after
     }
 
     $module.ExitJson()

@@ -86,6 +86,7 @@ if ($state -eq 'present') {
             $module.Diff.after = $module.Diff.before
         }
     }
+    $module.Result.service = $module.Diff.after
 }
 else {
     if ($null -ne $current) {

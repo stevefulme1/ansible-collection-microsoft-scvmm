@@ -109,6 +109,7 @@ try {
                 Category = $module.Params.category
             }
         }
+        $module.Result.servicing_window = $module.Diff.after
     }
 
     $module.ExitJson()

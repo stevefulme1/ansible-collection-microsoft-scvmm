@@ -80,6 +80,7 @@ try {
                 Port = $module.Params.port
             }
         }
+        $module.Result.update_server = $module.Diff.after
     }
 
     $module.ExitJson()

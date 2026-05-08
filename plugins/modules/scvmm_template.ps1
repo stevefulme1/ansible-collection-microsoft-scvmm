@@ -20,6 +20,7 @@ $spec = @{
         state = @{ type = 'str'; default = 'present'; choices = @('present', 'absent') }
         vhd = @{ type = 'str' }
     }
+    mutually_exclusive = @(, @("source_vm", "vhd"))
     supports_check_mode = $true
 }
 

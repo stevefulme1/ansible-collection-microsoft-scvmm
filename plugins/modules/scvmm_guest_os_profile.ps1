@@ -89,6 +89,7 @@ if ($state -eq 'present') {
             $module.Diff.after = $module.Diff.before
         }
     }
+    $module.Result.profile = $module.Diff.after
 }
 else {
     if ($null -ne $current) {

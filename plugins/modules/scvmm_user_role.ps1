@@ -92,6 +92,7 @@ try {
                 Members = $module.Params.members
             }
         }
+        $module.Result.user_role = $module.Diff.after
     }
 
     $module.ExitJson()

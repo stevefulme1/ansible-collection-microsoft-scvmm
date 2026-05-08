@@ -76,6 +76,7 @@ try {
                 Description = $module.Params.description
             }
         }
+        $module.Result.baseline = $module.Diff.after
     }
 
     $module.ExitJson()

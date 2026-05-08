@@ -73,6 +73,7 @@ if ($state -eq 'present') {
             $module.Diff.after = $module.Diff.before
         }
     }
+    $module.Result.storage_classification = $module.Diff.after
 }
 else {
     if ($null -ne $current) {

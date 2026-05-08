@@ -83,6 +83,7 @@ try {
                 UserName = $module.Params.username
             }
         }
+        $module.Result.run_as_account = $module.Diff.after
     }
 
     $module.ExitJson()

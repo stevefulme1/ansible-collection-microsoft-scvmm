@@ -45,12 +45,20 @@ try {
     }
     elseif ($module.Params.state -eq 'restored') {
         if ($existing) {
+            $module.Result.changed = $true
             if (-not $module.CheckMode) {
                 Restore-SCVMCheckpoint -VMCheckpoint $existing -ErrorAction Stop
                 $existing = Get-SCVMCheckpoint -VM $vm -Name $module.Params.name -ErrorAction SilentlyContinue
             }
-            $module.Result.changed = $true
-            $module.Result.checkpoint = ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'VM', 'CreationTime', 'ID')
+            $module.Result.checkpoint = if ($existing) {
+                ConvertTo-SCVMMDict -InputObject $existing -Properties @('Name', 'Description', 'VM', 'CreationTime', 'ID')
+            }
+            else {
+                @{
+                    Name = $module.Params.name
+                    VM = $module.Params.vm_name
+                }
+            }
             $module.Diff.after = $module.Result.checkpoint
         }
         else {

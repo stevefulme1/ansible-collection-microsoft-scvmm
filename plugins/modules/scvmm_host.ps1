@@ -78,7 +78,7 @@ try {
                 }
             }
 
-            if ($reassociate) {
+            if ($reassociate -and $vmHost.OverallState -ne 'Ok') {
                 $changed = $true
                 if (-not $module.CheckMode) {
                     $params = @{

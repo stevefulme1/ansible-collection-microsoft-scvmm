@@ -97,6 +97,7 @@ try {
                 VMCount = $module.Params.vm_count
             }
         }
+        $module.Result.quota = $module.Diff.after
     }
 
     $module.ExitJson()

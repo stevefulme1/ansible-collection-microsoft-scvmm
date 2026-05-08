@@ -12,7 +12,9 @@ $spec = @{
         description = @{ type = 'str' }
         host_group = @{ type = 'str' }
         name = @{ type = 'str'; required = $true }
+        path = @{ type = 'str' }
         source_vm = @{ type = 'str'; required = $true }
+        start_vm = @{ type = 'bool'; default = $false }
         vm_host = @{ type = 'str' }
     }
     supports_check_mode = $true

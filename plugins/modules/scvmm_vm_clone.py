@@ -37,6 +37,15 @@ options:
     description:
       - Host group where the cloned VM should be placed.
     type: str
+  path:
+    description:
+      - Destination path on the host for the cloned VM files.
+    type: str
+  start_vm:
+    description:
+      - Whether to start the cloned VM after creation.
+    type: bool
+    default: false
   vm_host:
     description:
       - Specific Hyper-V host for the cloned VM.

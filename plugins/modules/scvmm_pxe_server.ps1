@@ -60,6 +60,7 @@ try {
                 ComputerName = $module.Params.computer_name
             }
         }
+        $module.Result.pxe_server = $module.Diff.after
     }
 
     $module.ExitJson()
