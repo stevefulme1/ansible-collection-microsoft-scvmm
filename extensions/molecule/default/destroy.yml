@@ -1,0 +1,18 @@
+---
+# Molecule destroy playbook — clean up any leftover test VMs.
+
+- name: Destroy — clean up SCVMM test resources
+  hosts: scvmm
+  gather_facts: false
+
+  vars:
+    scvmm_server: "{{ ansible_host }}"
+
+  tasks:
+    - name: Remove any leftover molecule test VMs
+      microsoft.scvmm.scvmm_vm:
+        scvmm_server: "{{ scvmm_server }}"
+        name: "{{ molecule_test_vm }}"
+        state: absent
+      when: molecule_test_vm is defined
+      ignore_errors: true  # noqa ignore-errors — best-effort cleanup

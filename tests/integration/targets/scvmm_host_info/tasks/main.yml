@@ -1,0 +1,39 @@
+---
+# Integration tests for scvmm_host_info — read-only host info retrieval (safe).
+
+- name: List all Hyper-V hosts
+  microsoft.scvmm.scvmm_host_info:
+    scvmm_server: "{{ scvmm_server }}"
+  register: all_hosts
+
+- name: Verify host list is returned
+  ansible.builtin.assert:
+    that:
+      - all_hosts.hosts is defined
+      - all_hosts.hosts is iterable
+
+- name: Retrieve a specific host (if any exist)
+  microsoft.scvmm.scvmm_host_info:
+    scvmm_server: "{{ scvmm_server }}"
+    name: "{{ all_hosts.hosts[0].name }}"
+  register: single_host
+  when: all_hosts.hosts | length > 0
+
+- name: Verify specific host retrieval
+  ansible.builtin.assert:
+    that:
+      - single_host.hosts | length == 1
+  when: all_hosts.hosts | length > 0
+
+- name: Filter hosts by host group (if any exist)
+  microsoft.scvmm.scvmm_host_info:
+    scvmm_server: "{{ scvmm_server }}"
+    host_group: "{{ all_hosts.hosts[0].host_group }}"
+  register: group_hosts
+  when: all_hosts.hosts | length > 0
+
+- name: Verify host group filter
+  ansible.builtin.assert:
+    that:
+      - group_hosts.hosts | length >= 1
+  when: all_hosts.hosts | length > 0
