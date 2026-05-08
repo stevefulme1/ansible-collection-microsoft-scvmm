@@ -1,6 +1,35 @@
 ---
 ancestor: null
 releases:
+  0.5.0:
+    release_date: "2026-05-08"
+    changes:
+      release_summary: >-
+        Bug fixes for module parameter handling, return data population,
+        check mode safety, and idempotency improvements.
+      bugfixes:
+        - scvmm_vm_clone - Declare ``path`` and ``start_vm`` parameters
+          in both PS1 spec and Python DOCUMENTATION.
+        - scvmm_template - Add ``mutually_exclusive`` constraint for
+          ``source_vm`` and ``vhd`` parameters.
+        - scvmm_vm_checkpoint - Add check mode guard for restore action
+          to prevent destructive operations during dry runs.
+        - scvmm_host - Fix ``reassociate`` always reporting changed by
+          checking host ``OverallState`` before triggering reassociation.
+        - 21 modules - Populate ``$module.Result`` with resource data in
+          present-state blocks so RETURN values are actually returned.
+  0.4.0:
+    release_date: "2026-05-07"
+    changes:
+      release_summary: >-
+        Converted all modules to native PowerShell using Ansible.Basic
+        framework. Added expanded examples to all modules.
+      major_changes:
+        - All modules converted from Python-shim to native PowerShell
+          using the Ansible.Basic framework for typed parameter binding.
+      minor_changes:
+        - Expanded all module examples from 1 to 2-3 per module.
+        - Updated namespace to stevefulme1.svcmm for Galaxy publishing.
   0.3.0:
     release_date: "2026-04-11"
     changes:
