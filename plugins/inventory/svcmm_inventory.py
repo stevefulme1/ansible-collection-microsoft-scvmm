@@ -7,12 +7,12 @@
 """svcmm dynamic inventory plugin."""
 
 from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
 DOCUMENTATION = r"""
 ---
 name: svcmm_inventory
-plugin_type: inventory
 short_description: SCVMM managed VMs and Hyper-V hosts
 description:
     - Dynamically discovers SCVMM managed VMs and Hyper-V hosts.
@@ -59,6 +59,7 @@ from ansible.plugins.inventory import BaseInventoryPlugin
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
