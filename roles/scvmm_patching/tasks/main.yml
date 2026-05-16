@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_patching
+# Rolling patch management for Hyper-V hosts
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_patching_host is defined
+    fail_msg: "scvmm_patching_host must be defined"
+    quiet: true
+
+- name: Execute scvmm patching
+  ansible.builtin.debug:
+    msg: >-
+      Rolling patch management for Hyper-V hosts.
+      Target: {{ scvmm_patching_host }}

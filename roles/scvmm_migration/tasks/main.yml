@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_migration
+# Live migrate VMs between hosts
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_migration_host is defined
+    fail_msg: "scvmm_migration_host must be defined"
+    quiet: true
+
+- name: Execute scvmm migration
+  ansible.builtin.debug:
+    msg: >-
+      Live migrate VMs between hosts.
+      Target: {{ scvmm_migration_host }}

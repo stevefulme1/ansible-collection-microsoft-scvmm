@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_monitoring
+# Configure SCOM monitoring integration
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_monitoring_host is defined
+    fail_msg: "scvmm_monitoring_host must be defined"
+    quiet: true
+
+- name: Execute scvmm monitoring
+  ansible.builtin.debug:
+    msg: >-
+      Configure SCOM monitoring integration.
+      Target: {{ scvmm_monitoring_host }}

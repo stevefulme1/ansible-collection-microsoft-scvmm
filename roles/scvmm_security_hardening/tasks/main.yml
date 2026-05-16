@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_security_hardening
+# Apply security policies and shielded VMs
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_security_hardening_host is defined
+    fail_msg: "scvmm_security_hardening_host must be defined"
+    quiet: true
+
+- name: Execute scvmm security hardening
+  ansible.builtin.debug:
+    msg: >-
+      Apply security policies and shielded VMs.
+      Target: {{ scvmm_security_hardening_host }}

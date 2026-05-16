@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_backup_setup
+# Configure DPM backup integration
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_backup_setup_host is defined
+    fail_msg: "scvmm_backup_setup_host must be defined"
+    quiet: true
+
+- name: Execute scvmm backup setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure DPM backup integration.
+      Target: {{ scvmm_backup_setup_host }}

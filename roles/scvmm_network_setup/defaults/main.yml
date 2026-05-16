@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_network_setup
+
+# Target host
+scvmm_network_setup_host: ""
+
+# Authentication
+scvmm_network_setup_username: ""
+scvmm_network_setup_password: ""
+scvmm_network_setup_api_key: ""
+
+# Behavior
+scvmm_network_setup_validate_certs: true
+scvmm_network_setup_state: present

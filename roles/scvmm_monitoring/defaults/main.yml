@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_monitoring
+
+# Target host
+scvmm_monitoring_host: ""
+
+# Authentication
+scvmm_monitoring_username: ""
+scvmm_monitoring_password: ""
+scvmm_monitoring_api_key: ""
+
+# Behavior
+scvmm_monitoring_validate_certs: true
+scvmm_monitoring_state: present

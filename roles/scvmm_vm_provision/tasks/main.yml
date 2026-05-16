@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_vm_provision
+# Deploy VMs from templates
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_vm_provision_host is defined
+    fail_msg: "scvmm_vm_provision_host must be defined"
+    quiet: true
+
+- name: Execute scvmm vm provision
+  ansible.builtin.debug:
+    msg: >-
+      Deploy VMs from templates.
+      Target: {{ scvmm_vm_provision_host }}

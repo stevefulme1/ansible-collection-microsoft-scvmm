@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_vm_provision
+
+# Target host
+scvmm_vm_provision_host: ""
+
+# Authentication
+scvmm_vm_provision_username: ""
+scvmm_vm_provision_password: ""
+scvmm_vm_provision_api_key: ""
+
+# Behavior
+scvmm_vm_provision_validate_certs: true
+scvmm_vm_provision_state: present

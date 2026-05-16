@@ -1,0 +1,27 @@
+---
+argument_specs:
+  main:
+    short_description: "Deploy VMs from templates"
+    options:
+      scvmm_vm_provision_host:
+        description: Target host address
+        type: str
+        required: true
+      scvmm_vm_provision_username:
+        description: Authentication username
+        type: str
+      scvmm_vm_provision_password:
+        description: Authentication password
+        type: str
+      scvmm_vm_provision_api_key:
+        description: API key for authentication
+        type: str
+      scvmm_vm_provision_validate_certs:
+        description: Validate SSL certificates
+        type: bool
+        default: true
+      scvmm_vm_provision_state:
+        description: Desired state
+        type: str
+        default: present
+        choices: [present, absent]

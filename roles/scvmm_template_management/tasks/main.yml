@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_template_management
+# Create and manage VM templates
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_template_management_host is defined
+    fail_msg: "scvmm_template_management_host must be defined"
+    quiet: true
+
+- name: Execute scvmm template management
+  ansible.builtin.debug:
+    msg: >-
+      Create and manage VM templates.
+      Target: {{ scvmm_template_management_host }}

@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_cloud_setup
+
+# Target host
+scvmm_cloud_setup_host: ""
+
+# Authentication
+scvmm_cloud_setup_username: ""
+scvmm_cloud_setup_password: ""
+scvmm_cloud_setup_api_key: ""
+
+# Behavior
+scvmm_cloud_setup_validate_certs: true
+scvmm_cloud_setup_state: present

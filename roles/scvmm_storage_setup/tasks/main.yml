@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_storage_setup
+# Configure storage classifications
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_storage_setup_host is defined
+    fail_msg: "scvmm_storage_setup_host must be defined"
+    quiet: true
+
+- name: Execute scvmm storage setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure storage classifications.
+      Target: {{ scvmm_storage_setup_host }}

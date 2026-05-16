@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_migration
+
+# Target host
+scvmm_migration_host: ""
+
+# Authentication
+scvmm_migration_username: ""
+scvmm_migration_password: ""
+scvmm_migration_api_key: ""
+
+# Behavior
+scvmm_migration_validate_certs: true
+scvmm_migration_state: present

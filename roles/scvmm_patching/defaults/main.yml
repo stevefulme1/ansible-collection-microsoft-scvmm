@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_patching
+
+# Target host
+scvmm_patching_host: ""
+
+# Authentication
+scvmm_patching_username: ""
+scvmm_patching_password: ""
+scvmm_patching_api_key: ""
+
+# Behavior
+scvmm_patching_validate_certs: true
+scvmm_patching_state: present

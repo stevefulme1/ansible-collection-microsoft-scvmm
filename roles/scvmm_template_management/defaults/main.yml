@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_template_management
+
+# Target host
+scvmm_template_management_host: ""
+
+# Authentication
+scvmm_template_management_username: ""
+scvmm_template_management_password: ""
+scvmm_template_management_api_key: ""
+
+# Behavior
+scvmm_template_management_validate_certs: true
+scvmm_template_management_state: present

@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_security_hardening
+
+# Target host
+scvmm_security_hardening_host: ""
+
+# Authentication
+scvmm_security_hardening_username: ""
+scvmm_security_hardening_password: ""
+scvmm_security_hardening_api_key: ""
+
+# Behavior
+scvmm_security_hardening_validate_certs: true
+scvmm_security_hardening_state: present

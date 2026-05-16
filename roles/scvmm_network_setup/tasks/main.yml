@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_network_setup
+# Configure logical networks and VM networks
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_network_setup_host is defined
+    fail_msg: "scvmm_network_setup_host must be defined"
+    quiet: true
+
+- name: Execute scvmm network setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure logical networks and VM networks.
+      Target: {{ scvmm_network_setup_host }}

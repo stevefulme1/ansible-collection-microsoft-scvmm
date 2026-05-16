@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_storage_setup
+
+# Target host
+scvmm_storage_setup_host: ""
+
+# Authentication
+scvmm_storage_setup_username: ""
+scvmm_storage_setup_password: ""
+scvmm_storage_setup_api_key: ""
+
+# Behavior
+scvmm_storage_setup_validate_certs: true
+scvmm_storage_setup_state: present

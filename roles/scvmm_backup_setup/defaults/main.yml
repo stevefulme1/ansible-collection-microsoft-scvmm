@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for scvmm_backup_setup
+
+# Target host
+scvmm_backup_setup_host: ""
+
+# Authentication
+scvmm_backup_setup_username: ""
+scvmm_backup_setup_password: ""
+scvmm_backup_setup_api_key: ""
+
+# Behavior
+scvmm_backup_setup_validate_certs: true
+scvmm_backup_setup_state: present

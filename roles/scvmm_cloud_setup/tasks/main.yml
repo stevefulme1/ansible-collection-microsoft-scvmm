@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for scvmm_cloud_setup
+# Configure SCVMM clouds and host groups
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_cloud_setup_host is defined
+    fail_msg: "scvmm_cloud_setup_host must be defined"
+    quiet: true
+
+- name: Execute scvmm cloud setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure SCVMM clouds and host groups.
+      Target: {{ scvmm_cloud_setup_host }}
