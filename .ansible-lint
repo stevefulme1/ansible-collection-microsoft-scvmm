@@ -7,3 +7,4 @@ exclude_paths:
 
 warn_list:
   - var-naming[no-role-prefix]
+  - jinja[invalid]
