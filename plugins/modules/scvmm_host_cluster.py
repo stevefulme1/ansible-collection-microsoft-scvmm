@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -46,7 +46,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a host cluster
-  microsoft.scvmm.scvmm_host_cluster:
+  stevefulme1.scvmm.scvmm_host_cluster:
     scvmm_server: scvmm01.example.com
     name: cluster01.example.com
     host_group: All Hosts\\Production
@@ -54,13 +54,13 @@ EXAMPLES = r"""
     cluster_reserve: 1
 
 - name: Update cluster reserve setting
-  microsoft.scvmm.scvmm_host_cluster:
+  stevefulme1.scvmm.scvmm_host_cluster:
     scvmm_server: scvmm01.example.com
     name: cluster01.example.com
     cluster_reserve: 2
 
 - name: Remove a host cluster
-  microsoft.scvmm.scvmm_host_cluster:
+  stevefulme1.scvmm.scvmm_host_cluster:
     scvmm_server: scvmm01.example.com
     name: cluster01.example.com
     state: absent

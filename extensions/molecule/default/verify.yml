@@ -10,7 +10,7 @@
 
   tasks:
     - name: Verify the test VM no longer exists
-      microsoft.scvmm.scvmm_vm_info:
+      stevefulme1.scvmm.scvmm_vm_info:
         scvmm_server: "{{ scvmm_server }}"
         name: "{{ molecule_test_vm | default('molecule-test-vm-nonexistent') }}"
       register: vm_check

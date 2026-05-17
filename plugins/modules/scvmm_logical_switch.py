@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a logical switch
-  microsoft.scvmm.scvmm_logical_switch:
+  stevefulme1.scvmm.scvmm_logical_switch:
     scvmm_server: scvmm01.example.com
     name: Prod-Switch
     description: Production logical switch
@@ -56,7 +56,7 @@ EXAMPLES = r"""
     enable_sr_iov: true
 
 - name: Remove a logical switch
-  microsoft.scvmm.scvmm_logical_switch:
+  stevefulme1.scvmm.scvmm_logical_switch:
     scvmm_server: scvmm01.example.com
     name: Prod-Switch
     state: absent

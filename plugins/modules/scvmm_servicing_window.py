@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -59,7 +59,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a servicing window
-  microsoft.scvmm.scvmm_servicing_window:
+  stevefulme1.scvmm.scvmm_servicing_window:
     scvmm_server: scvmm01.example.com
     name: Sunday Maintenance
     description: Weekly Sunday maintenance window
@@ -70,7 +70,7 @@ EXAMPLES = r"""
     category: WindowsUpdateAgent
 
 - name: Remove a servicing window
-  microsoft.scvmm.scvmm_servicing_window:
+  stevefulme1.scvmm.scvmm_servicing_window:
     scvmm_server: scvmm01.example.com
     name: Sunday Maintenance
     state: absent

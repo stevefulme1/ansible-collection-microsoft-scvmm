@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -34,13 +34,13 @@ options:
 
 EXAMPLES = r"""
 - name: Get all network adapters for a VM by name
-  microsoft.scvmm.scvmm_network_adapter_info:
+  stevefulme1.scvmm.scvmm_network_adapter_info:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
   register: adapters
 
 - name: Get all network adapters for a VM by ID
-  microsoft.scvmm.scvmm_network_adapter_info:
+  stevefulme1.scvmm.scvmm_network_adapter_info:
     scvmm_server: scvmm01.example.com
     vm_id: "12345678-abcd-1234-abcd-123456789abc"
   register: adapters

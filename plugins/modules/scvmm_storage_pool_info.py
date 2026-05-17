@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -31,18 +31,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all storage pools
-  microsoft.scvmm.scvmm_storage_pool_info:
+  stevefulme1.scvmm.scvmm_storage_pool_info:
     scvmm_server: scvmm01.example.com
   register: pools
 
 - name: Get storage pools on a specific host
-  microsoft.scvmm.scvmm_storage_pool_info:
+  stevefulme1.scvmm.scvmm_storage_pool_info:
     scvmm_server: scvmm01.example.com
     host: hyperv01.example.com
   register: host_pools
 
 - name: Get a specific storage pool
-  microsoft.scvmm.scvmm_storage_pool_info:
+  stevefulme1.scvmm.scvmm_storage_pool_info:
     scvmm_server: scvmm01.example.com
     name: Pool-01
     host: hyperv01.example.com

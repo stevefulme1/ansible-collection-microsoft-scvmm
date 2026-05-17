@@ -10,7 +10,7 @@
 
   tasks:
     - name: Remove any leftover molecule test VMs
-      microsoft.scvmm.scvmm_vm:
+      stevefulme1.scvmm.scvmm_vm:
         scvmm_server: "{{ scvmm_server }}"
         name: "{{ molecule_test_vm }}"
         state: absent

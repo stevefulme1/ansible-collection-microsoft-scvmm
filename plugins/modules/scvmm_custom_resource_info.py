@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -31,18 +31,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all custom resources
-  microsoft.scvmm.scvmm_custom_resource_info:
+  stevefulme1.scvmm.scvmm_custom_resource_info:
     scvmm_server: scvmm01.example.com
   register: resources
 
 - name: Get custom resources on a specific library server
-  microsoft.scvmm.scvmm_custom_resource_info:
+  stevefulme1.scvmm.scvmm_custom_resource_info:
     scvmm_server: scvmm01.example.com
     library_server: lib01.example.com
   register: server_resources
 
 - name: Get a specific custom resource
-  microsoft.scvmm.scvmm_custom_resource_info:
+  stevefulme1.scvmm.scvmm_custom_resource_info:
     scvmm_server: scvmm01.example.com
     name: dsc-configs.cr
   register: resource

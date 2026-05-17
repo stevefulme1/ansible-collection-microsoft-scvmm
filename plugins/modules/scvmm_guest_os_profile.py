@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -56,7 +56,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a Windows guest OS profile
-  microsoft.scvmm.scvmm_guest_os_profile:
+  stevefulme1.scvmm.scvmm_guest_os_profile:
     scvmm_server: scvmm01.example.com
     name: Windows2022-Standard
     operating_system: Windows Server 2022 Datacenter
@@ -66,7 +66,7 @@ EXAMPLES = r"""
     description: Standard Windows Server 2022 guest profile
 
 - name: Create a Linux guest OS profile
-  microsoft.scvmm.scvmm_guest_os_profile:
+  stevefulme1.scvmm.scvmm_guest_os_profile:
     scvmm_server: scvmm01.example.com
     name: RHEL9-Standard
     operating_system: "Red Hat Enterprise Linux 9 (64 bit)"
@@ -74,7 +74,7 @@ EXAMPLES = r"""
     description: Standard RHEL 9 guest profile
 
 - name: Remove a guest OS profile
-  microsoft.scvmm.scvmm_guest_os_profile:
+  stevefulme1.scvmm.scvmm_guest_os_profile:
     scvmm_server: scvmm01.example.com
     name: Windows2022-Standard
     state: absent

@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -47,21 +47,21 @@ options:
 
 EXAMPLES = r"""
 - name: Create a general application profile
-  microsoft.scvmm.scvmm_application_profile:
+  stevefulme1.scvmm.scvmm_application_profile:
     scvmm_server: scvmm01.example.com
     name: WebApp-Profile
     compatibility_type: General
     description: Profile for deploying web application components
 
 - name: Create a SQL application profile
-  microsoft.scvmm.scvmm_application_profile:
+  stevefulme1.scvmm.scvmm_application_profile:
     scvmm_server: scvmm01.example.com
     name: SQL-DAC-Profile
     compatibility_type: SQLProfile
     description: SQL Server data-tier application profile
 
 - name: Remove an application profile
-  microsoft.scvmm.scvmm_application_profile:
+  stevefulme1.scvmm.scvmm_application_profile:
     scvmm_server: scvmm01.example.com
     name: WebApp-Profile
     state: absent

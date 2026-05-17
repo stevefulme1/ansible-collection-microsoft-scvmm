@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all service instances
-  microsoft.scvmm.scvmm_service_info:
+  stevefulme1.scvmm.scvmm_service_info:
     scvmm_server: scvmm01.example.com
   register: services
 
 - name: Get a specific service instance
-  microsoft.scvmm.scvmm_service_info:
+  stevefulme1.scvmm.scvmm_service_info:
     scvmm_server: scvmm01.example.com
     name: prod-web-app
   register: service

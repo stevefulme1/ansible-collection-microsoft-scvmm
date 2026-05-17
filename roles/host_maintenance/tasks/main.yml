@@ -8,7 +8,7 @@
 - name: Manage host maintenance
   block:
     - name: Gather host information
-      microsoft.scvmm.scvmm_host_info:
+      stevefulme1.scvmm.scvmm_host_info:
         name: "{{ maint_host_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
@@ -21,7 +21,7 @@
         fail_msg: "Host '{{ maint_host_name }}' not found in SCVMM"
 
     - name: Check cluster health before maintenance
-      microsoft.scvmm.scvmm_host_info:
+      stevefulme1.scvmm.scvmm_host_info:
         cluster: "{{ _host_info.hosts[0].cluster_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
@@ -42,7 +42,7 @@
         - _cluster_hosts.hosts is defined
 
     - name: List VMs on host
-      microsoft.scvmm.scvmm_vm_info:
+      stevefulme1.scvmm.scvmm_vm_info:
         host: "{{ maint_host_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
@@ -54,7 +54,7 @@
       when: _host_vms.vms | length > 0
 
     - name: Live migrate VMs off host
-      microsoft.scvmm.scvmm_vm:
+      stevefulme1.scvmm.scvmm_vm:
         name: "{{ item.name }}"
         target_host: "{{ maint_target_host }}"
         action: migrate
@@ -69,7 +69,7 @@
         - maint_mode
 
     - name: Place host in maintenance mode
-      microsoft.scvmm.scvmm_host:
+      stevefulme1.scvmm.scvmm_host:
         name: "{{ maint_host_name }}"
         maintenance_mode: true
         scvmm_host: "{{ scvmm_host }}"
@@ -77,7 +77,7 @@
       when: maint_mode
 
     - name: Exit host maintenance mode
-      microsoft.scvmm.scvmm_host:
+      stevefulme1.scvmm.scvmm_host:
         name: "{{ maint_host_name }}"
         maintenance_mode: false
         scvmm_host: "{{ scvmm_host }}"

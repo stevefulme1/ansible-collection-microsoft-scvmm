@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -50,7 +50,7 @@ options:
 
 EXAMPLES = r"""
 - name: Add a DVD drive with an ISO mounted
-  microsoft.scvmm.scvmm_vm_dvd_drive:
+  stevefulme1.scvmm.scvmm_vm_dvd_drive:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     iso: "WindowsServer2022.iso"
@@ -58,14 +58,14 @@ EXAMPLES = r"""
     lun: 0
 
 - name: Add an empty DVD drive
-  microsoft.scvmm.scvmm_vm_dvd_drive:
+  stevefulme1.scvmm.scvmm_vm_dvd_drive:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     bus: 0
     lun: 1
 
 - name: Remove a DVD drive
-  microsoft.scvmm.scvmm_vm_dvd_drive:
+  stevefulme1.scvmm.scvmm_vm_dvd_drive:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     state: absent

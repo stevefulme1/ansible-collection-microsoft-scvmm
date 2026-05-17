@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -26,18 +26,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all logical networks
-  microsoft.scvmm.scvmm_logical_network_info:
+  stevefulme1.scvmm.scvmm_logical_network_info:
     scvmm_server: scvmm01.example.com
   register: networks
 
 - name: Get details of the management logical network
-  microsoft.scvmm.scvmm_logical_network_info:
+  stevefulme1.scvmm.scvmm_logical_network_info:
     scvmm_server: scvmm01.example.com
     name: Management Network
   register: mgmt_network
 
 - name: Get production VLAN network details with explicit credentials
-  microsoft.scvmm.scvmm_logical_network_info:
+  stevefulme1.scvmm.scvmm_logical_network_info:
     scvmm_server: scvmm01.example.com
     scvmm_username: svc_ansible@contoso.com
     scvmm_password: "{{ vault_scvmm_password }}"

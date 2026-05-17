@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -54,7 +54,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a dynamic VHDX for a database server
-  microsoft.scvmm.scvmm_virtual_hard_disk:
+  stevefulme1.scvmm.scvmm_virtual_hard_disk:
     scvmm_server: scvmm01.example.com
     name: db-server-01-data
     size_gb: 500
@@ -63,7 +63,7 @@ EXAMPLES = r"""
     path: "\\\\library.contoso.com\\VHDs"
 
 - name: Create a fixed-size VHD for high-performance workloads
-  microsoft.scvmm.scvmm_virtual_hard_disk:
+  stevefulme1.scvmm.scvmm_virtual_hard_disk:
     scvmm_server: scvmm01.example.com
     name: web-server-01-os
     size_gb: 80
@@ -71,7 +71,7 @@ EXAMPLES = r"""
     format: VHDX
 
 - name: Remove a virtual hard disk
-  microsoft.scvmm.scvmm_virtual_hard_disk:
+  stevefulme1.scvmm.scvmm_virtual_hard_disk:
     scvmm_server: scvmm01.example.com
     name: db-server-01-data
     state: absent

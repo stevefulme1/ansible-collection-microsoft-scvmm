@@ -10,7 +10,7 @@
 - name: Provision SCVMM virtual machine
   block:
     - name: Create VM from template
-      microsoft.scvmm.scvmm_vm:
+      stevefulme1.scvmm.scvmm_vm:
         name: "{{ scvmm_vm_name }}"
         template: "{{ scvmm_template_name }}"
         cloud: "{{ scvmm_cloud }}"
@@ -28,7 +28,7 @@
       register: _scvmm_vm
 
     - name: Configure network adapter
-      microsoft.scvmm.scvmm_vm_nic:
+      stevefulme1.scvmm.scvmm_vm_nic:
         vm_name: "{{ scvmm_vm_name }}"
         vm_network: "{{ scvmm_vm_network }}"
         mac_address_type: "{{ scvmm_network_adapter_mac_type }}"
@@ -40,7 +40,7 @@
       when: scvmm_vm_network | length > 0
 
     - name: Add additional disks
-      microsoft.scvmm.scvmm_vm_disk:
+      stevefulme1.scvmm.scvmm_vm_disk:
         vm_name: "{{ scvmm_vm_name }}"
         size_gb: "{{ item.size_gb }}"
         bus_type: "{{ item.bus_type | default('SCSI') }}"
@@ -55,7 +55,7 @@
       when: scvmm_additional_disks | length > 0
 
     - name: Start virtual machine
-      microsoft.scvmm.scvmm_vm:
+      stevefulme1.scvmm.scvmm_vm:
         name: "{{ scvmm_vm_name }}"
         state: running
         scvmm_host: "{{ scvmm_host }}"
@@ -63,7 +63,7 @@
       when: scvmm_start_vm
 
     - name: Wait for VM IP address
-      microsoft.scvmm.scvmm_vm_info:
+      stevefulme1.scvmm.scvmm_vm_info:
         name: "{{ scvmm_vm_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"

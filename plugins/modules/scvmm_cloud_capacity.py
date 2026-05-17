@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   cloud:
     description:
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = r"""
 - name: Set capacity limits on a cloud
-  microsoft.scvmm.scvmm_cloud_capacity:
+  stevefulme1.scvmm.scvmm_cloud_capacity:
     scvmm_server: scvmm01.example.com
     cloud: Production
     cpu_count: 200
@@ -57,7 +57,7 @@ EXAMPLES = r"""
     vm_count: 100
 
 - name: Update only VM count limit
-  microsoft.scvmm.scvmm_cloud_capacity:
+  stevefulme1.scvmm.scvmm_cloud_capacity:
     scvmm_server: scvmm01.example.com
     cloud: Development
     vm_count: 50

@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all SQL Server profiles
-  microsoft.scvmm.scvmm_sql_profile_info:
+  stevefulme1.scvmm.scvmm_sql_profile_info:
     scvmm_server: scvmm01.example.com
   register: sql_profiles
 
 - name: Get a specific SQL Server profile
-  microsoft.scvmm.scvmm_sql_profile_info:
+  stevefulme1.scvmm.scvmm_sql_profile_info:
     scvmm_server: scvmm01.example.com
     name: AppDB-Profile
   register: profile

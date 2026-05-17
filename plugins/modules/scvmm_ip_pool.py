@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -62,7 +62,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create an IP pool
-  microsoft.scvmm.scvmm_ip_pool:
+  stevefulme1.scvmm.scvmm_ip_pool:
     scvmm_server: scvmm01.example.com
     name: Prod-Pool
     logical_network: Corp-Network
@@ -76,7 +76,7 @@ EXAMPLES = r"""
       - 10.0.0.2
 
 - name: Remove an IP pool
-  microsoft.scvmm.scvmm_ip_pool:
+  stevefulme1.scvmm.scvmm_ip_pool:
     scvmm_server: scvmm01.example.com
     name: Prod-Pool
     state: absent

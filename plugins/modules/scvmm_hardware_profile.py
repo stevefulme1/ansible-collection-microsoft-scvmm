@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -51,7 +51,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a hardware profile with 4 CPUs and 8 GB RAM
-  microsoft.scvmm.scvmm_hardware_profile:
+  stevefulme1.scvmm.scvmm_hardware_profile:
     scvmm_server: scvmm01.example.com
     name: Standard-4CPU-8GB
     cpu_count: 4
@@ -59,7 +59,7 @@ EXAMPLES = r"""
     description: Standard profile for web servers
 
 - name: Create a hardware profile with dynamic memory
-  microsoft.scvmm.scvmm_hardware_profile:
+  stevefulme1.scvmm.scvmm_hardware_profile:
     scvmm_server: scvmm01.example.com
     name: Dynamic-2CPU-4GB
     cpu_count: 2
@@ -67,7 +67,7 @@ EXAMPLES = r"""
     dynamic_memory_enabled: true
 
 - name: Remove a hardware profile
-  microsoft.scvmm.scvmm_hardware_profile:
+  stevefulme1.scvmm.scvmm_hardware_profile:
     scvmm_server: scvmm01.example.com
     name: Standard-4CPU-8GB
     state: absent

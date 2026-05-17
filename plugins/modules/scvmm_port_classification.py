@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -38,13 +38,13 @@ options:
 
 EXAMPLES = r"""
 - name: Create a port classification
-  microsoft.scvmm.scvmm_port_classification:
+  stevefulme1.scvmm.scvmm_port_classification:
     scvmm_server: scvmm01.example.com
     name: High-Bandwidth
     description: Port classification for high-bandwidth workloads
 
 - name: Remove a port classification
-  microsoft.scvmm.scvmm_port_classification:
+  stevefulme1.scvmm.scvmm_port_classification:
     scvmm_server: scvmm01.example.com
     name: High-Bandwidth
     state: absent

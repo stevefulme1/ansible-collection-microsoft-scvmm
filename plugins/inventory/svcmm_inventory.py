@@ -50,7 +50,7 @@ options:
 
 EXAMPLES = r"""
 # svcmm_inventory.yml
-plugin: microsoft.scvmm.svcmm_inventory
+plugin: stevefulme1.scvmm.svcmm_inventory
 host: api.example.com
 api_key: "{{ lookup('env', 'SVCMM_API_KEY') }}"
 """
@@ -66,7 +66,7 @@ except ImportError:
 
 
 class InventoryModule(BaseInventoryPlugin):
-    NAME = "microsoft.scvmm.svcmm_inventory"
+    NAME = "stevefulme1.scvmm.svcmm_inventory"
 
     def verify_file(self, path):
         if super().verify_file(path):

@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all PXE servers
-  microsoft.scvmm.scvmm_pxe_server_info:
+  stevefulme1.scvmm.scvmm_pxe_server_info:
     scvmm_server: scvmm01.example.com
   register: pxe_servers
 
 - name: Get a specific PXE server
-  microsoft.scvmm.scvmm_pxe_server_info:
+  stevefulme1.scvmm.scvmm_pxe_server_info:
     scvmm_server: scvmm01.example.com
     name: pxe01.example.com
   register: pxe_server

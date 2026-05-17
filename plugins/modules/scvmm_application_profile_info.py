@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -29,12 +29,12 @@ options:
 
 EXAMPLES = r"""
 - name: Get all application profiles
-  microsoft.scvmm.scvmm_application_profile_info:
+  stevefulme1.scvmm.scvmm_application_profile_info:
     scvmm_server: scvmm01.example.com
   register: app_profiles
 
 - name: Get a specific application profile
-  microsoft.scvmm.scvmm_application_profile_info:
+  stevefulme1.scvmm.scvmm_application_profile_info:
     scvmm_server: scvmm01.example.com
     name: WebApp-Profile
   register: app_profile

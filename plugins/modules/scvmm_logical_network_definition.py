@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -61,7 +61,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a logical network definition
-  microsoft.scvmm.scvmm_logical_network_definition:
+  stevefulme1.scvmm.scvmm_logical_network_definition:
     scvmm_server: scvmm01.example.com
     name: Corp-Site-A
     logical_network: Corp-Network
@@ -74,7 +74,7 @@ EXAMPLES = r"""
         vlan_id: 200
 
 - name: Remove a logical network definition
-  microsoft.scvmm.scvmm_logical_network_definition:
+  stevefulme1.scvmm.scvmm_logical_network_definition:
     scvmm_server: scvmm01.example.com
     name: Corp-Site-A
     logical_network: Corp-Network

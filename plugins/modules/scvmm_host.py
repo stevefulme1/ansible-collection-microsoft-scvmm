@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -48,14 +48,14 @@ options:
 
 EXAMPLES = r"""
 - name: Add a Hyper-V host to SCVMM
-  microsoft.scvmm.scvmm_host:
+  stevefulme1.scvmm.scvmm_host:
     scvmm_server: scvmm01.example.com
     name: hyperv01.example.com
     host_group: All Hosts\\Production
     credential: HostRunAs
 
 - name: Reassociate an existing host
-  microsoft.scvmm.scvmm_host:
+  stevefulme1.scvmm.scvmm_host:
     scvmm_server: scvmm01.example.com
     name: hyperv01.example.com
     host_group: All Hosts\\Production
@@ -63,7 +63,7 @@ EXAMPLES = r"""
     reassociate: true
 
 - name: Remove a Hyper-V host from SCVMM
-  microsoft.scvmm.scvmm_host:
+  stevefulme1.scvmm.scvmm_host:
     scvmm_server: scvmm01.example.com
     name: hyperv01.example.com
     state: absent

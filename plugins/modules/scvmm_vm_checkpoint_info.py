@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -31,13 +31,13 @@ options:
 
 EXAMPLES = r"""
 - name: List all checkpoints for a VM
-  microsoft.scvmm.scvmm_vm_checkpoint_info:
+  stevefulme1.scvmm.scvmm_vm_checkpoint_info:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
   register: checkpoints
 
 - name: Get a specific checkpoint
-  microsoft.scvmm.scvmm_vm_checkpoint_info:
+  stevefulme1.scvmm.scvmm_vm_checkpoint_info:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     name: pre-upgrade

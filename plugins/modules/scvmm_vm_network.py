@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -49,7 +49,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a VM network bound to the production logical network
-  microsoft.scvmm.scvmm_vm_network:
+  stevefulme1.scvmm.scvmm_vm_network:
     scvmm_server: scvmm01.example.com
     name: Production VLAN
     logical_network: Management Network
@@ -57,7 +57,7 @@ EXAMPLES = r"""
     isolation_type: VLANNetwork
 
 - name: Create a VM network with no isolation for dev workloads
-  microsoft.scvmm.scvmm_vm_network:
+  stevefulme1.scvmm.scvmm_vm_network:
     scvmm_server: scvmm01.example.com
     name: Dev-Network
     logical_network: Management Network
@@ -65,7 +65,7 @@ EXAMPLES = r"""
     isolation_type: NoIsolation
 
 - name: Remove a VM network
-  microsoft.scvmm.scvmm_vm_network:
+  stevefulme1.scvmm.scvmm_vm_network:
     scvmm_server: scvmm01.example.com
     name: Dev-Network
     state: absent

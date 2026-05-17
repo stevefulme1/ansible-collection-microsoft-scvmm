@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -54,7 +54,7 @@ options:
 
 EXAMPLES = r"""
 - name: Attach a VHD to a VM
-  microsoft.scvmm.scvmm_vm_disk:
+  stevefulme1.scvmm.scvmm_vm_disk:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     vhd_name: data-disk-01
@@ -63,7 +63,7 @@ EXAMPLES = r"""
     lun: 1
 
 - name: Detach a VHD from a VM
-  microsoft.scvmm.scvmm_vm_disk:
+  stevefulme1.scvmm.scvmm_vm_disk:
     scvmm_server: scvmm01.example.com
     vm_name: web-server-01
     vhd_name: data-disk-01

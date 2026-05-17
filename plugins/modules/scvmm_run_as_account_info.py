@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - microsoft.scvmm.scvmm_connection
+  - stevefulme1.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -28,12 +28,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all RunAs accounts
-  microsoft.scvmm.scvmm_run_as_account_info:
+  stevefulme1.scvmm.scvmm_run_as_account_info:
     scvmm_server: scvmm01.example.com
   register: run_as_accounts
 
 - name: Get a specific RunAs account
-  microsoft.scvmm.scvmm_run_as_account_info:
+  stevefulme1.scvmm.scvmm_run_as_account_info:
     scvmm_server: scvmm01.example.com
     name: fabric-admin
   register: account
