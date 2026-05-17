@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -42,20 +42,20 @@ options:
 
 EXAMPLES = r"""
 - name: Get host ratings for a VM template
-  stevefulme1.svcmm.scvmm_host_rating_info:
+  microsoft.scvmm.scvmm_host_rating_info:
     scvmm_server: scvmm01.example.com
     template: Windows2022-Standard
     host_group: All Hosts\\Production
   register: ratings
 
 - name: Get host ratings for an existing VM
-  stevefulme1.svcmm.scvmm_host_rating_info:
+  microsoft.scvmm.scvmm_host_rating_info:
     scvmm_server: scvmm01.example.com
     vm_name: webserver01
   register: ratings
 
 - name: Get host ratings using a hardware profile
-  stevefulme1.svcmm.scvmm_host_rating_info:
+  microsoft.scvmm.scvmm_host_rating_info:
     scvmm_server: scvmm01.example.com
     hardware_profile: 4CPU-8GB
   register: ratings

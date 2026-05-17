@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all physical computer profiles
-  stevefulme1.svcmm.scvmm_physical_computer_profile_info:
+  microsoft.scvmm.scvmm_physical_computer_profile_info:
     scvmm_server: scvmm01.example.com
   register: profiles
 
 - name: Get a specific profile
-  stevefulme1.svcmm.scvmm_physical_computer_profile_info:
+  microsoft.scvmm.scvmm_physical_computer_profile_info:
     scvmm_server: scvmm01.example.com
     name: HyperV-Server-2025
   register: profile

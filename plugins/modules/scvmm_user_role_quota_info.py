@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   user_role:
     description:
@@ -32,12 +32,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all user role quotas
-  stevefulme1.svcmm.scvmm_user_role_quota_info:
+  microsoft.scvmm.scvmm_user_role_quota_info:
     scvmm_server: scvmm01.example.com
   register: all_quotas
 
 - name: Get quotas for a specific role and cloud
-  stevefulme1.svcmm.scvmm_user_role_quota_info:
+  microsoft.scvmm.scvmm_user_role_quota_info:
     scvmm_server: scvmm01.example.com
     user_role: Dev-Team-Role
     cloud: Development-Cloud

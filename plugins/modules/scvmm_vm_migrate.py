@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -47,21 +47,21 @@ options:
 
 EXAMPLES = r"""
 - name: Live migrate a VM to a different host
-  stevefulme1.svcmm.scvmm_vm_migrate:
+  microsoft.scvmm.scvmm_vm_migrate:
     scvmm_server: scvmm01.example.com
     name: web-server-01
     destination_host: hyperv02.example.com
     migration_type: Live
 
 - name: Storage migrate a VM to a new datastore path
-  stevefulme1.svcmm.scvmm_vm_migrate:
+  microsoft.scvmm.scvmm_vm_migrate:
     scvmm_server: scvmm01.example.com
     name: db-server-01
     destination_storage: "C:\\ClusterStorage\\Volume2\\VMs"
     migration_type: Storage
 
 - name: Perform a combined live and storage migration
-  stevefulme1.svcmm.scvmm_vm_migrate:
+  microsoft.scvmm.scvmm_vm_migrate:
     scvmm_server: scvmm01.example.com
     name: app-server-01
     destination_host: hyperv03.example.com

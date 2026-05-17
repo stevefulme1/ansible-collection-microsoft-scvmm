@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -31,18 +31,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all ISO images
-  stevefulme1.svcmm.scvmm_iso_info:
+  microsoft.scvmm.scvmm_iso_info:
     scvmm_server: scvmm01.example.com
   register: isos
 
 - name: Get ISOs on a specific library server
-  stevefulme1.svcmm.scvmm_iso_info:
+  microsoft.scvmm.scvmm_iso_info:
     scvmm_server: scvmm01.example.com
     library_server: lib01.example.com
   register: server_isos
 
 - name: Get a specific ISO image
-  stevefulme1.svcmm.scvmm_iso_info:
+  microsoft.scvmm.scvmm_iso_info:
     scvmm_server: scvmm01.example.com
     name: rhel-9.4-x86_64-dvd.iso
   register: iso

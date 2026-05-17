@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   vm_host:
     description:
@@ -28,19 +28,19 @@ options:
 
 EXAMPLES = r"""
 - name: List all network adapters on a host
-  stevefulme1.svcmm.scvmm_host_network_adapter_info:
+  microsoft.scvmm.scvmm_host_network_adapter_info:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv01.example.com
   register: adapters
 
 - name: Get adapters for a host and filter for connected NICs
-  stevefulme1.svcmm.scvmm_host_network_adapter_info:
+  microsoft.scvmm.scvmm_host_network_adapter_info:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv02.example.com
   register: adapters
 
 - name: Gather adapter info using explicit WinRM credentials
-  stevefulme1.svcmm.scvmm_host_network_adapter_info:
+  microsoft.scvmm.scvmm_host_network_adapter_info:
     scvmm_server: scvmm01.example.com
     scvmm_username: svc_ansible@contoso.com
     scvmm_password: "{{ vault_scvmm_password }}"

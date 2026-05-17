@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -45,14 +45,14 @@ options:
 
 EXAMPLES = r"""
 - name: Create a VM subnet
-  stevefulme1.svcmm.scvmm_vm_subnet:
+  microsoft.scvmm.scvmm_vm_subnet:
     scvmm_server: scvmm01.example.com
     name: App-Subnet
     vm_network: App-Network
     subnet: 10.10.1.0/24
 
 - name: Remove a VM subnet
-  stevefulme1.svcmm.scvmm_vm_subnet:
+  microsoft.scvmm.scvmm_vm_subnet:
     scvmm_server: scvmm01.example.com
     name: App-Subnet
     vm_network: App-Network

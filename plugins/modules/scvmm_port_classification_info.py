@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -28,12 +28,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all port classifications
-  stevefulme1.svcmm.scvmm_port_classification_info:
+  microsoft.scvmm.scvmm_port_classification_info:
     scvmm_server: scvmm01.example.com
   register: classifications
 
 - name: Get a specific port classification
-  stevefulme1.svcmm.scvmm_port_classification_info:
+  microsoft.scvmm.scvmm_port_classification_info:
     scvmm_server: scvmm01.example.com
     name: High Performance
   register: hp_class

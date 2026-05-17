@@ -18,7 +18,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -75,7 +75,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create a VM from template
-  stevefulme1.svcmm.scvmm_vm:
+  microsoft.scvmm.scvmm_vm:
     scvmm_server: scvmm01.example.com
     name: web-server-01
     state: present
@@ -86,7 +86,7 @@ EXAMPLES = r"""
     description: Production web server
 
 - name: Remove a VM
-  stevefulme1.svcmm.scvmm_vm:
+  microsoft.scvmm.scvmm_vm:
     scvmm_server: scvmm01.example.com
     name: web-server-01
     state: absent

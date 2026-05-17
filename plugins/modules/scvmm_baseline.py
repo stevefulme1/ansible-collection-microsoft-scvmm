@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = r"""
 - name: Create an update baseline
-  stevefulme1.svcmm.scvmm_baseline:
+  microsoft.scvmm.scvmm_baseline:
     scvmm_server: scvmm01.example.com
     name: Security Updates Q1
     description: Quarterly security updates
@@ -58,7 +58,7 @@ EXAMPLES = r"""
     scope: Host
 
 - name: Remove a baseline
-  stevefulme1.svcmm.scvmm_baseline:
+  microsoft.scvmm.scvmm_baseline:
     scvmm_server: scvmm01.example.com
     name: Security Updates Q1
     state: absent

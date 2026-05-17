@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   library_server:
     description:
@@ -31,18 +31,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all library shares
-  stevefulme1.svcmm.scvmm_library_share_info:
+  microsoft.scvmm.scvmm_library_share_info:
     scvmm_server: scvmm01.example.com
   register: shares
 
 - name: Get library shares on a specific server
-  stevefulme1.svcmm.scvmm_library_share_info:
+  microsoft.scvmm.scvmm_library_share_info:
     scvmm_server: scvmm01.example.com
     library_server: lib01.example.com
   register: server_shares
 
 - name: Get a specific library share
-  stevefulme1.svcmm.scvmm_library_share_info:
+  microsoft.scvmm.scvmm_library_share_info:
     scvmm_server: scvmm01.example.com
     name: MSSCVMMLibrary
   register: share

@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -37,14 +37,14 @@ options:
 
 EXAMPLES = r"""
 - name: Configure a storage pool
-  stevefulme1.svcmm.scvmm_storage_pool:
+  microsoft.scvmm.scvmm_storage_pool:
     scvmm_server: scvmm01.example.com
     name: Pool-01
     host: hyperv01.example.com
     storage_classification: Gold-Storage
 
 - name: Update storage pool classification
-  stevefulme1.svcmm.scvmm_storage_pool:
+  microsoft.scvmm.scvmm_storage_pool:
     scvmm_server: scvmm01.example.com
     name: Pool-01
     host: hyperv01.example.com

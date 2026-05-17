@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -29,12 +29,12 @@ options:
 
 EXAMPLES = r"""
 - name: Get all hardware profiles
-  stevefulme1.svcmm.scvmm_hardware_profile_info:
+  microsoft.scvmm.scvmm_hardware_profile_info:
     scvmm_server: scvmm01.example.com
   register: hw_profiles
 
 - name: Get a specific hardware profile
-  stevefulme1.svcmm.scvmm_hardware_profile_info:
+  microsoft.scvmm.scvmm_hardware_profile_info:
     scvmm_server: scvmm01.example.com
     name: Standard-4CPU-8GB
   register: hw_profile

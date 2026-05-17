@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   vm_name:
     description:
@@ -40,13 +40,13 @@ options:
 
 EXAMPLES = r"""
 - name: Add a SCSI controller to a VM
-  stevefulme1.svcmm.scvmm_vm_scsi_adapter:
+  microsoft.scvmm.scvmm_vm_scsi_adapter:
     scvmm_server: scvmm01.example.com
     vm_name: db-server-01
     scsi_bus: 1
 
 - name: Remove a SCSI controller from a VM
-  stevefulme1.svcmm.scvmm_vm_scsi_adapter:
+  microsoft.scvmm.scvmm_vm_scsi_adapter:
     scvmm_server: scvmm01.example.com
     vm_name: db-server-01
     state: absent

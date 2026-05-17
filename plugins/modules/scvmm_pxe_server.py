@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -38,13 +38,13 @@ options:
 
 EXAMPLES = r"""
 - name: Register a PXE server
-  stevefulme1.svcmm.scvmm_pxe_server:
+  microsoft.scvmm.scvmm_pxe_server:
     scvmm_server: scvmm01.example.com
     name: pxe01.example.com
     credential: pxe-runas
 
 - name: Remove a PXE server
-  stevefulme1.svcmm.scvmm_pxe_server:
+  microsoft.scvmm.scvmm_pxe_server:
     scvmm_server: scvmm01.example.com
     name: pxe01.example.com
     state: absent

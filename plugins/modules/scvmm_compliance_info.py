@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   vm_host:
     description:
@@ -31,13 +31,13 @@ options:
 
 EXAMPLES = r"""
 - name: Get compliance status for a host
-  stevefulme1.svcmm.scvmm_compliance_info:
+  microsoft.scvmm.scvmm_compliance_info:
     scvmm_server: scvmm01.example.com
     vm_host: hyperv01.example.com
   register: compliance
 
 - name: Get compliance status for a cluster
-  stevefulme1.svcmm.scvmm_compliance_info:
+  microsoft.scvmm.scvmm_compliance_info:
     scvmm_server: scvmm01.example.com
     host_cluster: ProductionCluster
   register: compliance

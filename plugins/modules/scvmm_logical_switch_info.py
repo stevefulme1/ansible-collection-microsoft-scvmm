@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all logical switches
-  stevefulme1.svcmm.scvmm_logical_switch_info:
+  microsoft.scvmm.scvmm_logical_switch_info:
     scvmm_server: scvmm01.example.com
   register: switches
 
 - name: Get a specific logical switch
-  stevefulme1.svcmm.scvmm_logical_switch_info:
+  microsoft.scvmm.scvmm_logical_switch_info:
     scvmm_server: scvmm01.example.com
     name: Prod-Switch
   register: prod_switch

@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -31,12 +31,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all VM networks
-  stevefulme1.svcmm.scvmm_vm_network_info:
+  microsoft.scvmm.scvmm_vm_network_info:
     scvmm_server: scvmm01.example.com
   register: vm_networks
 
 - name: Get a specific VM network
-  stevefulme1.svcmm.scvmm_vm_network_info:
+  microsoft.scvmm.scvmm_vm_network_info:
     scvmm_server: scvmm01.example.com
     name: App-Network
   register: vm_network

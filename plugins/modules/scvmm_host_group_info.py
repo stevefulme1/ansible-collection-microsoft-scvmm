@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -30,12 +30,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all host groups
-  stevefulme1.svcmm.scvmm_host_group_info:
+  microsoft.scvmm.scvmm_host_group_info:
     scvmm_server: scvmm01.example.com
   register: host_groups
 
 - name: Get a specific host group by path
-  stevefulme1.svcmm.scvmm_host_group_info:
+  microsoft.scvmm.scvmm_host_group_info:
     scvmm_server: scvmm01.example.com
     path: All Hosts\Production
   register: prod_group

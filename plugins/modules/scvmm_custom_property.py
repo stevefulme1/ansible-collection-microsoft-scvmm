@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -43,21 +43,21 @@ options:
 
 EXAMPLES = r"""
 - name: Create a custom property for VMs
-  stevefulme1.svcmm.scvmm_custom_property:
+  microsoft.scvmm.scvmm_custom_property:
     scvmm_server: scvmm01.example.com
     name: CostCenter
     description: Cost center code for chargeback
     member_type: VM
 
 - name: Create a custom property for hosts
-  stevefulme1.svcmm.scvmm_custom_property:
+  microsoft.scvmm.scvmm_custom_property:
     scvmm_server: scvmm01.example.com
     name: RackLocation
     description: Physical rack location
     member_type: VMHost
 
 - name: Remove a custom property
-  stevefulme1.svcmm.scvmm_custom_property:
+  microsoft.scvmm.scvmm_custom_property:
     scvmm_server: scvmm01.example.com
     name: CostCenter
     state: absent

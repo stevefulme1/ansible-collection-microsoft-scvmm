@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   vm_network:
     description:
@@ -31,12 +31,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all VM subnets
-  stevefulme1.svcmm.scvmm_vm_subnet_info:
+  microsoft.scvmm.scvmm_vm_subnet_info:
     scvmm_server: scvmm01.example.com
   register: subnets
 
 - name: Get subnets for a specific VM network
-  stevefulme1.svcmm.scvmm_vm_subnet_info:
+  microsoft.scvmm.scvmm_vm_subnet_info:
     scvmm_server: scvmm01.example.com
     vm_network: App-Network
   register: app_subnets

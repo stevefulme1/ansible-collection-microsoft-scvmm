@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -56,7 +56,7 @@ options:
 
 EXAMPLES = r"""
 - name: Deploy a service from a template
-  stevefulme1.svcmm.scvmm_service:
+  microsoft.scvmm.scvmm_service:
     scvmm_server: scvmm01.example.com
     name: prod-web-app
     service_template: Three-Tier-App
@@ -64,19 +64,19 @@ EXAMPLES = r"""
     description: Production three-tier web application
 
 - name: Stop a service
-  stevefulme1.svcmm.scvmm_service:
+  microsoft.scvmm.scvmm_service:
     scvmm_server: scvmm01.example.com
     name: prod-web-app
     state: stopped
 
 - name: Start a service
-  stevefulme1.svcmm.scvmm_service:
+  microsoft.scvmm.scvmm_service:
     scvmm_server: scvmm01.example.com
     name: prod-web-app
     state: started
 
 - name: Remove a service
-  stevefulme1.svcmm.scvmm_service:
+  microsoft.scvmm.scvmm_service:
     scvmm_server: scvmm01.example.com
     name: prod-web-app
     state: absent

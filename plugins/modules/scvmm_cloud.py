@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -42,14 +42,14 @@ options:
 
 EXAMPLES = r"""
 - name: Create a cloud
-  stevefulme1.svcmm.scvmm_cloud:
+  microsoft.scvmm.scvmm_cloud:
     scvmm_server: scvmm01.example.com
     name: Production
     host_group: All Hosts\\Production
     description: Production workloads
 
 - name: Remove a cloud
-  stevefulme1.svcmm.scvmm_cloud:
+  microsoft.scvmm.scvmm_cloud:
     scvmm_server: scvmm01.example.com
     name: Production
     state: absent

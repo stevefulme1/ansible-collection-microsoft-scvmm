@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   cloud:
     description:
@@ -28,19 +28,19 @@ options:
 
 EXAMPLES = r"""
 - name: Get capacity and usage for the production cloud
-  stevefulme1.svcmm.scvmm_cloud_capacity_info:
+  microsoft.scvmm.scvmm_cloud_capacity_info:
     scvmm_server: scvmm01.example.com
     cloud: Production Cloud
   register: capacity
 
 - name: Get dev cloud capacity and display remaining VM slots
-  stevefulme1.svcmm.scvmm_cloud_capacity_info:
+  microsoft.scvmm.scvmm_cloud_capacity_info:
     scvmm_server: scvmm01.example.com
     cloud: Dev Cloud
   register: dev_capacity
 
 - name: Check capacity on a cloud using WinRM credentials
-  stevefulme1.svcmm.scvmm_cloud_capacity_info:
+  microsoft.scvmm.scvmm_cloud_capacity_info:
     scvmm_server: scvmm01.example.com
     scvmm_username: svc_ansible@contoso.com
     scvmm_password: "{{ vault_scvmm_password }}"

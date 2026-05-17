@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -26,18 +26,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all clouds
-  stevefulme1.svcmm.scvmm_cloud_info:
+  microsoft.scvmm.scvmm_cloud_info:
     scvmm_server: scvmm01.example.com
   register: clouds
 
 - name: Get details of a specific cloud
-  stevefulme1.svcmm.scvmm_cloud_info:
+  microsoft.scvmm.scvmm_cloud_info:
     scvmm_server: scvmm01.example.com
     name: Production Cloud
   register: prod_cloud
 
 - name: List clouds using WinRM credentials
-  stevefulme1.svcmm.scvmm_cloud_info:
+  microsoft.scvmm.scvmm_cloud_info:
     scvmm_server: scvmm01.example.com
     scvmm_username: svc_ansible@contoso.com
     scvmm_password: "{{ vault_scvmm_password }}"

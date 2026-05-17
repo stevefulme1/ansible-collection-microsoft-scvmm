@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   user_role:
     description:
@@ -54,7 +54,7 @@ options:
 
 EXAMPLES = r"""
 - name: Set quotas for a self-service role in a cloud
-  stevefulme1.svcmm.scvmm_user_role_quota:
+  microsoft.scvmm.scvmm_user_role_quota:
     scvmm_server: scvmm01.example.com
     user_role: Dev-Team-Role
     cloud: Development-Cloud
@@ -64,7 +64,7 @@ EXAMPLES = r"""
     vm_count: 20
 
 - name: Set only VM count quota
-  stevefulme1.svcmm.scvmm_user_role_quota:
+  microsoft.scvmm.scvmm_user_role_quota:
     scvmm_server: scvmm01.example.com
     user_role: QA-Role
     cloud: QA-Cloud

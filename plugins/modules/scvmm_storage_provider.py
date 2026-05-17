@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = r"""
 - name: Register an SMI-S storage provider
-  stevefulme1.svcmm.scvmm_storage_provider:
+  microsoft.scvmm.scvmm_storage_provider:
     scvmm_server: scvmm01.example.com
     name: NetApp-SMIS
     computer_name: storage01.example.com
@@ -56,7 +56,7 @@ EXAMPLES = r"""
     credential: StorageRunAs
 
 - name: Remove a storage provider
-  stevefulme1.svcmm.scvmm_storage_provider:
+  microsoft.scvmm.scvmm_storage_provider:
     scvmm_server: scvmm01.example.com
     name: NetApp-SMIS
     state: absent

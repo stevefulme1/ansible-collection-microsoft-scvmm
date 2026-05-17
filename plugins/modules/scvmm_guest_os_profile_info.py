@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -29,12 +29,12 @@ options:
 
 EXAMPLES = r"""
 - name: Get all guest OS profiles
-  stevefulme1.svcmm.scvmm_guest_os_profile_info:
+  microsoft.scvmm.scvmm_guest_os_profile_info:
     scvmm_server: scvmm01.example.com
   register: os_profiles
 
 - name: Get a specific guest OS profile
-  stevefulme1.svcmm.scvmm_guest_os_profile_info:
+  microsoft.scvmm.scvmm_guest_os_profile_info:
     scvmm_server: scvmm01.example.com
     name: Windows2022-Standard
   register: os_profile

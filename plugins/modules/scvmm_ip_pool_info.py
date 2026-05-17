@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -31,12 +31,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all IP pools
-  stevefulme1.svcmm.scvmm_ip_pool_info:
+  microsoft.scvmm.scvmm_ip_pool_info:
     scvmm_server: scvmm01.example.com
   register: pools
 
 - name: Get IP pools for a specific network definition
-  stevefulme1.svcmm.scvmm_ip_pool_info:
+  microsoft.scvmm.scvmm_ip_pool_info:
     scvmm_server: scvmm01.example.com
     logical_network_definition: Corp-Site-A
   register: site_pools

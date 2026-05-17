@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -31,18 +31,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all storage file shares
-  stevefulme1.svcmm.scvmm_storage_file_share_info:
+  microsoft.scvmm.scvmm_storage_file_share_info:
     scvmm_server: scvmm01.example.com
   register: file_shares
 
 - name: Get file shares from a specific provider
-  stevefulme1.svcmm.scvmm_storage_file_share_info:
+  microsoft.scvmm.scvmm_storage_file_share_info:
     scvmm_server: scvmm01.example.com
     storage_provider: NetApp-SMIS
   register: provider_shares
 
 - name: Get a specific file share
-  stevefulme1.svcmm.scvmm_storage_file_share_info:
+  microsoft.scvmm.scvmm_storage_file_share_info:
     scvmm_server: scvmm01.example.com
     name: Share-01
   register: share

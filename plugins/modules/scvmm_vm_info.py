@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -35,18 +35,18 @@ options:
 
 EXAMPLES = r"""
 - name: Get all VMs
-  stevefulme1.svcmm.scvmm_vm_info:
+  microsoft.scvmm.scvmm_vm_info:
     scvmm_server: scvmm01.example.com
   register: all_vms
 
 - name: Get a specific VM
-  stevefulme1.svcmm.scvmm_vm_info:
+  microsoft.scvmm.scvmm_vm_info:
     scvmm_server: scvmm01.example.com
     name: web-server-01
   register: vm_details
 
 - name: List VMs in a cloud
-  stevefulme1.svcmm.scvmm_vm_info:
+  microsoft.scvmm.scvmm_vm_info:
     scvmm_server: scvmm01.example.com
     cloud: Production
   register: prod_vms

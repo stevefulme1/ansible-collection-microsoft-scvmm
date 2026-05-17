@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -26,12 +26,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all user roles
-  stevefulme1.svcmm.scvmm_user_role_info:
+  microsoft.scvmm.scvmm_user_role_info:
     scvmm_server: scvmm01.example.com
   register: user_roles
 
 - name: Get a specific user role
-  stevefulme1.svcmm.scvmm_user_role_info:
+  microsoft.scvmm.scvmm_user_role_info:
     scvmm_server: scvmm01.example.com
     name: Dev-Team-Role
   register: role

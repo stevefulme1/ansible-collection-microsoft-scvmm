@@ -18,7 +18,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -43,14 +43,14 @@ options:
 
 EXAMPLES = r"""
 - name: Create a Hyper-V capability profile
-  stevefulme1.svcmm.scvmm_capability_profile:
+  microsoft.scvmm.scvmm_capability_profile:
     scvmm_server: scvmm01.example.com
     name: HyperV-Gen2
     fabric_capability: HyperV
     description: Capability profile for Generation 2 Hyper-V VMs
 
 - name: Remove a capability profile
-  stevefulme1.svcmm.scvmm_capability_profile:
+  microsoft.scvmm.scvmm_capability_profile:
     scvmm_server: scvmm01.example.com
     name: HyperV-Gen2
     state: absent

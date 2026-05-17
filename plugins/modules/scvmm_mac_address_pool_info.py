@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -27,12 +27,12 @@ options:
 
 EXAMPLES = r"""
 - name: List all MAC address pools
-  stevefulme1.svcmm.scvmm_mac_address_pool_info:
+  microsoft.scvmm.scvmm_mac_address_pool_info:
     scvmm_server: scvmm01.example.com
   register: pools
 
 - name: Get a specific MAC address pool
-  stevefulme1.svcmm.scvmm_mac_address_pool_info:
+  microsoft.scvmm.scvmm_mac_address_pool_info:
     scvmm_server: scvmm01.example.com
     name: Prod-MAC-Pool
   register: prod_pool

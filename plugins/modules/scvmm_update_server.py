@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -48,14 +48,14 @@ options:
 
 EXAMPLES = r"""
 - name: Register a WSUS update server
-  stevefulme1.svcmm.scvmm_update_server:
+  microsoft.scvmm.scvmm_update_server:
     scvmm_server: scvmm01.example.com
     name: wsus01.example.com
     port: 8530
     use_ssl: false
 
 - name: Register a WSUS server with SSL and credentials
-  stevefulme1.svcmm.scvmm_update_server:
+  microsoft.scvmm.scvmm_update_server:
     scvmm_server: scvmm01.example.com
     name: wsus01.example.com
     credential: wsus-runas
@@ -63,7 +63,7 @@ EXAMPLES = r"""
     use_ssl: true
 
 - name: Remove a WSUS update server
-  stevefulme1.svcmm.scvmm_update_server:
+  microsoft.scvmm.scvmm_update_server:
     scvmm_server: scvmm01.example.com
     name: wsus01.example.com
     state: absent

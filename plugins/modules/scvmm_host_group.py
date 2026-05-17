@@ -17,7 +17,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -44,14 +44,14 @@ options:
 
 EXAMPLES = r"""
 - name: Create a host group
-  stevefulme1.svcmm.scvmm_host_group:
+  microsoft.scvmm.scvmm_host_group:
     scvmm_server: scvmm01.example.com
     name: Production-DC1
     parent: All Hosts
     description: Production hosts in DC1
 
 - name: Create a nested host group
-  stevefulme1.svcmm.scvmm_host_group:
+  microsoft.scvmm.scvmm_host_group:
     scvmm_server: scvmm01.example.com
     name: Web-Tier
     parent: All Hosts\\Production-DC1

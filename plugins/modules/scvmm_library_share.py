@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   path:
     description:
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = r"""
 - name: Add a library share
-  stevefulme1.svcmm.scvmm_library_share:
+  microsoft.scvmm.scvmm_library_share:
     scvmm_server: scvmm01.example.com
     path: "\\\\lib01.example.com\\ISOs"
     library_server: lib01.example.com
@@ -56,7 +56,7 @@ EXAMPLES = r"""
     add_default_resources: true
 
 - name: Remove a library share
-  stevefulme1.svcmm.scvmm_library_share:
+  microsoft.scvmm.scvmm_library_share:
     scvmm_server: scvmm01.example.com
     path: "\\\\lib01.example.com\\ISOs"
     library_server: lib01.example.com

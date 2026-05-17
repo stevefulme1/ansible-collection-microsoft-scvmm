@@ -16,7 +16,7 @@ version_added: "0.1.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -26,18 +26,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all VM templates
-  stevefulme1.svcmm.scvmm_template_info:
+  microsoft.scvmm.scvmm_template_info:
     scvmm_server: scvmm01.example.com
   register: templates
 
 - name: Get details of a specific Windows template
-  stevefulme1.svcmm.scvmm_template_info:
+  microsoft.scvmm.scvmm_template_info:
     scvmm_server: scvmm01.example.com
     name: Windows2022-Template
   register: win_template
 
 - name: Get a Linux template using explicit credentials
-  stevefulme1.svcmm.scvmm_template_info:
+  microsoft.scvmm.scvmm_template_info:
     scvmm_server: scvmm01.example.com
     scvmm_username: svc_ansible@contoso.com
     scvmm_password: "{{ vault_scvmm_password }}"

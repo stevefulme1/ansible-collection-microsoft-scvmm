@@ -17,7 +17,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
+  - microsoft.scvmm.scvmm_connection
 options:
   name:
     description:
@@ -32,18 +32,18 @@ options:
 
 EXAMPLES = r"""
 - name: List all script resources
-  stevefulme1.svcmm.scvmm_script_info:
+  microsoft.scvmm.scvmm_script_info:
     scvmm_server: scvmm01.example.com
   register: scripts
 
 - name: Get post-install scripts only
-  stevefulme1.svcmm.scvmm_script_info:
+  microsoft.scvmm.scvmm_script_info:
     scvmm_server: scvmm01.example.com
     script_type: PostInstall
   register: post_scripts
 
 - name: Get a specific script
-  stevefulme1.svcmm.scvmm_script_info:
+  microsoft.scvmm.scvmm_script_info:
     scvmm_server: scvmm01.example.com
     name: configure-network.ps1
   register: script
