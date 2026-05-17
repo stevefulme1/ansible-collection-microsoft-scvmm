@@ -1,0 +1,56 @@
+---
+# Integration tests for scvmm_template
+#
+# Prerequisites:
+#   - A running SCVMM management server
+#   - A VM named {{ scvmm_test_source_vm }} that can be cloned
+#   - A library server named {{ scvmm_test_library_server }}
+
+- name: Set test variables
+  ansible.builtin.set_fact:
+    test_template_name: "ansible-test-tmpl-{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=6') }}"
+
+# -- Create ------------------------------------------------------------------
+
+- name: Create template from VM (check mode)
+  stevefulme1.svcmm.scvmm_template:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_template_name }}"
+    source_vm: "{{ scvmm_test_source_vm }}"
+    library_server: "{{ scvmm_test_library_server }}"
+    description: Ansible integration test template
+  check_mode: true
+  register: create_check
+
+- name: Verify check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - create_check is changed
+
+- name: Create template from VM
+  stevefulme1.svcmm.scvmm_template:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_template_name }}"
+    source_vm: "{{ scvmm_test_source_vm }}"
+    library_server: "{{ scvmm_test_library_server }}"
+    description: Ansible integration test template
+  register: create_result
+
+- name: Verify template was created
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+# -- Delete ------------------------------------------------------------------
+
+- name: Remove the template
+  stevefulme1.svcmm.scvmm_template:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_template_name }}"
+    state: absent
+  register: delete_result
+
+- name: Verify template was removed
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed

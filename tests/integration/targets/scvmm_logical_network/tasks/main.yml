@@ -1,0 +1,64 @@
+---
+# Integration tests for scvmm_logical_network
+#
+# Prerequisites:
+#   - A running SCVMM management server
+
+- name: Set test variables
+  ansible.builtin.set_fact:
+    test_lognet_name: "ansible-test-lognet-{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=6') }}"
+
+# -- Create ------------------------------------------------------------------
+
+- name: Create a logical network (check mode)
+  stevefulme1.svcmm.scvmm_logical_network:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_lognet_name }}"
+    description: Ansible integration test logical network
+  check_mode: true
+  register: create_check
+
+- name: Verify check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - create_check is changed
+
+- name: Create a logical network
+  stevefulme1.svcmm.scvmm_logical_network:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_lognet_name }}"
+    description: Ansible integration test logical network
+  register: create_result
+
+- name: Verify logical network was created
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+# -- Idempotency -------------------------------------------------------------
+
+- name: Create same logical network again (idempotency)
+  stevefulme1.svcmm.scvmm_logical_network:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_lognet_name }}"
+    description: Ansible integration test logical network
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+# -- Delete ------------------------------------------------------------------
+
+- name: Remove the logical network
+  stevefulme1.svcmm.scvmm_logical_network:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_lognet_name }}"
+    state: absent
+  register: delete_result
+
+- name: Verify logical network was removed
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed

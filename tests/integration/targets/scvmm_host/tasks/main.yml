@@ -1,0 +1,49 @@
+---
+# Integration tests for scvmm_host
+#
+# Prerequisites:
+#   - A running SCVMM management server
+#   - A Hyper-V host at {{ scvmm_test_host_fqdn }} reachable from SCVMM
+#   - A RunAs account named {{ scvmm_test_credential }}
+#   - A host group at {{ scvmm_test_host_group }}
+
+- name: Add Hyper-V host (check mode)
+  stevefulme1.svcmm.scvmm_host:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ scvmm_test_host_fqdn }}"
+    host_group: "{{ scvmm_test_host_group }}"
+    credential: "{{ scvmm_test_credential }}"
+  check_mode: true
+  register: add_check
+
+- name: Verify check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - add_check is changed
+
+- name: Add Hyper-V host
+  stevefulme1.svcmm.scvmm_host:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ scvmm_test_host_fqdn }}"
+    host_group: "{{ scvmm_test_host_group }}"
+    credential: "{{ scvmm_test_credential }}"
+  register: add_result
+
+- name: Verify host was added
+  ansible.builtin.assert:
+    that:
+      - add_result is changed
+
+# -- Cleanup -----------------------------------------------------------------
+
+- name: Remove the host
+  stevefulme1.svcmm.scvmm_host:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ scvmm_test_host_fqdn }}"
+    state: absent
+  register: remove_result
+
+- name: Verify host was removed
+  ansible.builtin.assert:
+    that:
+      - remove_result is changed

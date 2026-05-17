@@ -1,0 +1,109 @@
+---
+# Integration tests for scvmm_vm
+#
+# Prerequisites:
+#   - A running SCVMM management server
+#   - A valid VM template named {{ scvmm_test_template }}
+#   - A cloud named {{ scvmm_test_cloud }}
+#   - WinRM connectivity from the test runner to the SCVMM server
+
+- name: Set test variables
+  ansible.builtin.set_fact:
+    test_vm_name: "ansible-test-vm-{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=6') }}"
+
+# -- Create ------------------------------------------------------------------
+
+- name: Create a VM (check mode)
+  stevefulme1.svcmm.scvmm_vm:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_vm_name }}"
+    state: present
+    template: "{{ scvmm_test_template }}"
+    cloud: "{{ scvmm_test_cloud }}"
+    cpu_count: 2
+    memory_mb: 2048
+    description: Ansible integration test VM
+  check_mode: true
+  register: create_check
+
+- name: Verify check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - create_check is changed
+
+- name: Create a VM
+  stevefulme1.svcmm.scvmm_vm:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_vm_name }}"
+    state: present
+    template: "{{ scvmm_test_template }}"
+    cloud: "{{ scvmm_test_cloud }}"
+    cpu_count: 2
+    memory_mb: 2048
+    description: Ansible integration test VM
+  register: create_result
+
+- name: Verify VM was created
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+      - create_result.vm.name == test_vm_name
+
+# -- Idempotency -------------------------------------------------------------
+
+- name: Create same VM again (idempotency)
+  stevefulme1.svcmm.scvmm_vm:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_vm_name }}"
+    state: present
+    template: "{{ scvmm_test_template }}"
+    cloud: "{{ scvmm_test_cloud }}"
+    cpu_count: 2
+    memory_mb: 2048
+    description: Ansible integration test VM
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+# -- Info module --------------------------------------------------------------
+
+- name: Gather VM info
+  stevefulme1.svcmm.scvmm_vm_info:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_vm_name }}"
+  register: info_result
+
+- name: Verify VM info
+  ansible.builtin.assert:
+    that:
+      - info_result.vms | length == 1
+      - info_result.vms[0].name == test_vm_name
+
+# -- Delete ------------------------------------------------------------------
+
+- name: Remove the VM
+  stevefulme1.svcmm.scvmm_vm:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_vm_name }}"
+    state: absent
+  register: delete_result
+
+- name: Verify VM was removed
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed
+
+- name: Remove the VM again (idempotency)
+  stevefulme1.svcmm.scvmm_vm:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_vm_name }}"
+    state: absent
+  register: delete_idem
+
+- name: Verify delete idempotency
+  ansible.builtin.assert:
+    that:
+      - delete_idem is not changed

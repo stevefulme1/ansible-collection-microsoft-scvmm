@@ -1,0 +1,68 @@
+---
+# Integration tests for scvmm_cloud
+#
+# Prerequisites:
+#   - A running SCVMM management server
+#   - A host group at {{ scvmm_test_host_group }}
+
+- name: Set test variables
+  ansible.builtin.set_fact:
+    test_cloud_name: "ansible-test-cloud-{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=6') }}"
+
+# -- Create ------------------------------------------------------------------
+
+- name: Create a cloud (check mode)
+  stevefulme1.svcmm.scvmm_cloud:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_cloud_name }}"
+    host_group: "{{ scvmm_test_host_group }}"
+    description: Ansible integration test cloud
+  check_mode: true
+  register: create_check
+
+- name: Verify check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - create_check is changed
+
+- name: Create a cloud
+  stevefulme1.svcmm.scvmm_cloud:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_cloud_name }}"
+    host_group: "{{ scvmm_test_host_group }}"
+    description: Ansible integration test cloud
+  register: create_result
+
+- name: Verify cloud was created
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+# -- Idempotency -------------------------------------------------------------
+
+- name: Create same cloud again (idempotency)
+  stevefulme1.svcmm.scvmm_cloud:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_cloud_name }}"
+    host_group: "{{ scvmm_test_host_group }}"
+    description: Ansible integration test cloud
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+# -- Delete ------------------------------------------------------------------
+
+- name: Remove the cloud
+  stevefulme1.svcmm.scvmm_cloud:
+    scvmm_server: "{{ scvmm_test_server }}"
+    name: "{{ test_cloud_name }}"
+    state: absent
+  register: delete_result
+
+- name: Verify cloud was removed
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed
