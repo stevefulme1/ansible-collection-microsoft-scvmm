@@ -1,0 +1,88 @@
+---
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - scvmm_vm_name is defined and scvmm_vm_name | length > 0
+      - scvmm_template_name is defined and scvmm_template_name | length > 0
+      - scvmm_cloud is defined and scvmm_cloud | length > 0
+    fail_msg: "Required variables: scvmm_vm_name, scvmm_template_name, scvmm_cloud"
+
+- name: Provision SCVMM virtual machine
+  block:
+    - name: Create VM from template
+      microsoft.scvmm.scvmm_vm:
+        name: "{{ scvmm_vm_name }}"
+        template: "{{ scvmm_template_name }}"
+        cloud: "{{ scvmm_cloud }}"
+        cpu_count: "{{ scvmm_cpu_count }}"
+        memory_mb: "{{ scvmm_memory_mb }}"
+        dynamic_memory: "{{ scvmm_dynamic_memory }}"
+        dynamic_memory_min_mb: "{{ scvmm_dynamic_memory_min_mb }}"
+        dynamic_memory_max_mb: "{{ scvmm_dynamic_memory_max_mb }}"
+        description: "{{ scvmm_description }}"
+        hardware_profile: "{{ scvmm_hardware_profile | default(omit) }}"
+        vm_network: "{{ scvmm_vm_network | default(omit) }}"
+        state: "{{ scvmm_vm_state }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+      register: _scvmm_vm
+
+    - name: Configure network adapter
+      microsoft.scvmm.scvmm_nic:
+        vm_name: "{{ scvmm_vm_name }}"
+        vm_network: "{{ scvmm_vm_network }}"
+        mac_address_type: "{{ scvmm_network_adapter_mac_type }}"
+        ipv4_address_type: "{{ scvmm_ip_allocation }}"
+        ipv4_address: "{{ scvmm_static_ip | default(omit) }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+        state: present
+      when: scvmm_vm_network | length > 0
+
+    - name: Add additional disks
+      microsoft.scvmm.scvmm_disk:
+        vm_name: "{{ scvmm_vm_name }}"
+        size_gb: "{{ item.size_gb }}"
+        bus_type: "{{ item.bus_type | default('SCSI') }}"
+        bus: "{{ item.bus | default(0) }}"
+        lun: "{{ item.lun }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+        state: present
+      loop: "{{ scvmm_additional_disks }}"
+      loop_control:
+        label: "{{ item.size_gb }}GB on bus {{ item.bus | default(0) }}:{{ item.lun }}"
+      when: scvmm_additional_disks | length > 0
+
+    - name: Start virtual machine
+      microsoft.scvmm.scvmm_vm:
+        name: "{{ scvmm_vm_name }}"
+        state: running
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+      when: scvmm_start_vm
+
+    - name: Wait for VM IP address
+      microsoft.scvmm.scvmm_vm_info:
+        name: "{{ scvmm_vm_name }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+      register: _vm_info
+      until: _vm_info.vms[0].ip_addresses | default([]) | length > 0
+      retries: "{{ (scvmm_wait_timeout / 10) | int }}"
+      delay: 10
+      when: scvmm_wait_for_ip
+
+    - name: Display VM information
+      ansible.builtin.debug:
+        msg: >-
+          VM '{{ scvmm_vm_name }}' provisioned.
+          IP: {{ _vm_info.vms[0].ip_addresses[0] | default('Pending') }}
+      when: _vm_info is defined
+
+  rescue:
+    - name: Report VM provisioning failure
+      ansible.builtin.fail:
+        msg: >-
+          VM provisioning failed for '{{ scvmm_vm_name }}'.
+          Error: {{ ansible_failed_result.msg | default('Unknown error') }}

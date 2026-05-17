@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  role_name: cloud_setup
+  author: Red Hat Ansible
+  description: Configure SCVMM clouds with capacity, host groups, and resources
+  license: GPL-3.0-or-later
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Windows
+      versions: [2019, 2022]
+  galaxy_tags: [scvmm, microsoft, cloud, infrastructure]
+dependencies: []

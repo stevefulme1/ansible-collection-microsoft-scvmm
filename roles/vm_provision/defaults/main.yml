@@ -1,0 +1,44 @@
+---
+# Required
+# scvmm_vm_name: ""
+# scvmm_template_name: ""
+# scvmm_cloud: ""
+
+# SCVMM connection
+scvmm_host: "{{ lookup('env', 'SCVMM_HOST') }}"
+scvmm_port: 8100
+
+# VM settings
+scvmm_cpu_count: 2
+scvmm_memory_mb: 4096
+scvmm_dynamic_memory: true
+scvmm_dynamic_memory_min_mb: 2048
+scvmm_dynamic_memory_max_mb: 8192
+scvmm_description: "Provisioned by Ansible"
+
+# Network
+scvmm_vm_network: ""
+scvmm_network_adapter_mac_type: "Dynamic"
+scvmm_ip_allocation: "DHCP"
+scvmm_static_ip: ""
+scvmm_subnet: ""
+scvmm_gateway: ""
+
+# Storage
+scvmm_additional_disks: []
+#   - size_gb: 50
+#     bus_type: "SCSI"
+#     bus: 0
+#     lun: 1
+
+# State
+scvmm_vm_state: present
+scvmm_start_vm: true
+scvmm_wait_for_ip: true
+scvmm_wait_timeout: 600
+
+# Hardware profile
+scvmm_hardware_profile: ""
+
+# Custom properties
+scvmm_custom_properties: {}
