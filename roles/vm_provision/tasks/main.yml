@@ -40,7 +40,7 @@
       when: scvmm_vm_network | length > 0
 
     - name: Add additional disks
-      microsoft.scvmm.scvmm_disk:
+      microsoft.scvmm.scvmm_vm_disk:
         vm_name: "{{ scvmm_vm_name }}"
         size_gb: "{{ item.size_gb }}"
         bus_type: "{{ item.bus_type | default('SCSI') }}"
