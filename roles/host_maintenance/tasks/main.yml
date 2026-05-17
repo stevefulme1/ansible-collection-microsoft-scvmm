@@ -56,7 +56,7 @@
     - name: Live migrate VMs off host
       microsoft.scvmm.scvmm_vm:
         name: "{{ item.name }}"
-        target_host: "{{ maint_target_host | default(omit) }}"
+        target_host: "{{ maint_target_host }}"
         action: migrate
         migration_type: "{{ maint_migration_type }}"
         scvmm_host: "{{ scvmm_host }}"

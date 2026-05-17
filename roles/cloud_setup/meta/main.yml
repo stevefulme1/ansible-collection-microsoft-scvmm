@@ -7,6 +7,6 @@ galaxy_info:
   min_ansible_version: "2.14"
   platforms:
     - name: Windows
-      versions: [2019, 2022]
+      versions: [all]
   galaxy_tags: [scvmm, microsoft, cloud, infrastructure]
 dependencies: []

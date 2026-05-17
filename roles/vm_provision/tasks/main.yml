@@ -28,7 +28,7 @@
       register: _scvmm_vm
 
     - name: Configure network adapter
-      microsoft.scvmm.scvmm_nic:
+      microsoft.scvmm.scvmm_vm_nic:
         vm_name: "{{ scvmm_vm_name }}"
         vm_network: "{{ scvmm_vm_network }}"
         mac_address_type: "{{ scvmm_network_adapter_mac_type }}"
