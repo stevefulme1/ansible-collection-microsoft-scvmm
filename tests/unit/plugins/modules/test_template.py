@@ -26,14 +26,14 @@ def module_docs():
 
 @pytest.fixture(scope="module")
 def parsed_doc(module_docs):
-    raw_doc, _, _ = module_docs
+    raw_doc, _examples, _returns = module_docs
     assert raw_doc is not None
     return parse_documentation(raw_doc)
 
 
 class TestDocumentation:
     def test_documentation_is_valid_yaml(self, module_docs):
-        raw_doc, _, _ = module_docs
+        raw_doc, _examples, _returns = module_docs
         doc = yaml.safe_load(raw_doc)
         assert isinstance(doc, dict)
 
@@ -89,33 +89,33 @@ class TestArgumentSpec:
 
 class TestReturn:
     def test_return_section_exists(self, module_docs):
-        _, _, returns = module_docs
+        _doc, _examples, returns = module_docs
         assert returns is not None
 
     def test_return_is_valid_yaml(self, module_docs):
-        _, _, returns = module_docs
+        _doc, _examples, returns = module_docs
         parsed = yaml.safe_load(returns)
         assert isinstance(parsed, dict)
 
     def test_return_has_template_key(self, module_docs):
-        _, _, returns = module_docs
+        _doc, _examples, returns = module_docs
         parsed = yaml.safe_load(returns)
         assert "template" in parsed
 
 
 class TestExamples:
     def test_examples_section_exists(self, module_docs):
-        _, examples, _ = module_docs
+        _doc, examples, _returns = module_docs
         assert examples is not None
 
     def test_examples_is_valid_yaml(self, module_docs):
-        _, examples, _ = module_docs
+        _doc, examples, _returns = module_docs
         parsed = yaml.safe_load(examples)
         assert isinstance(parsed, list)
         assert len(parsed) > 0
 
     def test_examples_contain_module_name(self, module_docs):
-        _, examples, _ = module_docs
+        _doc, examples, _returns = module_docs
         assert MODULE in examples
 
 
