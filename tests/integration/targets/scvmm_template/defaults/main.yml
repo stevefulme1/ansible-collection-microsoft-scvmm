@@ -1,0 +1,4 @@
+---
+scvmm_test_server: scvmm01.example.com
+scvmm_test_source_vm: golden-image-win2022
+scvmm_test_library_server: lib01.example.com

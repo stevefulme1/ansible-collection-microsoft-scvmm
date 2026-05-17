@@ -1,0 +1,4 @@
+---
+scvmm_test_server: scvmm01.example.com
+scvmm_test_template: Windows2022-Standard
+scvmm_test_cloud: Test-Cloud

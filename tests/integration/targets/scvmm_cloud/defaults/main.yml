@@ -1,0 +1,3 @@
+---
+scvmm_test_server: scvmm01.example.com
+scvmm_test_host_group: "All Hosts\\Test"
