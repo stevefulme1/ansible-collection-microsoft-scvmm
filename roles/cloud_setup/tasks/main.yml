@@ -1,0 +1,74 @@
+---
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - cloud_name is defined and cloud_name | length > 0
+    fail_msg: "Required variable: cloud_name"
+
+- name: Configure SCVMM cloud
+  block:
+    - name: Create or update cloud
+      microsoft.scvmm.scvmm_cloud:
+        name: "{{ cloud_name }}"
+        description: "{{ cloud_description }}"
+        host_groups: "{{ cloud_host_groups }}"
+        state: "{{ cloud_state }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+      register: _cloud
+
+    - name: Configure cloud capacity
+      microsoft.scvmm.scvmm_cloud:
+        name: "{{ cloud_name }}"
+        capacity:
+          cpu_count: "{{ cloud_capacity_cpu_count }}"
+          memory_mb: "{{ cloud_capacity_memory_mb }}"
+          storage_gb: "{{ cloud_capacity_storage_gb }}"
+          vm_count: "{{ cloud_capacity_vm_count }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+        state: present
+      when: cloud_capacity_enabled
+
+    - name: Assign logical networks to cloud
+      microsoft.scvmm.scvmm_cloud:
+        name: "{{ cloud_name }}"
+        logical_networks: "{{ cloud_logical_networks }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+        state: present
+      when: cloud_logical_networks | length > 0
+
+    - name: Assign library shares
+      microsoft.scvmm.scvmm_cloud:
+        name: "{{ cloud_name }}"
+        library_shares: "{{ cloud_library_shares }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+        state: present
+      when: cloud_library_shares | length > 0
+
+    - name: Configure user roles
+      microsoft.scvmm.scvmm_user_role:
+        name: "{{ item.name }}"
+        cloud: "{{ cloud_name }}"
+        members: "{{ item.members }}"
+        permissions: "{{ item.permissions | default([]) }}"
+        scvmm_host: "{{ scvmm_host }}"
+        scvmm_port: "{{ scvmm_port }}"
+        state: present
+      loop: "{{ cloud_user_roles }}"
+      loop_control:
+        label: "{{ item.name }}"
+      when: cloud_user_roles | length > 0
+
+    - name: Display cloud status
+      ansible.builtin.debug:
+        msg: "Cloud '{{ cloud_name }}' configured with {{ cloud_host_groups | length }} host groups"
+
+  rescue:
+    - name: Report cloud setup failure
+      ansible.builtin.fail:
+        msg: >-
+          Cloud setup failed for '{{ cloud_name }}'.
+          Error: {{ ansible_failed_result.msg | default('Unknown error') }}

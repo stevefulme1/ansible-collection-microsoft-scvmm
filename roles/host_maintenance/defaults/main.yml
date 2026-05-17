@@ -1,0 +1,24 @@
+---
+# Required
+# maint_host_name: ""
+
+# SCVMM connection
+scvmm_host: "{{ lookup('env', 'SCVMM_HOST') }}"
+scvmm_port: 8100
+
+# Maintenance options
+maint_mode: true
+maint_evacuate_vms: true
+maint_migration_type: "LiveMigration"
+maint_target_host: ""
+maint_wait_for_completion: true
+maint_wait_timeout: 1800
+maint_shutdown_non_migratable: false
+
+# Pre-maintenance checks
+maint_check_cluster_health: true
+maint_min_cluster_nodes: 2
+maint_skip_if_last_node: true
+
+# Post-maintenance
+maint_exit_maintenance: false
