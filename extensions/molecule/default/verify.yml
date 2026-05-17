@@ -1,0 +1,22 @@
+---
+# Molecule verify playbook — confirm VM operations completed correctly.
+
+- name: Verify — SCVMM VM operations
+  hosts: scvmm
+  gather_facts: false
+
+  vars:
+    scvmm_server: "{{ ansible_host }}"
+
+  tasks:
+    - name: Verify the test VM no longer exists
+      microsoft.scvmm.scvmm_vm_info:
+        scvmm_server: "{{ scvmm_server }}"
+        name: "{{ molecule_test_vm | default('molecule-test-vm-nonexistent') }}"
+      register: vm_check
+
+    - name: Assert VM was cleaned up
+      ansible.builtin.assert:
+        that:
+          - vm_check.vms | length == 0
+        fail_msg: "Test VM still exists after converge — cleanup failed"

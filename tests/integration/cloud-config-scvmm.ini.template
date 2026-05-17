@@ -1,0 +1,22 @@
+# Template for SCVMM integration test configuration.
+# Copy to cloud-config-scvmm.ini and fill in values for your environment.
+#
+# Required: A Windows host running SCVMM with the VirtualMachineManager
+# PowerShell module installed. WinRM must be enabled and reachable from
+# the Ansible controller.
+
+[default]
+scvmm_server: @SCVMM_SERVER@
+scvmm_user: @SCVMM_USER@
+scvmm_password: @SCVMM_PASSWORD@
+
+# Optional test-specific overrides
+scvmm_test_template: @SCVMM_TEST_TEMPLATE@
+scvmm_test_cloud: @SCVMM_TEST_CLOUD@
+scvmm_test_host_group: @SCVMM_TEST_HOST_GROUP@
+
+[winrm]
+ansible_connection: winrm
+ansible_winrm_transport: ntlm
+ansible_winrm_server_cert_validation: ignore
+ansible_port: 5986

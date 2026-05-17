@@ -1,0 +1,47 @@
+---
+# Molecule scenario for SCVMM integration testing.
+# Uses the delegated driver because the SCVMM server must pre-exist;
+# Molecule cannot provision a Windows + SCVMM host automatically.
+
+dependency:
+  name: galaxy
+  options:
+    requirements-file: requirements.txt
+
+driver:
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: winrm
+      ansible_winrm_transport: ntlm
+      ansible_winrm_server_cert_validation: ignore
+      ansible_port: 5986
+
+platforms:
+  - name: scvmm-server
+    groups:
+      - scvmm
+    options:
+      managed: false
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_COLLECTIONS_PATH: "${MOLECULE_PROJECT_DIRECTORY}/../../../.."
+  inventory:
+    host_vars:
+      scvmm-server:
+        ansible_host: "${SCVMM_SERVER:-scvmm01.test.local}"
+        ansible_user: "${SCVMM_USER:-administrator}"
+        ansible_password: "${SCVMM_PASSWORD}"
+        ansible_connection: winrm
+        ansible_winrm_transport: ntlm
+        ansible_winrm_server_cert_validation: ignore
+        ansible_port: 5986
+  config_options:
+    defaults:
+      gathering: smart
+
+verifier:
+  name: ansible

@@ -1,0 +1,7 @@
+---
+scvmm_server: "{{ lookup('env', 'SCVMM_SERVER') | default('scvmm01.test.local', true) }}"
+scvmm_username: "{{ lookup('env', 'SCVMM_USER') | default(omit, true) }}"
+scvmm_password: "{{ lookup('env', 'SCVMM_PASSWORD') | default(omit, true) }}"
+
+ansible_connection: winrm
+ansible_winrm_transport: ntlm

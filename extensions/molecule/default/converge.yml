@@ -1,0 +1,37 @@
+---
+# Molecule converge playbook — create and delete a test VM via SCVMM.
+
+- name: Converge — SCVMM VM lifecycle
+  hosts: scvmm
+  gather_facts: false
+
+  vars:
+    scvmm_server: "{{ ansible_host }}"
+    test_vm_name: "molecule-test-vm-{{ lookup('pipe', 'date +%s') }}"
+    test_template: "{{ lookup('env', 'SCVMM_TEST_TEMPLATE') | default('Windows2022-Standard', true) }}"
+    test_cloud: "{{ lookup('env', 'SCVMM_TEST_CLOUD') | default('Test', true) }}"
+
+  tasks:
+    - name: Create a test VM from template
+      microsoft.scvmm.scvmm_vm:
+        scvmm_server: "{{ scvmm_server }}"
+        name: "{{ test_vm_name }}"
+        state: present
+        template: "{{ test_template }}"
+        cloud: "{{ test_cloud }}"
+        cpu_count: 2
+        memory_mb: 4096
+        description: Molecule integration test VM
+      register: vm_create
+
+    - name: Store VM name for verify/destroy
+      ansible.builtin.set_fact:
+        molecule_test_vm: "{{ test_vm_name }}"
+        cacheable: true
+
+    - name: Delete the test VM
+      microsoft.scvmm.scvmm_vm:
+        scvmm_server: "{{ scvmm_server }}"
+        name: "{{ test_vm_name }}"
+        state: absent
+      register: vm_delete
