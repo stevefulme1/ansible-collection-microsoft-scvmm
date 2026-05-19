@@ -2,6 +2,9 @@
 
 **Topics**
 
+- <a href="#v1-1-2">v1\.1\.2</a>
+    - <a href="#v112-release-summary">Release Summary</a>
+    - <a href="#v112-security-fixes">Security Fixes</a>
 - <a href="#v1-1-1">v1\.1\.1</a>
     - <a href="#v111-release-summary">Release Summary</a>
     - <a href="#v111-security-fixes">Security Fixes</a>
@@ -15,6 +18,19 @@
     - <a href="#v010-release-summary">Release Summary</a>
     - <a href="#v010-major-changes">Major Changes</a>
     - <a href="#v010-minor-changes">Minor Changes</a>
+
+<a id="v1-1-2"></a>
+## v1\.1\.2
+
+<a id="v112-release-summary"></a>
+### Release Summary
+
+Add no\_log to role credential arguments\.
+
+<a id="v112-security-fixes"></a>
+### Security Fixes
+
+* Added ``no_log: true`` to all password and api\_key fields in role argument\_specs\.
 
 <a id="v1-1-1"></a>
 ## v1\.1\.1
