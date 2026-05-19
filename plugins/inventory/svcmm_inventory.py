@@ -30,7 +30,6 @@ options:
     api_key:
         description: API key for authentication.
         type: str
-        secret: true
         env:
             - name: SVCMM_API_KEY
     username:
@@ -41,7 +40,6 @@ options:
     password:
         description: Authentication password.
         type: str
-        secret: true
         env:
             - name: SVCMM_PASSWORD
     validate_certs:
