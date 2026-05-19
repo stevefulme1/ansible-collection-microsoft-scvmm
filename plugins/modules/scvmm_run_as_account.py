@@ -57,7 +57,7 @@ EXAMPLES = r"""
     name: fabric-admin
     credential_type: WindowsCredential
     username: DOMAIN\\svc-fabric
-    password: S3cureP@ss!
+    password: "{{ vault_runas_password }}"
     description: Fabric administration credentials
 
 - name: Create an SSH key RunAs account

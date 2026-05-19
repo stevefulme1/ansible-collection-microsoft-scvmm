@@ -2,6 +2,9 @@
 
 **Topics**
 
+- <a href="#v1-1-1">v1\.1\.1</a>
+    - <a href="#v111-release-summary">Release Summary</a>
+    - <a href="#v111-security-fixes">Security Fixes</a>
 - <a href="#v0-3-0">v0\.3\.0</a>
     - <a href="#v030-release-summary">Release Summary</a>
     - <a href="#v030-minor-changes">Minor Changes</a>
@@ -12,6 +15,21 @@
     - <a href="#v010-release-summary">Release Summary</a>
     - <a href="#v010-major-changes">Major Changes</a>
     - <a href="#v010-minor-changes">Minor Changes</a>
+
+<a id="v1-1-1"></a>
+## v1\.1\.1
+
+<a id="v111-release-summary"></a>
+### Release Summary
+
+Security hardening — credential exposure fixes across modules\, inventory\, and EDA plugins\.
+
+<a id="v111-security-fixes"></a>
+### Security Fixes
+
+* scvmm\_run\_as\_account — replaced hardcoded password in EXAMPLES with vault reference\.
+* svcmm\_inventory — added ``secret: true`` to ``password`` and ``api_key`` options\.
+* scvmm\_webhook — changed default listen host from ``0.0.0.0`` to ``127.0.0.1``\.
 
 <a id="v0-3-0"></a>
 ## v0\.3\.0
