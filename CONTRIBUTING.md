@@ -1,179 +1,27 @@
-# Contributing to Microsoft SCVMM Collection
+# WELCOME TO ANSIBLE GITHUB
 
-Thank you for your interest in contributing to the Microsoft SCVMM Collection! This document provides guidelines for contributing to this project.
+Hi! Nice to see you here!
 
-## Getting Started
+## QUESTIONS ?
 
-1. **Fork the repository** on GitHub
-2. **Clone your fork** locally
-3. **Create a feature branch** for your contribution
-4. **Make your changes** following our guidelines
-5. **Test your changes** thoroughly
-6. **Submit a pull request**
+Please see the [Community Guide](https://docs.ansible.com/ansible/latest/community/index.html) for information on how to ask questions on the [mailing lists](https://docs.ansible.com/ansible/latest/community/communication.html#mailing-list-information) and IRC.
 
-## Development Environment Setup
+The GitHub issue tracker is not the best place for questions for various reasons, but both IRC and the mailing list are very helpful places for those things, as the community page explains best.
 
-### Requirements
-- Python 3.12 or later
-- Ansible 2.16 or later
-- Access to a Windows Server with SCVMM and the `VirtualMachineManager` PowerShell module
-- PowerShell 5.1 or later on the SCVMM host
+## CONTRIBUTING ?
 
-### Setup Steps
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/ansible-collection-microsoft-scvmm.git
-cd ansible-collection-microsoft-scvmm
+By contributing to this project you agree to the Developer Certificate of Origin (DCO). This document was created by the Linux Kernel community and is a simple statement that you, as a contributor, have the legal right to make the contribution.
 
-# Install development dependencies
-pip install -r requirements.txt
-pip install -r test-requirements.txt
-```
+You can read more about the [DCO and Contributor License Agreements](https://docs.ansible.com/ansible/latest/community/collection_contributors/collection_requirements.html#contributor-license-agreements) on the Ansible docsite.
 
-## Types of Contributions
+Please review the [Community Guide](https://docs.ansible.com/ansible/latest/community/index.html) for more information on contributing to Ansible.
 
-### Module Development
-To contribute a new module:
-1. Check existing issues and the roadmap to see if the module is planned
-2. Comment on the corresponding issue to claim it
-3. Follow the module development guidelines below
+## BUG TO REPORT ?
 
-### Bug Fixes
-Found a bug? Please:
-1. Check if an issue already exists
-2. If not, create a new issue with detailed information
-3. Submit a PR with the fix
+First and foremost, also check the [Community Guide](https://docs.ansible.com/ansible/latest/community/index.html).
 
-### Documentation
-Documentation improvements are always welcome:
-- Module documentation (EXAMPLES, RETURN, parameter descriptions)
-- Collection-level documentation (README, guides, tutorials)
-- Code comments for complex logic
+You can report bugs or make enhancement requests at the [Ansible GitHub issue page](http://github.com/ansible/ansible/issues/new/choose) by filling out the issue template that will be presented.
 
-## Module Development Guidelines
+Also please make sure you are testing on the latest released version of Ansible or the development branch; see the [Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) for details.
 
-### Module Structure
-```python
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-# Copyright: (c) 2026, Ansible Project
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-
-from __future__ import absolute_import, division, print_function
-__metaclass__ = type
-
-DOCUMENTATION = r'''
----
-module: scvmm_example
-short_description: Short description of what the module does
-description:
-  - Longer description of the module.
-  - Can be multiple paragraphs.
-extends_documentation_fragment:
-  - stevefulme1.svcmm.scvmm_connection
-options:
-  name:
-    description:
-      - Name of the resource.
-    type: str
-    required: true
-'''
-
-EXAMPLES = r'''
-- name: Example task
-  stevefulme1.svcmm.scvmm_example:
-    scvmm_server: scvmm01.example.com
-    name: example_resource
-    state: present
-'''
-
-RETURN = r'''
-# Document return values
-'''
-```
-
-### Module Requirements
-1. **Documentation**: Complete DOCUMENTATION, EXAMPLES, and RETURN sections
-2. **Error Handling**: Proper exception handling with meaningful error messages
-3. **Idempotency**: Modules must be idempotent (safe to run multiple times)
-4. **Check Mode**: Support for `--check` mode
-5. **Changed Status**: Accurately report when changes are made
-6. **Testing**: Include unit tests and integration tests
-
-### PowerShell Integration
-Most modules interact with SCVMM via PowerShell cmdlets from the `VirtualMachineManager` module:
-- Use the shared `scvmm_connection` doc fragment for connection parameters
-- Handle PowerShell errors appropriately
-- Support both WinRM and SSH connection methods
-
-## Testing
-
-### Sanity Tests
-```bash
-ansible-test sanity --python 3.12
-```
-
-### Unit Tests
-```bash
-ansible-test units --python 3.12
-```
-
-### Integration Tests
-```bash
-# Requires an SCVMM host
-ansible-test integration scvmm_vm --python 3.12
-```
-
-## Code Style
-
-### Python
-- Follow PEP 8 style guide
-- Use meaningful variable and function names
-- Add docstrings to functions and classes
-- Maximum line length: 160 characters (Ansible standard)
-
-### Documentation
-- Use proper reStructuredText formatting
-- Include complete parameter descriptions with types and defaults
-- Provide at least 3 examples showing common use cases
-- Document all return values
-
-## Pull Request Process
-
-1. **Branch naming**: Use descriptive names (e.g., `feature/scvmm_vm_module`, `fix/checkpoint-restore`)
-2. **Commits**: Write clear commit messages following conventional commit format
-3. **Testing**: Ensure all tests pass
-4. **Changelog**: Add a changelog fragment in `changelogs/fragments/`
-5. **Documentation**: Update relevant documentation
-6. **Review**: Address review comments promptly
-
-### Changelog Fragments
-Create a file in `changelogs/fragments/` named `<pr_number>-<description>.yml`:
-
-```yaml
----
-minor_changes:
-  - scvmm_vm - Added support for Generation 2 VMs.
-bugfixes:
-  - scvmm_vm_state - Fixed issue with VM state detection.
-```
-
-## Getting Help
-
-- **GitHub Issues**: For bugs and feature requests
-- **Ansible Forum**: Post questions with the `scvmm` tag
-
-## Code of Conduct
-
-This project follows the [Ansible Code of Conduct](https://docs.ansible.com/projects/ansible/devel/community/code_of_conduct.html). Please read and follow it in all interactions.
-
-## Resources
-
-- [Ansible module development guide](https://docs.ansible.com/projects/ansible/devel/dev_guide/developing_modules_general.html)
-- [Ansible collection development guide](https://docs.ansible.com/projects/ansible/devel/dev_guide/developing_collections.html)
-- [SCVMM PowerShell reference](https://learn.microsoft.com/en-us/powershell/module/virtualmachinemanager/)
-
-## License
-
-By contributing to this project, you agree that your contributions will be licensed under the GNU General Public License v3.0 or later.
+Thanks!
