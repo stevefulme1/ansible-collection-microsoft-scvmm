@@ -2,91 +2,91 @@
 - name: Validate required variables
   ansible.builtin.assert:
     that:
-      - maint_host_name is defined and maint_host_name | length > 0
-    fail_msg: "Required variable: maint_host_name"
+      - host_maintenance_host_name is defined and host_maintenance_host_name | length > 0
+    fail_msg: "Required variable: host_maintenance_host_name"
 
 - name: Manage host maintenance
   block:
     - name: Gather host information
       stevefulme1.scvmm.scvmm_host_info:
-        name: "{{ maint_host_name }}"
+        name: "{{ host_maintenance_host_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      register: _host_info
+      register: _host_maintenance_host_info
 
     - name: Verify host exists
       ansible.builtin.assert:
         that:
-          - _host_info.hosts | length > 0
-        fail_msg: "Host '{{ maint_host_name }}' not found in SCVMM"
+          - _host_maintenance_host_info.hosts | length > 0
+        fail_msg: "Host '{{ host_maintenance_host_name }}' not found in SCVMM"
 
     - name: Check cluster health before maintenance
       stevefulme1.scvmm.scvmm_host_info:
-        cluster: "{{ _host_info.hosts[0].cluster_name }}"
+        cluster: "{{ _host_maintenance_host_info.hosts[0].cluster_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      register: _cluster_hosts
+      register: _host_maintenance_cluster_hosts
       when:
-        - maint_check_cluster_health
-        - _host_info.hosts[0].cluster_name is defined
+        - host_maintenance_check_cluster_health
+        - _host_maintenance_host_info.hosts[0].cluster_name is defined
 
     - name: Validate minimum cluster nodes
       ansible.builtin.assert:
         that:
-          - (_cluster_hosts.hosts | selectattr('maintenance_mode', 'equalto', false) | list | length) > maint_min_cluster_nodes
-        fail_msg: "Cannot enter maintenance mode - would leave fewer than {{ maint_min_cluster_nodes }} active nodes"
+          - (_host_maintenance_cluster_hosts.hosts | selectattr('maintenance_mode', 'equalto', false) | list | length) > host_maintenance_min_cluster_nodes
+        fail_msg: "Cannot enter maintenance mode - would leave fewer than {{ host_maintenance_min_cluster_nodes }} active nodes"
       when:
-        - maint_check_cluster_health
-        - maint_skip_if_last_node
+        - host_maintenance_check_cluster_health
+        - host_maintenance_skip_if_last_node
         - _cluster_hosts is defined
-        - _cluster_hosts.hosts is defined
+        - _host_maintenance_cluster_hosts.hosts is defined
 
     - name: List VMs on host
       stevefulme1.scvmm.scvmm_vm_info:
-        host: "{{ maint_host_name }}"
+        host: "{{ host_maintenance_host_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      register: _host_vms
+      register: _host_maintenance_vms
 
     - name: Display VMs to be migrated
       ansible.builtin.debug:
-        msg: "VMs on {{ maint_host_name }}: {{ _host_vms.vms | map(attribute='name') | list }}"
-      when: _host_vms.vms | length > 0
+        msg: "VMs on {{ host_maintenance_host_name }}: {{ _host_maintenance_vms.vms | map(attribute='name') | list }}"
+      when: _host_maintenance_vms.vms | length > 0
 
     - name: Live migrate VMs off host
       stevefulme1.scvmm.scvmm_vm:
         name: "{{ item.name }}"
-        target_host: "{{ maint_target_host }}"
+        target_host: "{{ host_maintenance_target_host }}"
         action: migrate
-        migration_type: "{{ maint_migration_type }}"
+        migration_type: "{{ host_maintenance_migration_type }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      loop: "{{ _host_vms.vms | selectattr('status', 'equalto', 'Running') | list }}"
+      loop: "{{ _host_maintenance_vms.vms | selectattr('status', 'equalto', 'Running') | list }}"
       loop_control:
         label: "{{ item.name }}"
       when:
-        - maint_evacuate_vms
-        - maint_mode
+        - host_maintenance_evacuate_vms
+        - host_maintenance_mode
 
     - name: Place host in maintenance mode
       stevefulme1.scvmm.scvmm_host:
-        name: "{{ maint_host_name }}"
+        name: "{{ host_maintenance_host_name }}"
         maintenance_mode: true
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      when: maint_mode
+      when: host_maintenance_mode
 
     - name: Exit host maintenance mode
       stevefulme1.scvmm.scvmm_host:
-        name: "{{ maint_host_name }}"
+        name: "{{ host_maintenance_host_name }}"
         maintenance_mode: false
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      when: maint_exit_maintenance
+      when: host_maintenance_exit
 
   rescue:
     - name: Report maintenance failure
       ansible.builtin.fail:
         msg: >-
-          Host maintenance operation failed for '{{ maint_host_name }}'.
+          Host maintenance operation failed for '{{ host_maintenance_host_name }}'.
           Error: {{ ansible_failed_result.msg | default('Unknown error') }}

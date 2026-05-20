@@ -2,46 +2,46 @@
 - name: Validate required variables
   ansible.builtin.assert:
     that:
-      - scvmm_vm_name is defined and scvmm_vm_name | length > 0
-      - scvmm_template_name is defined and scvmm_template_name | length > 0
+      - vm_provision_vm_name is defined and vm_provision_vm_name | length > 0
+      - vm_provision_template_name is defined and vm_provision_template_name | length > 0
       - scvmm_cloud is defined and scvmm_cloud | length > 0
-    fail_msg: "Required variables: scvmm_vm_name, scvmm_template_name, scvmm_cloud"
+    fail_msg: "Required variables: vm_provision_vm_name, vm_provision_template_name, scvmm_cloud"
 
 - name: Provision SCVMM virtual machine
   block:
     - name: Create VM from template
       stevefulme1.scvmm.scvmm_vm:
-        name: "{{ scvmm_vm_name }}"
-        template: "{{ scvmm_template_name }}"
+        name: "{{ vm_provision_vm_name }}"
+        template: "{{ vm_provision_template_name }}"
         cloud: "{{ scvmm_cloud }}"
-        cpu_count: "{{ scvmm_cpu_count }}"
-        memory_mb: "{{ scvmm_memory_mb }}"
-        dynamic_memory: "{{ scvmm_dynamic_memory }}"
-        dynamic_memory_min_mb: "{{ scvmm_dynamic_memory_min_mb }}"
-        dynamic_memory_max_mb: "{{ scvmm_dynamic_memory_max_mb }}"
-        description: "{{ scvmm_description }}"
-        hardware_profile: "{{ scvmm_hardware_profile | default(omit) }}"
-        vm_network: "{{ scvmm_vm_network | default(omit) }}"
-        state: "{{ scvmm_vm_state }}"
+        cpu_count: "{{ vm_provision_cpu_count }}"
+        memory_mb: "{{ vm_provision_memory_mb }}"
+        dynamic_memory: "{{ vm_provision_dynamic_memory }}"
+        dynamic_memory_min_mb: "{{ vm_provision_dynamic_memory_min_mb }}"
+        dynamic_memory_max_mb: "{{ vm_provision_dynamic_memory_max_mb }}"
+        description: "{{ vm_provision_description }}"
+        hardware_profile: "{{ vm_provision_hardware_profile | default(omit) }}"
+        vm_network: "{{ vm_provision_vm_network | default(omit) }}"
+        state: "{{ vm_provision_vm_state }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      register: _scvmm_vm
+      register: _vm_provision_vm
 
     - name: Configure network adapter
       stevefulme1.scvmm.scvmm_vm_nic:
-        vm_name: "{{ scvmm_vm_name }}"
-        vm_network: "{{ scvmm_vm_network }}"
-        mac_address_type: "{{ scvmm_network_adapter_mac_type }}"
-        ipv4_address_type: "{{ scvmm_ip_allocation }}"
-        ipv4_address: "{{ scvmm_static_ip | default(omit) }}"
+        vm_name: "{{ vm_provision_vm_name }}"
+        vm_network: "{{ vm_provision_vm_network }}"
+        mac_address_type: "{{ vm_provision_network_adapter_mac_type }}"
+        ipv4_address_type: "{{ vm_provision_ip_allocation }}"
+        ipv4_address: "{{ vm_provision_static_ip | default(omit) }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
         state: present
-      when: scvmm_vm_network | length > 0
+      when: vm_provision_vm_network | length > 0
 
     - name: Add additional disks
       stevefulme1.scvmm.scvmm_vm_disk:
-        vm_name: "{{ scvmm_vm_name }}"
+        vm_name: "{{ vm_provision_vm_name }}"
         size_gb: "{{ item.size_gb }}"
         bus_type: "{{ item.bus_type | default('SCSI') }}"
         bus: "{{ item.bus | default(0) }}"
@@ -49,40 +49,40 @@
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
         state: present
-      loop: "{{ scvmm_additional_disks }}"
+      loop: "{{ vm_provision_additional_disks }}"
       loop_control:
         label: "{{ item.size_gb }}GB on bus {{ item.bus | default(0) }}:{{ item.lun }}"
-      when: scvmm_additional_disks | length > 0
+      when: vm_provision_additional_disks | length > 0
 
     - name: Start virtual machine
       stevefulme1.scvmm.scvmm_vm:
-        name: "{{ scvmm_vm_name }}"
+        name: "{{ vm_provision_vm_name }}"
         state: running
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      when: scvmm_start_vm
+      when: vm_provision_start_vm
 
     - name: Wait for VM IP address
       stevefulme1.scvmm.scvmm_vm_info:
-        name: "{{ scvmm_vm_name }}"
+        name: "{{ vm_provision_vm_name }}"
         scvmm_host: "{{ scvmm_host }}"
         scvmm_port: "{{ scvmm_port }}"
-      register: _vm_info
-      until: _vm_info.vms[0].ip_addresses | default([]) | length > 0
-      retries: "{{ (scvmm_wait_timeout / 10) | int }}"
+      register: _vm_provision_info
+      until: _vm_provision_info.vms[0].ip_addresses | default([]) | length > 0
+      retries: "{{ (vm_provision_wait_timeout / 10) | int }}"
       delay: 10
-      when: scvmm_wait_for_ip
+      when: vm_provision_wait_for_ip
 
     - name: Display VM information
       ansible.builtin.debug:
         msg: >-
-          VM '{{ scvmm_vm_name }}' provisioned.
-          IP: {{ _vm_info.vms[0].ip_addresses[0] | default('Pending') }}
-      when: _vm_info is defined
+          VM '{{ vm_provision_vm_name }}' provisioned.
+          IP: {{ _vm_provision_info.vms[0].ip_addresses[0] | default('Pending') }}
+      when: _vm_provision_info is defined
 
   rescue:
     - name: Report VM provisioning failure
       ansible.builtin.fail:
         msg: >-
-          VM provisioning failed for '{{ scvmm_vm_name }}'.
+          VM provisioning failed for '{{ vm_provision_vm_name }}'.
           Error: {{ ansible_failed_result.msg | default('Unknown error') }}

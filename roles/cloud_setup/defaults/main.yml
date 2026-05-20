@@ -1,37 +1,37 @@
 ---
 # Required
-# cloud_name: ""
+# cloud_setup_name: ""
 
 # SCVMM connection
-scvmm_host: "{{ lookup('env', 'SCVMM_HOST') }}"
-scvmm_port: 8100
+cloud_setup_scvmm_host: "{{ lookup('env', 'SCVMM_HOST') }}"
+cloud_setup_scvmm_port: 8100
 
 # Cloud configuration
-cloud_description: "Managed by Ansible"
-cloud_state: present
+cloud_setup_description: "Managed by Ansible"
+cloud_setup_state: present
 
 # Host groups
-cloud_host_groups: []
+cloud_setup_host_groups: []
 #   - "All Hosts\\Production"
 
 # Capacity
-cloud_capacity_enabled: true
-cloud_capacity_cpu_count: 100
-cloud_capacity_memory_mb: 524288
-cloud_capacity_storage_gb: 10240
-cloud_capacity_vm_count: 500
+cloud_setup_capacity_enabled: true
+cloud_setup_capacity_cpu_count: 100
+cloud_setup_capacity_memory_mb: 524288
+cloud_setup_capacity_storage_gb: 10240
+cloud_setup_capacity_vm_count: 500
 
 # Logical networks
-cloud_logical_networks: []
+cloud_setup_logical_networks: []
 #   - "Management"
 #   - "Production"
 
 # Library
-cloud_library_shares: []
+cloud_setup_library_shares: []
 #   - "\\\\libserver\\VMLibrary"
 
 # User roles
-cloud_user_roles: []
+cloud_setup_user_roles: []
 #   - name: "TenantAdmin"
 #     members:
 #       - "DOMAIN\\CloudAdmins"

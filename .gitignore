@@ -1,5 +1,5 @@
-*.tar.gz
 __pycache__/
-*.pyc
 .ansible/
-tests/output/
+.DS_Store
+*.pyc
+*.tar.gz
