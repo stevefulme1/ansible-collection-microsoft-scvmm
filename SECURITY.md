@@ -1,32 +1,15 @@
 # Security Policy
 
-## Reporting a Vulnerability
-
-If you discover a security vulnerability in this collection, please report it responsibly.
-
-**Do not open a public GitHub issue for security vulnerabilities.**
-
-Instead, please report security issues by emailing the maintainers or by using
-[GitHub's private vulnerability reporting](https://github.com/stevefulme1/ansible-collection-microsoft-scvmm/security/advisories/new).
-
-We will acknowledge your report within 48 hours and work with you to understand
-and address the issue before any public disclosure.
-
 ## Supported Versions
 
-| Version | Supported          |
-|---------|--------------------|
-| 0.1.x   | Yes                |
+Ansible applies security fixes according to the 3-versions-back support
+policy. Please find more information in [our docs](
+https://docs.ansible.com/ansible/devel/reference_appendices/release_and_maintenance.html#release-status
+).
 
-## Security Best Practices
+## Reporting a Vulnerability
 
-When using this collection:
-
-- **Credentials**: Never hard-code credentials in playbooks. Use Ansible Vault,
-  environment variables, or a secrets manager.
-- **WinRM transport**: Use NTLM or Kerberos authentication. Avoid Basic
-  authentication over unencrypted connections.
-- **SSH keys**: Prefer SSH key-based authentication over password authentication
-  when using the SSH connection method.
-- **Least privilege**: Configure SCVMM user roles with the minimum permissions
-  required for your automation tasks.
+We encourage responsible disclosure practices for security
+vulnerabilities. Please read our [policies for reporting bugs](
+https://docs.ansible.com/ansible/devel/community/reporting_bugs_and_features.html#reporting-a-bug
+) if you want to report a security issue that might affect Ansible.
