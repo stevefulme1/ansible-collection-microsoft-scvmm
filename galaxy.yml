@@ -12,7 +12,6 @@ description: >-
   and library resource control. Modules are native PowerShell using
   Ansible.Basic, executing directly on the target host via WinRM or SSH.
   Status: Pre-release. Under active development.
-license_file: COPYING
 tags:
   - cloud
   - windows
