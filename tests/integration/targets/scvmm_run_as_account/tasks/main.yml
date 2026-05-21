@@ -1,0 +1,54 @@
+---
+# Integration tests for stevefulme1.svcmm.scvmm_run_as_account
+
+- name: Create scvmm_run_as_account
+  stevefulme1.svcmm.scvmm_run_as_account:
+    name: "ansible-test-runas"
+    user_name: "DOMAIN\\testuser"
+    password: "TestP@ss123"
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: create_result
+
+- name: Verify creation
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+- name: Create scvmm_run_as_account again (idempotency)
+  stevefulme1.svcmm.scvmm_run_as_account:
+    name: "ansible-test-runas"
+    user_name: "DOMAIN\\testuser"
+    password: "TestP@ss123"
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+- name: Delete scvmm_run_as_account
+  stevefulme1.svcmm.scvmm_run_as_account:
+    name: "ansible-test-runas"
+    state: absent
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: delete_result
+
+- name: Verify deletion
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed
+
+- name: Delete scvmm_run_as_account again (idempotency)
+  stevefulme1.svcmm.scvmm_run_as_account:
+    name: "ansible-test-runas"
+    state: absent
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: delete_idem
+
+- name: Verify delete idempotency
+  ansible.builtin.assert:
+    that:
+      - delete_idem is not changed

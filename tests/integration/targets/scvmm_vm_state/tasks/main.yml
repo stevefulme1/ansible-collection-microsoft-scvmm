@@ -1,0 +1,38 @@
+---
+# Integration tests for stevefulme1.svcmm.scvmm_vm_state
+
+- name: Create scvmm_vm_state
+  stevefulme1.svcmm.scvmm_vm_state:
+    name: "{{ scvmm_test_vm }}"
+    state: running
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: create_result
+
+- name: Verify creation
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+- name: Create scvmm_vm_state again (idempotency)
+  stevefulme1.svcmm.scvmm_vm_state:
+    name: "{{ scvmm_test_vm }}"
+    state: running
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+- name: Update scvmm_vm_state
+  stevefulme1.svcmm.scvmm_vm_state:
+    name: "{{ scvmm_test_vm }}"
+    state: stopped
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: update_result
+
+- name: Verify update
+  ansible.builtin.assert:
+    that:
+      - update_result is changed

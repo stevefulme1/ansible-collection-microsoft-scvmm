@@ -1,0 +1,68 @@
+---
+# Integration tests for stevefulme1.svcmm.scvmm_hardware_profile
+
+- name: Create scvmm_hardware_profile
+  stevefulme1.svcmm.scvmm_hardware_profile:
+    name: "ansible-test-hwp"
+    cpu_count: 2
+    memory_mb: 2048
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: create_result
+
+- name: Verify creation
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+- name: Create scvmm_hardware_profile again (idempotency)
+  stevefulme1.svcmm.scvmm_hardware_profile:
+    name: "ansible-test-hwp"
+    cpu_count: 2
+    memory_mb: 2048
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+- name: Update scvmm_hardware_profile
+  stevefulme1.svcmm.scvmm_hardware_profile:
+    name: "ansible-test-hwp"
+    cpu_count: 4
+    memory_mb: 4096
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: update_result
+
+- name: Verify update
+  ansible.builtin.assert:
+    that:
+      - update_result is changed
+
+- name: Delete scvmm_hardware_profile
+  stevefulme1.svcmm.scvmm_hardware_profile:
+    name: "ansible-test-hwp"
+    state: absent
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: delete_result
+
+- name: Verify deletion
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed
+
+- name: Delete scvmm_hardware_profile again (idempotency)
+  stevefulme1.svcmm.scvmm_hardware_profile:
+    name: "ansible-test-hwp"
+    state: absent
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: delete_idem
+
+- name: Verify delete idempotency
+  ansible.builtin.assert:
+    that:
+      - delete_idem is not changed

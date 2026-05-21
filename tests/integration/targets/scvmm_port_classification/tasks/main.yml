@@ -1,0 +1,65 @@
+---
+# Integration tests for stevefulme1.svcmm.scvmm_port_classification
+
+- name: Create scvmm_port_classification
+  stevefulme1.svcmm.scvmm_port_classification:
+    name: "ansible-test-portclass"
+    description: "Test port classification"
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: create_result
+
+- name: Verify creation
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+
+- name: Create scvmm_port_classification again (idempotency)
+  stevefulme1.svcmm.scvmm_port_classification:
+    name: "ansible-test-portclass"
+    description: "Test port classification"
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: idem_result
+
+- name: Verify idempotency
+  ansible.builtin.assert:
+    that:
+      - idem_result is not changed
+
+- name: Update scvmm_port_classification
+  stevefulme1.svcmm.scvmm_port_classification:
+    name: "ansible-test-portclass"
+    description: "Updated"
+    state: present
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: update_result
+
+- name: Verify update
+  ansible.builtin.assert:
+    that:
+      - update_result is changed
+
+- name: Delete scvmm_port_classification
+  stevefulme1.svcmm.scvmm_port_classification:
+    name: "ansible-test-portclass"
+    state: absent
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: delete_result
+
+- name: Verify deletion
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed
+
+- name: Delete scvmm_port_classification again (idempotency)
+  stevefulme1.svcmm.scvmm_port_classification:
+    name: "ansible-test-portclass"
+    state: absent
+    scvmm_server: "{{ scvmm_test_server }}"
+  register: delete_idem
+
+- name: Verify delete idempotency
+  ansible.builtin.assert:
+    that:
+      - delete_idem is not changed
